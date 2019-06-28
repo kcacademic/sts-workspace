@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.sapient.learning.model.Customer;
 import com.sapient.learning.repository.CustomerRepository;
 
 @SpringBootApplication
@@ -23,6 +24,19 @@ public class Application {
 	public CommandLineRunner demo(CustomerRepository repository) {
 		return (args) -> {
 
+			repository.deleteAll();
+
+			// save a couple of customers
+			repository.save(new Customer("Alice", "Smith"));
+			repository.save(new Customer("Bob", "Smith"));
+
+			// fetch all customers
+			log.info("Customers found with findAll():");
+			log.info("-------------------------------");
+			for (Customer customer : repository.findAll()) {
+				log.info(customer.toString());
+			}
+			
 		};
 	}
 
