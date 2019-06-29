@@ -1,13 +1,15 @@
 package com.sapient.learning;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+	public static void main(String[] args) throws InterruptedException {
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.sapient.learning");
+
+		Thread.sleep(10000);
+
+		context.close();
 	}
 
 }
