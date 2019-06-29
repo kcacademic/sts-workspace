@@ -12,8 +12,7 @@ import com.sapient.learning.repository.CustomerRepository;
 
 @SpringBootApplication
 public class Application {
-
-	@SuppressWarnings("unused")
+	
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
