@@ -1,7 +1,10 @@
 package com.sapient.learning.data;
 
-public class Email {
+import java.io.Serializable;
 
+public class Email implements Serializable{
+	
+	private static final long serialVersionUID = 2154347355311045994L;
 	private String to;
 	private String body;
 

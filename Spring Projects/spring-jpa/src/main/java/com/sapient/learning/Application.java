@@ -2,56 +2,44 @@ package com.sapient.learning;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.sapient.learning.config.HibernateConfig;
 import com.sapient.learning.model.Customer;
+import com.sapient.learning.model.Order;
 import com.sapient.learning.repository.CustomerRepository;
+import com.sapient.learning.repository.OrderRepository;
 
-@SpringBootApplication
 public class Application {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
 
-	@Bean
-	public CommandLineRunner demo(CustomerRepository repository) {
-		return (args) -> {
-			// save a couple of customers
-			repository.save(new Customer("Jack", "Bauer"));
-			repository.save(new Customer("Chloe", "O'Brian"));
-			repository.save(new Customer("Kim", "Bauer"));
-			repository.save(new Customer("David", "Palmer"));
-			repository.save(new Customer("Michelle", "Dessler"));
+		CustomerRepository customerRepository = context.getBean(CustomerRepository.class);
 
-			// fetch all customers
-			log.info("Customers found with findAll():");
-			log.info("-------------------------------");
-			for (Customer customer : repository.findAll()) {
-				log.info(customer.toString());
-			}
-			log.info("");
+		OrderRepository orderRepository = context.getBean(OrderRepository.class);
+		
+		// create a customer and couple of orders
+		Customer customer = new Customer("Jack", "Bauer");
+		Order firstOrder = new Order("Card", "Office", customer);
+		Order secondOrder = new Order("Cash", "Home", customer);
 
-			// fetch an individual customer by ID
-			repository.findById(1L).ifPresent(customer -> {
-				log.info("Customer found with findById(1L):");
-				log.info("--------------------------------");
-				log.info(customer.toString());
-				log.info("");
-			});
+		// save the customer and orders
+		customerRepository.save(customer);
+		orderRepository.save(firstOrder);
+		orderRepository.save(secondOrder);
 
-			// fetch customers by last name
-			log.info("Customer found with findByLastName('Bauer'):");
-			log.info("--------------------------------------------");
-			repository.findByLastName("Bauer").forEach(bauer -> {
-				log.info(bauer.toString());
-			});
-		};
+		// fetch customers by last name
+		log.info("Customer found with findByLastName('Bauer'):");
+		log.info("--------------------------------------------");
+		customerRepository.findByLastName("Bauer").forEach(c -> {
+			log.info(c.toString());
+		});
+		
+		context.close();
+
 	}
 
 }

@@ -5,6 +5,8 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.sapient.learning.config.MyRoute;
+
 public class Application {
 
 	public static void main(String[] args) throws Exception {

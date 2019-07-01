@@ -4,11 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order_table")
+@Table(name="purchase")
 public class Order {
 
 	@Id
@@ -16,7 +17,8 @@ public class Order {
 	private Long orderId;
 	private String address;
 	private String payment;
-	@OneToOne
+    @ManyToOne
+    @JoinColumn(name = "customerId")
 	private Customer customer;
 
 	protected Order() {
@@ -30,7 +32,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return String.format("Order [orderId=%d, address='%s', payment='%s, customer='%s']", orderId, address, payment, customer);
+		return String.format("Order [orderId=%d, address='%s', payment='%s']", orderId, address, payment);
 	}
 
 }
