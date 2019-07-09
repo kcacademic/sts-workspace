@@ -1,4 +1,4 @@
-package com.sapient.learning.repository;
+package com.sapient.learning;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -20,8 +20,10 @@ import com.datastax.driver.core.Session;
 import com.datastax.driver.core.utils.UUIDs;
 import com.sapient.learning.connector.CassandraConnector;
 import com.sapient.learning.model.Customer;
+import com.sapient.learning.repository.CustomerRepository;
+import com.sapient.learning.repository.KeyspaceRepository;
 
-public class BookRepositoryIntegrationTests {
+public class CassandraTests {
 
 	private KeyspaceRepository schema;
 
