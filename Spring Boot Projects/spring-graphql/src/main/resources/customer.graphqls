@@ -1,0 +1,15 @@
+type Customer {
+    id: ID!
+    firstName: String!
+    lastName: String!
+}
+
+# The Root Query for the application
+type Query {
+    recentCustomers(count: Int, offset: Int): [Customer]!
+}
+
+# The Root Mutation for the application
+type Mutation {
+    writeCustomer(firstName: String!, lastName: String!) : Customer!
+}
