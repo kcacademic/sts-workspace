@@ -28,7 +28,8 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-# other generated files
+# Other Generated Files
+.gradle
 /bin/
 /gen/
 /build/
