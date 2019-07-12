@@ -10,9 +10,10 @@ public class Application {
 	}
 
 	private Application() throws Exception {
-		final RatpackServer server = RatpackServer.of(
-				s -> s.handlers(
-						chain -> chain.post("users", new UserHandler())));
+		final RatpackServer server = RatpackServer.of(s -> s
+				.handlers(chain -> chain
+						.get(ctx -> ctx.render("Hello World!"))
+						.get("users", new UserHandler())));
 		server.start();
 	}
 
