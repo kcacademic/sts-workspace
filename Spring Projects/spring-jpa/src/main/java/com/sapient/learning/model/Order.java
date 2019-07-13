@@ -1,5 +1,6 @@
 package com.sapient.learning.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,13 +10,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="purchase")
+@Table(name="PURCHASE")
 public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ORDER_ID")
 	private Long orderId;
+	@Column(name = "ADDRESS")
 	private String address;
+	@Column(name = "PAYMENT")
 	private String payment;
     @ManyToOne
     @JoinColumn(name = "customerId")

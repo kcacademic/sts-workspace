@@ -1,4 +1,4 @@
-package com.sapient.learning.server;
+package com.sapient.learning.service;
 
 import com.sapient.learning.HelloRequest;
 import com.sapient.learning.HelloResponse;
