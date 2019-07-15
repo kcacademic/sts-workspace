@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.sapient.learning.data;
 
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;

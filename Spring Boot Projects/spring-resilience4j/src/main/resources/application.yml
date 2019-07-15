@@ -1,0 +1,60 @@
+resilience4j.circuitbreaker:
+    instances:
+        dateService:
+            registerHealthIndicator: true
+            ringBufferSizeInClosedState: 100
+        nameService:
+            registerHealthIndicator: true
+            ringBufferSizeInClosedState: 100
+            
+resilience4j.retry:
+    instances:
+        dateService:
+            maxRetryAttempts: 3
+            waitDuration: 10s
+            enableExponentialBackoff: true
+            exponentialBackoffMultiplier: 2
+            retryExceptions:
+                - java.io.IOException
+        nameService:
+            maxRetryAttempts: 3
+            waitDuration: 10s
+            enableExponentialBackoff: true
+            exponentialBackoffMultiplier: 2
+            retryExceptions:
+                - java.io.IOException
+                
+resilience4j.bulkhead:
+    instances:
+        dateService:
+            maxConcurrentCall: 10
+        nameService:
+            maxConcurrentCall: 10
+            
+resilience4j.thread-pool-bulkhead:
+    instances:
+        dateService:
+            threadPoolProperties:
+                maxThreadPoolSize: 1
+                coreThreadPoolSize: 1
+                queueCapacity: 1
+        nameService:
+            threadPoolProperties:
+                maxThreadPoolSize: 1
+                coreThreadPoolSize: 1
+                queueCapacity: 1
+        
+resilience4j.ratelimiter:
+    instances:
+        dateService:
+            limitForPeriod: 10
+            limitRefreshPeriod: 1s
+            timeoutDuration: 0
+            registerHealthIndicator: true
+            eventConsumerBufferSize: 100
+        nameService:
+            limitForPeriod: 10
+            limitRefreshPeriod: 1s
+            timeoutDuration: 0
+            registerHealthIndicator: true
+            eventConsumerBufferSize: 100

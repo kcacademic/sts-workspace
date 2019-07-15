@@ -1,11 +1,10 @@
-package com.sapient.learning;
+package com.sapient.learning.client;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.sapient.learning.data.DataPublisher;
 
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
@@ -15,40 +14,6 @@ import io.rsocket.util.DefaultPayload;
 import reactor.core.publisher.Flux;
 
 public class RsocketClient {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(RsocketClient.class);
-	
-	public static void main(String[] args) throws InterruptedException {
-
-		RsocketClient client = new RsocketClient();
-		
-		String string = "Kumar Chandrakant";
-		LOGGER.info(client.callBlocking(string));
-		
-		client.getDataStream().index().subscribe(
-		        tuple -> {
-		        	LOGGER.info(tuple.getT2());
-		        },
-		        err -> LOGGER.error(err.getMessage()));
-		
-		client.sendData(2);
-		
-		DataPublisher dataPublisher = new DataPublisher();
-		client.openChannel(dataPublisher).index().subscribe(
-		        tuple -> {
-		        	LOGGER.info(tuple.getT2());
-		        },
-		        err -> LOGGER.error(err.getMessage()));
-		dataPublisher.publish(DefaultPayload.create("Hello"));
-		dataPublisher.publish(DefaultPayload.create("Hello"));
-		dataPublisher.publish(DefaultPayload.create("Hello"));
-
-
-		Thread.sleep(10000);
-		
-		client.dispose();
-
-	}
 
 	private final RSocket socket;
 
