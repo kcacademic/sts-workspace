@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.sapient.learning.client;
 
 import java.net.URI;
 
@@ -34,7 +34,6 @@ public class WebSocketClient {
 			container = ContainerProvider.getWebSocketContainer();
 			wsc = new WebSocketClient();
 			session = container.connectToServer(wsc, URI.create("ws://localhost:8080/name"));
-			//session = container.connectToServer(wsc, URI.create("ws://localhost:8080/ratesrv"));
 			session.getBasicRemote().sendText("{\"name\":\"Kumar Chandrakant\"}", true);
 			wait4TerminateSignal();
 		} catch (Exception e) {

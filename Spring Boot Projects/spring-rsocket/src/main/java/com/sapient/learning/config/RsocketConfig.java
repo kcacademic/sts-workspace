@@ -1,4 +1,4 @@
-package com.sapient.learning.client;
+package com.sapient.learning.config;
 
 import java.net.InetSocketAddress;
 
@@ -14,13 +14,13 @@ import io.rsocket.frame.decoder.PayloadDecoder;
 import io.rsocket.transport.netty.client.TcpClientTransport;
 
 @Configuration
-public class ClientConfiguration {
-
+public class RsocketConfig {
+	
 	@Bean
 	public RSocket rSocket() {
 		return RSocketFactory.connect().dataMimeType(MimeTypeUtils.APPLICATION_JSON_VALUE)
 				.frameDecoder(PayloadDecoder.ZERO_COPY)
-				.transport(TcpClientTransport.create(new InetSocketAddress("127.0.0.1", 7000))).start().block();
+				.transport(TcpClientTransport.create(new InetSocketAddress("localhost", 7000))).start().block();
 	}
 
 	@Bean
@@ -28,4 +28,5 @@ public class ClientConfiguration {
 		return RSocketRequester.wrap(rSocket(), MimeTypeUtils.APPLICATION_JSON, MimeTypeUtils.APPLICATION_JSON,
 				rSocketStrategies);
 	}
+
 }

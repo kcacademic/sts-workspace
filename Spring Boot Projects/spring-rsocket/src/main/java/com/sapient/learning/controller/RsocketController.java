@@ -1,4 +1,4 @@
-package com.sapient.learning.server;
+package com.sapient.learning.controller;
 
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -7,15 +7,10 @@ import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Mono;
 
 @Controller
-public class ServerController {
+public class RsocketController {
  
     @MessageMapping("greeting")
-    public Mono<String> currentMarketData(String request) {
-        return Mono.just("Hello: " + request);
-    }
-	
-	@MessageMapping
-    public Mono<String> currentMarket(String request) {
+    public Mono<String> getGreeting(String request) {
         return Mono.just("Hello: " + request);
     }
     
