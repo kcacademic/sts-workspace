@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.sapient.learning.service;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
