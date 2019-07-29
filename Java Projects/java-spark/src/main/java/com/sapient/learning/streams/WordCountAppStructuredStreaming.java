@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.sapient.learning.streams;
 
 import java.util.Arrays;
 

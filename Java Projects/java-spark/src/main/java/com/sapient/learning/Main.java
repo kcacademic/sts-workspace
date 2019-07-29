@@ -3,7 +3,7 @@ package com.sapient.learning;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.Dataset;
 
-public class SimpleApp {
+public class Main {
   public static void main(String[] args) {
     String logFile = "C:\\Users\\kumchand0\\Apps\\spark-2.3.1-bin-hadoop2.7\\README.md";
     SparkSession spark = SparkSession.builder()
