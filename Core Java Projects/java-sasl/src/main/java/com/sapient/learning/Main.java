@@ -80,8 +80,7 @@ public class Main {
 		ClientHandler clientHandler = new ClientHandler();
 		ServerHandler serverHandler = new ServerHandler();
 
-		SaslClient sc = Sasl.createSaslClient(new String[] { "CRAM-MD5" }, null, "my_server", "FQHN", null,
-				clientHandler);
+		SaslClient sc = Sasl.createSaslClient(new String[] { "CRAM-MD5" }, null, "my_server", "FQHN", null, clientHandler);
 		SaslServer ss = Sasl.createSaslServer("CRAM-MD5", "my_server", "FQHN", null, serverHandler);
 		
 		challenge = ss.evaluateResponse(new byte[0]);

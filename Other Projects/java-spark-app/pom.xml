@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sapient.learning</groupId>
-	<artifactId>java-spark-streaming</artifactId>
+	<artifactId>java-spark-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>java-spark-streaming</name>
+	<name>java-spark-app</name>
 	<description>Demo project for Spark Streaming with Kafka</description>
 	<dependencies>
 		<dependency>
