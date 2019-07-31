@@ -1,94 +1,58 @@
 package com.sapient.learning;
 
-import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-import javax.security.sasl.AuthorizeCallback;
 import javax.security.sasl.Sasl;
 import javax.security.sasl.SaslClient;
 import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
 
+import com.sapient.learning.handlers.ClientCallbackHandler;
+import com.sapient.learning.handlers.ServerCallbackHandler;
+
 public class Main {
+
+	private static final String MECHANISM = "DIGEST-MD5";
+	private static final String SERVER_NAME = "myServer";
+	private static final String PROTOCOL = "myProtocol";
+	private static final String AUTHORIZATION_ID = null;
+	private static final String QOP_LEVEL = "auth-conf";
 
 	public static void main(String[] args) throws SaslException {
 
-		new Main().start();
-	}
+		ServerCallbackHandler serverHandler = new ServerCallbackHandler();
+		ClientCallbackHandler clientHandler = new ClientCallbackHandler();
 
-	private static class ClientHandler implements CallbackHandler {
+		Map<String, String> props = new HashMap<>();
+		props.put(Sasl.QOP, QOP_LEVEL);
 
-		@Override
-		public void handle(Callback[] cbs) throws IOException, UnsupportedCallbackException {
-			for (Callback cb : cbs) {
-				if (cb instanceof NameCallback) {
-
-					System.out.println("Client - NameCallback");
-
-					NameCallback nc = (NameCallback) cb;
-					nc.setName("username");
-				} else if (cb instanceof PasswordCallback) {
-
-					System.out.println("Client - PasswordCallback");
-
-					PasswordCallback pc = (PasswordCallback) cb;
-					pc.setPassword("password".toCharArray());
-				}
-			}
-		}
-	}
-
-	private static class ServerHandler implements CallbackHandler {
-
-		@Override
-		public void handle(Callback[] cbs) throws IOException, UnsupportedCallbackException {
-			for (Callback cb : cbs) {
-				if (cb instanceof AuthorizeCallback) {
-
-					System.out.println("Server - AuthorizeCallback");
-
-					AuthorizeCallback ac = (AuthorizeCallback) cb;
-					ac.setAuthorized(true);
-
-				} else if (cb instanceof NameCallback) {
-
-					System.out.println("Server - NameCallback");
-
-					NameCallback nc = (NameCallback) cb;
-					nc.setName("username");
-
-				} else if (cb instanceof PasswordCallback) {
-
-					System.out.println("Server - PasswordCallback");
-
-					PasswordCallback pc = (PasswordCallback) cb;
-					pc.setPassword("password".toCharArray());
-				}
-			}
-		}
-	}
-
-	private void start() throws SaslException {
+		SaslServer saslServer = Sasl.createSaslServer(MECHANISM, PROTOCOL, SERVER_NAME, props, serverHandler);
+		SaslClient saslClient = Sasl.createSaslClient(new String[] { MECHANISM }, AUTHORIZATION_ID, PROTOCOL,
+				SERVER_NAME, props, clientHandler);
 
 		byte[] challenge;
 		byte[] response;
 
-		ClientHandler clientHandler = new ClientHandler();
-		ServerHandler serverHandler = new ServerHandler();
+		challenge = saslServer.evaluateResponse(new byte[0]);
+		response = saslClient.evaluateChallenge(challenge);
 
-		SaslClient sc = Sasl.createSaslClient(new String[] { "CRAM-MD5" }, null, "my_server", "FQHN", null, clientHandler);
-		SaslServer ss = Sasl.createSaslServer("CRAM-MD5", "my_server", "FQHN", null, serverHandler);
-		
-		challenge = ss.evaluateResponse(new byte[0]);
-		response = sc.evaluateChallenge(challenge);
-		ss.evaluateResponse(response);
+		challenge = saslServer.evaluateResponse(response);
+		response = saslClient.evaluateChallenge(challenge);
 
-		if (ss.isComplete()) {
-			System.out.println("Authentication successful.");
-		}
+		System.out.println(saslServer.isComplete());
+		System.out.println(saslClient.isComplete());
+
+		String qop = (String) saslClient.getNegotiatedProperty(Sasl.QOP);
+		System.out.println(qop);
+
+		byte[] outgoing = "Kumar Chandrakant".getBytes();
+		byte[] secureOutgoing = saslClient.wrap(outgoing, 0, outgoing.length);
+
+		byte[] secureIncoming = secureOutgoing;
+		byte[] incoming = saslServer.unwrap(secureIncoming, 0, secureIncoming.length);
+		System.out.println(new String(incoming, StandardCharsets.UTF_8));
 	}
+
 }
