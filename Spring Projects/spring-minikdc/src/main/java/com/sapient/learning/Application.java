@@ -24,9 +24,9 @@ public class Application {
 
 		File keyTab = new File(KRB_WORK_DIR + "\\example.keytab");
 		kdc.createPrincipal(keyTab, "HTTP/localhost");
-		kdc.createPrincipal(keyTab, "client/localhost");
+		//kdc.createPrincipal(keyTab, "client/localhost");
 		//kdc.createPrincipal("HTTP/localhost", "password");
-		//kdc.createPrincipal("client/localhost", "password");
+		kdc.createPrincipal("client/localhost", "password");
 		
 	}
 

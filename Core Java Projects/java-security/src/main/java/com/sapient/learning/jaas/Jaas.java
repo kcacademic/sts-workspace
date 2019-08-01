@@ -10,7 +10,7 @@ import javax.security.auth.login.LoginException;
 
 import com.sun.security.auth.callback.TextCallbackHandler;
 
-@SuppressWarnings({ "rawtypes", "restriction" })
+@SuppressWarnings({ "rawtypes" })
 public class Jaas {
 	private static String name;
 	private static final boolean verbose = false;

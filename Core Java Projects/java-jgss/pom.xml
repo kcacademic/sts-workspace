@@ -14,4 +14,38 @@
 
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>com.sapient.learning.Main</mainClass>
+					<systemProperties>
+						<systemProperty>
+							<key>java.security.krb5.conf</key>
+							<value>krb5.conf</value>
+						</systemProperty>
+						<systemProperty>
+							<key>javax.security.auth.useSubjectCredsOnly</key>
+							<value>false</value>
+						</systemProperty>
+						<systemProperty>
+							<key>java.security.auth.login.config</key>
+							<value>C:\Users\kumchand0\Apps\sts-workspace\Core Java Projects\java-jgss\src\main\resources\bcsLogin.conf</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
