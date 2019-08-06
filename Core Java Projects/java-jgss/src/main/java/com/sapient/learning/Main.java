@@ -68,13 +68,13 @@ public class Main {
 
 		GSSManager manager = GSSManager.getInstance();
 
-		String serverPrinc = "HTTP/localhost@EXAMPLE.COM";
+		String serverPrinciple = "HTTP/localhost@EXAMPLE.COM";
 
-		GSSName serverName = manager.createName(serverPrinc, null);
+		GSSName serverName = manager.createName(serverPrinciple, null);
 
 		Oid krb5Oid = new Oid("1.2.840.113554.1.2.2");
 
-		GSSContext context = manager.createContext(serverName, krb5Oid, null, GSSContext.DEFAULT_LIFETIME);
+		GSSContext context = manager.createContext(serverName, krb5Oid, (GSSCredential)null, GSSContext.DEFAULT_LIFETIME);
 		context.requestMutualAuth(true); // Mutual authentication
 		context.requestConf(true); // Will use encryption later
 		context.requestInteg(true); // Will use integrity later
