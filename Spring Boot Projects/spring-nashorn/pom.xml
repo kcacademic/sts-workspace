@@ -24,42 +24,47 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>com.coveo</groupId>
-			<artifactId>nashorn-commonjs-modules</artifactId>
-			<version>1.0.9</version>
-		</dependency>
-
-		<!-- Tomcat embedded container -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- JSTL for JSP -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-
+		
 		<!-- Need this to compile JSP -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- Need this to compile JSP, tomcat-embed-jasper version is not working, 
-			no idea why -->
+		
+		<!-- JSTL for JSP -->
+		<!--  
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		-->
+		<!-- Tomcat embedded container -->
+        <!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+                -->
+		<!-- Need this to compile JSP, tomcat-embed-jasper version is not working, no idea why -->
+                <!--
 		<dependency>
 			<groupId>org.eclipse.jdt.core.compiler</groupId>
 			<artifactId>ecj</artifactId>
 			<version>4.6.1</version>
 			<scope>provided</scope>
 		</dependency>
-
+		-->
+		<!-- CommonJS support for Nashorn -->
+		<!--
+		<dependency>
+			<groupId>com.coveo</groupId>
+			<artifactId>nashorn-commonjs-modules</artifactId>
+			<version>1.0.9</version>
+		</dependency>
+		-->
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

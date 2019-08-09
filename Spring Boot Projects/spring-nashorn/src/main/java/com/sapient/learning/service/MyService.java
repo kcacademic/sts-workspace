@@ -2,8 +2,6 @@ package com.sapient.learning.service;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -20,17 +18,13 @@ public class MyService {
 
 		nashorn.eval(new FileReader("./src/main/webapp/js/react.js"));
 		nashorn.eval(new FileReader("./src/main/webapp/js/react-dom-server.js"));
-
-		nashorn.eval(new FileReader("./src/main/webapp/index.js"));
-
-		List<String> list = new ArrayList<>();
-		list.add("Kumar");
-		list.add("Chandrakant");
-
-		Object html = nashorn.invokeFunction("renderServer", list);
-
-		System.out.println(String.valueOf(html));
-
+		
+		nashorn.eval(new FileReader("./src/main/webapp/app.js"));
+		Object html = nashorn.eval(
+	    	      "ReactDOMServer.renderToString(" +
+	    	        "React.createElement(App, {data: [0,1,1]})" +
+	    	      ");"
+	    	    );
 		return String.valueOf(html);
 	}
 

@@ -18,7 +18,7 @@ public class MyKafkaProducer {
  
     private Producer<String, String> producer;
     
-    public void initIt() {
+    public MyKafkaProducer() {
         Properties kafkaProps = new Properties();
         kafkaProps.put("bootstrap.servers", brokerList);
         kafkaProps.put("key.serializer", 

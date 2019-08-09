@@ -1,4 +1,4 @@
-package com.sapient.learning.streams;
+package com.sapient.learning.sql;
 
 import java.util.Arrays;
 
@@ -11,7 +11,7 @@ import org.apache.spark.sql.streaming.StreamingQuery;
 
 // spark-submit --class "com.sapient.learning.WordCountAppStructuredStreaming" --master local[4] C:\Users\kumchand0\Apps\sts-workspace\spark-app\target\simple-project-1.0.jar localhost 6066
 
-public class WordCountAppStructuredStreaming {
+public class SparkSqlApp {
 
 	public static void main(String[] args) throws Exception {
 

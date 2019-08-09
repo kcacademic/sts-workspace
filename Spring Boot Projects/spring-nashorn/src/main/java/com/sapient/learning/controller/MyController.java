@@ -1,23 +1,30 @@
 package com.sapient.learning.controller;
 
+import java.io.FileReader;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sapient.learning.service.MyService;
-
 @Controller
 public class MyController {
-	
-	@Autowired
-	MyService service;
 
 	@RequestMapping("/")
 	public String index(Map<String, Object> model) throws Exception {
-        String content = service.serve();
-		model.put("content", content);
+
+		ScriptEngine nashorn = new ScriptEngineManager().getEngineByName("nashorn");
+
+		nashorn.eval(new FileReader("./src/main/webapp/js/react.js"));
+		nashorn.eval(new FileReader("./src/main/webapp/js/react-dom-server.js"));
+
+		nashorn.eval(new FileReader("./src/main/webapp/app.js"));
+		Object html = nashorn
+				.eval("ReactDOMServer.renderToString(" + "React.createElement(App, {data: [0,1,1]})" + ");");
+
+		model.put("content", String.valueOf(html));
 		return "index";
-    }
+	}
 }

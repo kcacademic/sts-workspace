@@ -13,7 +13,7 @@ import scala.Tuple2;
 
 // spark-submit --class "com.sapient.learning.WordCountAppSparkStreaming" --master local[4] C:\Users\kumchand0\Apps\sts-workspace\spark-app\target\simple-project-1.0.jar
 
-public class WordCountAppSparkStreaming {
+public class SparkStreamingApp {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
