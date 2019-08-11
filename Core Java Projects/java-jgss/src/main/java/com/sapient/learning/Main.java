@@ -14,14 +14,19 @@ public class Main {
 
 		GSSContext serverContext = serverContext();
 		GSSContext clientContext = clientContext();
-		byte[] serverToken = new byte[0];
-		byte[] clientToken = new byte[0];
+		byte[] serverToken;
+		byte[] clientToken;
 
-		clientToken = clientContext.initSecContext(clientToken, 0, clientToken.length);
-		serverToken = clientToken;
-		serverToken = serverContext.acceptSecContext(serverToken, 0, serverToken.length);
-		clientToken = serverToken;
-		clientToken = clientContext.initSecContext(clientToken, 0, clientToken.length);
+		// On the client-side
+		clientToken = clientContext.initSecContext(new byte[0], 0, 0);
+		//sendToServer(clientToken);
+		
+		// On the server-side
+		serverToken = serverContext.acceptSecContext(clientToken, 0, clientToken.length);
+		//sendToClient(serverToken);
+		
+		// Back on the client side
+		clientContext.initSecContext(serverToken, 0, serverToken.length);
 
 		System.out.println("Server Auth State: " + serverContext.isEstablished());
 		System.out.println("Client Auth State: " + clientContext.isEstablished());
@@ -29,28 +34,30 @@ public class Main {
 		System.out.println("Server Mutual Auth: " + serverContext.getMutualAuthState());
 		System.out.println("Client Mutual Auth: " + clientContext.getMutualAuthState());
 
+		// On the client-side
 		byte[] messageBytes = "Hello There!\0".getBytes();
 		MessageProp clientProp = new MessageProp(0, true);
 		clientToken = clientContext.wrap(messageBytes, 0, messageBytes.length, clientProp);
 		System.out.println("Will send wrap token of size " + clientToken.length);
+		//sendToServer(clientToken);
 		
-		serverToken = clientToken;
-		
+		// On the server-side
 		MessageProp serverProp = new MessageProp(0, false);
-		byte[] bytes = serverContext.unwrap(serverToken, 0, serverToken.length, serverProp);
+		byte[] bytes = serverContext.unwrap(clientToken, 0, clientToken.length, serverProp);
 		String str = new String(bytes);
 		System.out.println("Received data \"" + str + "\" of length " + str.length());
 
 		System.out.println("Server Confidentiality: " + serverProp.getPrivacy());
 		System.out.println("Client Confidentiality: " + clientProp.getPrivacy());
 
+		// On the server-side
 		serverProp.setQOP(0);
 		serverToken = serverContext.getMIC(bytes, 0, bytes.length, serverProp);
 		System.out.println("Will send MIC token of size " + serverToken.length);
+		//sendToClient(serverToken);
 		
-		clientToken = serverToken;
-		
-		clientContext.verifyMIC(clientToken, 0, clientToken.length, messageBytes, 0, messageBytes.length, clientProp);
+		// On the client-side
+		clientContext.verifyMIC(serverToken, 0, serverToken.length, messageBytes, 0, messageBytes.length, clientProp);
 		System.out.println("Verified received MIC for message.");
 
 	}
