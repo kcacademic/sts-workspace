@@ -1,19 +1,11 @@
 package com.learning.algorithm;
 
 public class StringReversal {
-
-	/**
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
 
-		//reverse1("The World, is not, true, Enough".toCharArray());
-		//reverse2("The World, is not, true, Enough".toCharArray());
-		//reverse3("The World, is not, true, Enough".toCharArray());
-
 		reverse2(reverse1(reverse3("the world is beautiful".toCharArray())));
-
-
+		
 	}
 
 	private static char[] reverse1(char[] array){
