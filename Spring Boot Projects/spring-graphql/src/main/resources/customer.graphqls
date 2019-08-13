@@ -13,3 +13,8 @@ type Query {
 type Mutation {
     writeCustomer(firstName: String!, lastName: String!) : Customer!
 }
+
+# The Root Subscription for the application
+type Subscription {
+	getNewCustomer: Customer!
+}

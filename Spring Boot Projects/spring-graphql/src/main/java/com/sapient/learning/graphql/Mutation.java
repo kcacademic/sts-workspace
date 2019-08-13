@@ -2,11 +2,15 @@ package com.sapient.learning.graphql;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.sapient.learning.dao.CustomerDao;
 import com.sapient.learning.domain.Customer;
 
+@Component
 public class Mutation implements GraphQLMutationResolver {
+	
 	private CustomerDao customerDao;
 
 	public Mutation(CustomerDao customerDao) {
