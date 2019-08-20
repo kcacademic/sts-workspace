@@ -1,15 +1,16 @@
 package com.learning.sorting;
 
-/*	 A bucket sort works as follows: An array of m counters, 
-	 or buckets , is used. Each of the counters is set initially to zero. 
-	 Then, a pass is made through the input array, during which the buckets 
-	 are used to keep a count of the number of occurrences of each value 
-	 between 0 and m-1. Finally, the sorted result is produced by first 
-	 placing the required number of zeroes in the array, then the required 
-	 number of ones, followed by the twos, and so on, up to m-1.
-	  
-	 The running time of Program  is O(mn) from a cursory analysis.
-	 The running time of Program  is O(m+n)from a careful analysis.  
+/*	 
+	A bucket sort works as follows: An array of m counters, 
+	or buckets , is used. Each of the counters is set initially to zero. 
+	Then, a pass is made through the input array, during which the buckets 
+	are used to keep a count of the number of occurrences of each value 
+	between 0 and m-1. Finally, the sorted result is produced by first 
+	placing the required number of zeroes in the array, then the required 
+	number of ones, followed by the twos, and so on, up to m-1.
+	 
+	The running time of Program  is O(mn) from a cursory analysis.
+	The running time of Program  is O(m+n)from a careful analysis.  
 */
 
 public class BucketSort{

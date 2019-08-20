@@ -1,7 +1,7 @@
 package com.learning.sorting;
 
-
-/*	The quick sort is an in-place, divide-and-conquer, massively recursive sort. 
+/*	
+ 	The quick sort is an in-place, divide-and-conquer, massively recursive sort. 
  	As a normal person would say, it's essentially a faster in-place version of 
  	the merge sort. The quick sort algorithm is simple in theory, but very 
  	difficult to put into code (computer scientists tied themselves into knots 
@@ -27,59 +27,53 @@ package com.learning.sorting;
 
 	Pros: Extremely fast.
 	Cons: Very complex algorithm, massively recursive. 
-
 */
 
-public class QuickSort{
-	
-	public int[] sort(int[] input){
-		
+public class QuickSort {
+
+	public int[] sort(int[] input) {
+
 		int n = input.length;
 		quicksort(input, 0, n - 1);
 		return input;
 	}
-	
-	void quicksort(int numbers[], int left, int right)
-	{
-	  int pivot, l_hold, r_hold;
 
-	  l_hold = left;
-	  r_hold = right;
-	  pivot = numbers[left];
-	  while (left < right)
-	  {
-	    while ((numbers[right] >= pivot) && (left < right))
-	      right--;
-	    if (left != right)
-	    {
-	      numbers[left] = numbers[right];
-	      left++;
-	    }
-	    while ((numbers[left] <= pivot) && (left < right))
-	      left++;
-	    if (left != right)
-	    {
-	      numbers[right] = numbers[left];
-	      right--;
-	    }
-	  }
-	  numbers[left] = pivot;
-	  pivot = left;
-	  left = l_hold;
-	  right = r_hold;
-	  if (left < pivot)
-		  quicksort(numbers, left, pivot-1);
-	  if (right > pivot)
-		  quicksort(numbers, pivot+1, right);
+	void quicksort(int numbers[], int left, int right) {
+		int pivot, l_hold, r_hold;
+
+		l_hold = left;
+		r_hold = right;
+		pivot = numbers[left];
+		while (left < right) {
+			while ((numbers[right] >= pivot) && (left < right))
+				right--;
+			if (left != right) {
+				numbers[left] = numbers[right];
+				left++;
+			}
+			while ((numbers[left] <= pivot) && (left < right))
+				left++;
+			if (left != right) {
+				numbers[right] = numbers[left];
+				right--;
+			}
+		}
+		numbers[left] = pivot;
+		pivot = left;
+		left = l_hold;
+		right = r_hold;
+		if (left < pivot)
+			quicksort(numbers, left, pivot - 1);
+		if (right > pivot)
+			quicksort(numbers, pivot + 1, right);
 	}
 
-	
-	public static void main(String [] args){
-		
+	public static void main(String[] args) {
+
 		QuickSort qs = new QuickSort();
 		System.out.print("The Sorted Array: ");
-		int [] sorted = qs.sort(new int[]{5,24,67,12,4,5,16});
-		for(int i=0;i<sorted.length;i++)
-		System.out.print(sorted[i]+" ");
+		int[] sorted = qs.sort(new int[] { 5, 24, 67, 12, 4, 5, 16 });
+		for (int i = 0; i < sorted.length; i++)
+			System.out.print(sorted[i] + " ");
 	}
 }

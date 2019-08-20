@@ -21,73 +21,65 @@ package com.learning.sorting;
 	 	 sequence in each half and all the larger elements in the upper half. 
 	 # We recursively bitonically merge each half until all the elements are 
 	 	 sorted. 
-	 
 */
 
-public class BitonicSort{
-	
-	private final static boolean ASCENDING=true, DESCENDING=false;
-	
-	public int[] sort(int[] input){
-		
-		//The processing below takes care of array sizes not equal to 2pow(k)
+public class BitonicSort {
+
+	private final static boolean ASCENDING = true, DESCENDING = false;
+
+	public int[] sort(int[] input) {
+
+		// The processing below takes care of array sizes not equal to 2pow(k)
 		int n = input.length;
 		int k = 1;
 		int r = 0;
-		while(k<n)
-			k=k*2;
-		r = k-n;
-		
-		int[] temp = new int[n+r];
-		for(int i=r;i<n+r;i++)
-			temp[i]=input[i-r];
-		bitonicSort(temp, 0, n+r, ASCENDING);
-		for(int i=0;i<n;i++)
-			input[i]=temp[i+r];
-		
+		while (k < n)
+			k = k * 2;
+		r = k - n;
+
+		int[] temp = new int[n + r];
+		for (int i = r; i < n + r; i++)
+			temp[i] = input[i - r];
+		bitonicSort(temp, 0, n + r, ASCENDING);
+		for (int i = 0; i < n; i++)
+			input[i] = temp[i + r];
+
 		return input;
 	}
-	
-	private void compare(int[] input, int i, int j, boolean dir)
-	{
-	    if (dir==(input[i]>input[j]))
-	    {
-	        int h=input[i];
-	        input[i]=input[j];
-	        input[j]=h;
-	    }
-	}
-	
-	private void bitonicMerge(int[] input, int lo, int n, boolean dir)
-	{
-	    if (n>1)
-	    {
-	        int k=n/2;
-	        for (int i=lo; i<lo+k; i++)
-	            compare(input, i, i+k, dir);
-	        bitonicMerge(input, lo, k, dir);
-	        bitonicMerge(input, lo+k, k, dir);
-	    }
-	}
-	
-	private void bitonicSort(int[] input, int lo, int n, boolean dir)
-	{
-	    if (n>1)
-	    {
-	        int k=n/2;
-	        bitonicSort(input, lo, k, ASCENDING);
-	        bitonicSort(input, lo+k, k, DESCENDING);
-	        bitonicMerge(input, lo, n, dir);
-	    }
+
+	private void compare(int[] input, int i, int j, boolean dir) {
+		if (dir == (input[i] > input[j])) {
+			int h = input[i];
+			input[i] = input[j];
+			input[j] = h;
+		}
 	}
 
+	private void bitonicMerge(int[] input, int lo, int n, boolean dir) {
+		if (n > 1) {
+			int k = n / 2;
+			for (int i = lo; i < lo + k; i++)
+				compare(input, i, i + k, dir);
+			bitonicMerge(input, lo, k, dir);
+			bitonicMerge(input, lo + k, k, dir);
+		}
+	}
 
-	public static void main(String [] args){
-		
+	private void bitonicSort(int[] input, int lo, int n, boolean dir) {
+		if (n > 1) {
+			int k = n / 2;
+			bitonicSort(input, lo, k, ASCENDING);
+			bitonicSort(input, lo + k, k, DESCENDING);
+			bitonicMerge(input, lo, n, dir);
+		}
+	}
+
+	public static void main(String[] args) {
+
 		BitonicSort bis = new BitonicSort();
 		System.out.print("The Sorted Array: ");
-		int [] sorted = bis.sort(new int[]{5,24,67,12,4,5,16});
-		for(int i=0;i<sorted.length;i++)
-		System.out.print(sorted[i]+" ");
+		int[] sorted = bis.sort(new int[] { 5, 24, 67, 12, 4, 5, 16 });
+		for (int i = 0; i < sorted.length; i++)
+			System.out.print(sorted[i] + " ");
 	}
 }
