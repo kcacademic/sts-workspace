@@ -1,13 +1,19 @@
 package com.baeldung.spring;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@SpringBootApplication
+import com.baeldung.spring.bean.MyBean;
+
 public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.baeldung.spring");
+
+        context.getBean(MyBean.class);
+        
+        context.close();
+
     }
 
 }

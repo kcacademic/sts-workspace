@@ -1,4 +1,4 @@
-package com.baeldung.spring.controller;
+package com.baeldung.springboot.controller;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.model.Employee;
-import com.baeldung.spring.repository.EmployeeRepository;
+import com.baeldung.springboot.model.Employee;
+import com.baeldung.springboot.repository.EmployeeRepository;
 
 @RestController
 public class EmployeeController {

@@ -1,4 +1,4 @@
-package com.baeldung.spring;
+package com.baeldung.springboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

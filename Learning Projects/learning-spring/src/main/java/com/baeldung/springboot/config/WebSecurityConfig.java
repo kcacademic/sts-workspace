@@ -1,4 +1,4 @@
-package com.baeldung.spring.config;
+package com.baeldung.springboot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.baeldung.spring.security.CustomAuthenticationEntryPoint;
+import com.baeldung.springboot.security.CustomAuthenticationEntryPoint;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

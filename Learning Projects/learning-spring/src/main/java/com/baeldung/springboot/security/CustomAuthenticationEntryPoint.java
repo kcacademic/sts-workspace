@@ -1,4 +1,4 @@
-package com.baeldung.spring.security;
+package com.baeldung.springboot.security;
 
 import java.io.IOException;
 import java.io.PrintWriter;

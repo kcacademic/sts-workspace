@@ -1,10 +1,10 @@
-package com.baeldung.spring.repository;
+package com.baeldung.springboot.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.baeldung.spring.model.Employee;
+import com.baeldung.springboot.model.Employee;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
     

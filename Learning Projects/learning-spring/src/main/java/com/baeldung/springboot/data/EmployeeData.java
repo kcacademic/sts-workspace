@@ -1,4 +1,4 @@
-package com.baeldung.spring.data;
+package com.baeldung.springboot.data;
 
 public class EmployeeData {
 	

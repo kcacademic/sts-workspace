@@ -1,4 +1,4 @@
-package com.baeldung.spring.controller;
+package com.baeldung.springboot.controller;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -21,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.baeldung.spring.model.Employee;
+import com.baeldung.springboot.model.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
