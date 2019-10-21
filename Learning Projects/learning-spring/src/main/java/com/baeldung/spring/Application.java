@@ -2,7 +2,8 @@ package com.baeldung.spring;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.baeldung.spring.bean.MyBean;
+import com.baeldung.spring.beanlifecycle.MyBean;
+import com.baeldung.spring.spel.CustomerConfig;
 
 public class Application {
 
@@ -10,8 +11,13 @@ public class Application {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.baeldung.spring");
 
-        context.getBean(MyBean.class);
-        
+        MyBean myBean = context.getBean(MyBean.class);
+        System.out.println(myBean);
+
+        CustomerConfig customerConfig = context.getBean(CustomerConfig.class);
+        System.out.println(customerConfig.getCustomerNames());
+        System.out.println(customerConfig.getCustomerAge());
+
         context.close();
 
     }
