@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sapient.learning</groupId>
-	<artifactId>spring-config</artifactId>
+	<artifactId>spring-cloud-config</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-config</name>
+	<name>spring-cloud-config</name>
 
 	<properties>
 		<java.version>1.8</java.version>
