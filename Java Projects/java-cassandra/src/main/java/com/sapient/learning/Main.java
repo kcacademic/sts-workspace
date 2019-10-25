@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.core.utils.UUIDs;
 import com.sapient.learning.connector.CassandraConnector;
+import com.sapient.learning.model.Address;
 import com.sapient.learning.model.Customer;
 import com.sapient.learning.repository.CustomerRepository;
 import com.sapient.learning.repository.KeyspaceRepository;
@@ -24,11 +25,20 @@ public class Main {
 		schema.createKeyspace("shop", "SimpleStrategy", 1);
 		schema.useKeyspace("shop");
 
+		//customerOperations(session);
+		customerWithAddressOperations(session);
+		
+		connector.close();
+	}
+	
+	
+	public static void customerOperations(Session session) {
+		
 		CustomerRepository repository = new CustomerRepository(session);
 		repository.createTableCustomer();
 		repository.createTableCustomerByFirstName();
 
-		Customer customer = new Customer(UUIDs.timeBased(), "Kumar", "Chandrakant");
+		Customer customer = new Customer(UUIDs.timeBased(), "Kumar", "Chandrakant", null);
 		repository.insertCustomer(customer);
 
 		repository.selectAll().forEach(o -> LOG.info("First Name: " + o.getFirstName()));
@@ -36,9 +46,21 @@ public class Main {
 
 		repository.deleteTableCustomer();
 		repository.deleteTableCustomerByFirstname();
-		schema.deleteKeyspace("shop");
+		
+	}
+	
+	public static void customerWithAddressOperations(Session session) {
+		
+		CustomerRepository repository = new CustomerRepository(session);
+		repository.createTableCustomerWithAddress();
 
-		connector.close();
+		Customer customer = new Customer(UUIDs.timeBased(), "Kumar", "Chandrakant", new Address("New Delhi", "110011"));
+		repository.insertCustomerWithAddress(customer);
+		
+		repository.selectAllWithAddress().forEach(o -> System.out.println("Address: " + o.getAddress()));
+		System.out.println();
+		repository.deleteTableCustomerWithAddress();
+		
 	}
 
 }

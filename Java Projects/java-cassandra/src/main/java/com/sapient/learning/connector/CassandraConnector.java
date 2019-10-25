@@ -15,6 +15,7 @@ public class CassandraConnector {
 		if (port != null) {
 			b.withPort(port);
 		}
+		b.withCredentials("cassandra", "cassandra");
 		cluster = b.build();
 
 		session = cluster.connect();

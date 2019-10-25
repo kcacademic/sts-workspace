@@ -72,7 +72,7 @@ public class CassandraTests {
 		customerRepository.createTableCustomer();
 		customerRepository.createTableCustomerByFirstName();
 		
-		Customer customer = new Customer(UUIDs.timeBased(), "Kumar", "Chandrakant");
+		Customer customer = new Customer(UUIDs.timeBased(), "Kumar", "Chandrakant", null);
 		customerRepository.insertCustomer(customer);
 		
 		List<Customer> customers = customerRepository.selectAll();
