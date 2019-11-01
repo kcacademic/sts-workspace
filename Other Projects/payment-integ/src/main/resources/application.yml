@@ -1,0 +1,21 @@
+payments:
+  cassandra:
+    keyspace: coc_payments
+    host: localhost
+    post: 9042
+    username: cassandra
+    password: cassandra
+  kafka:
+    server: localhost:9092
+    topic: coc_payments
+    groupid: coc_consumer
+  paypal:
+    clientId: AR0aSaMTpi29QonY6_8ln80UEiTnr-ykjcd09gPmqkWfqF6KprV37L7trW8bPgGppUkgCgFPbnaIm-pA
+    clientSecret: ECRsaY2ooG43gbtZGv3or9AAw8BhzbRtYZbeE4DuPa5XT_3bCojdheJRxTNYdn3v96-x1K9PUheIMFvZ
+    successUrl: http://localhost:8080/process
+    failureUrl: http://localhost:8080/cancel
+    
+spring:
+  data:
+    cassandra: 
+      jmx-enabled: false    
