@@ -40,10 +40,10 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     @Value("${payments.cassandra.port:9042}")
     private int port;
 
-    @Value("${payments.cassandra.username:cassandra}")
+    @Value("${payments.cassandra.username}")
     private String username;
 
-    @Value("${payments.cassandra.password:cassandra}")
+    @Value("${payments.cassandra.password}")
     private String password;
 
     @Override

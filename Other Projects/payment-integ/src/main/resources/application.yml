@@ -9,6 +9,12 @@ payments:
     server: localhost:9092
     topic: coc_payments
     groupid: coc_consumer
+  oauth:
+    token:
+      endpoint:
+        url: http://localhost:9999/oauth/check_token
+        clientId: testClient
+        clientSecret: testSecret
   paypal:
     clientId: AR0aSaMTpi29QonY6_8ln80UEiTnr-ykjcd09gPmqkWfqF6KprV37L7trW8bPgGppUkgCgFPbnaIm-pA
     clientSecret: ECRsaY2ooG43gbtZGv3or9AAw8BhzbRtYZbeE4DuPa5XT_3bCojdheJRxTNYdn3v96-x1K9PUheIMFvZ

@@ -54,9 +54,14 @@ public class PaypalPaymentService implements PaymentService {
     public Optional<String> createPayment(PaymentData paymentData) throws PaymentCreationException {
 
         Optional<PaymentRequest> requestOptional = requestRepository.findById(paymentData.getIdempotencyKey());
-        if (requestOptional.isPresent())
+        PaymentRequest request = null;
+        if (requestOptional.isPresent()) {
+            request = requestOptional.get();
+            if (PAYMENT_AUTHENTICATED.equals(request.getPaymentStatus()) || PAYMENT_EXECUTED.equals(request.getPaymentStatus()))
+                throw new PaymentCreationException(String.format("Payment with the key %s has already been processed.", paymentData.getIdempotencyKey()));
             return Optional.of(requestOptional.get()
                 .getAuthUrl());
+        }
 
         PaymentData paymentResponse = paypalInteg.createPayment(paymentData);
 
@@ -84,7 +89,7 @@ public class PaypalPaymentService implements PaymentService {
             .add(operation);
         recordRepository.save(record);
 
-        PaymentRequest request = new PaymentRequest();
+        request = new PaymentRequest();
         request.setIdempotencyKey(paymentData.getIdempotencyKey());
         request.setPaymentId(paymentResponse.getId());
         request.setPaymentStatus(record.getPaymentStatus());
@@ -123,6 +128,13 @@ public class PaypalPaymentService implements PaymentService {
             record.getTransactions()
                 .add(operation);
             savedRecord = recordRepository.save(record);
+
+            Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
+            if (requestOptional.isPresent()) {
+                PaymentRequest request = requestOptional.get();
+                request.setPaymentStatus(PAYMENT_AUTHENTICATED);
+                requestRepository.save(request);
+            }
         }
 
         PaymentEvent event = new PaymentEvent();
@@ -161,6 +173,13 @@ public class PaypalPaymentService implements PaymentService {
             record.getTransactions()
                 .add(operation);
             savedRecord = recordRepository.save(record);
+
+            Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
+            if (requestOptional.isPresent()) {
+                PaymentRequest request = requestOptional.get();
+                request.setPaymentStatus(PAYMENT_EXECUTED);
+                requestRepository.save(request);
+            }
         }
 
         PaymentEvent event = new PaymentEvent();
