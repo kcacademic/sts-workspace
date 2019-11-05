@@ -3,14 +3,19 @@ package com.coc.payments.event;
 import java.util.Map;
 
 import org.apache.kafka.common.serialization.Deserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PaymentEventDeserializer implements Deserializer<PaymentEvent> {
 
+    Logger logger = LoggerFactory.getLogger(PaymentEventDeserializer.class);
+
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
-        // TODO Auto-generated method stub
+
+        logger.error("Method Not Supported");
 
     }
 
@@ -21,15 +26,15 @@ public class PaymentEventDeserializer implements Deserializer<PaymentEvent> {
         try {
             event = mapper.readValue(data, PaymentEvent.class);
         } catch (Exception e) {
-
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return event;
     }
 
     @Override
     public void close() {
-        // TODO Auto-generated method stub
+
+        logger.error("Method Not Supported");
 
     }
 

@@ -14,8 +14,4 @@ payments:
     clientSecret: ECRsaY2ooG43gbtZGv3or9AAw8BhzbRtYZbeE4DuPa5XT_3bCojdheJRxTNYdn3v96-x1K9PUheIMFvZ
     successUrl: http://localhost:8080/process
     failureUrl: http://localhost:8080/cancel
-    
-spring:
-  data:
-    cassandra: 
-      jmx-enabled: false    
+    mode: sandbox

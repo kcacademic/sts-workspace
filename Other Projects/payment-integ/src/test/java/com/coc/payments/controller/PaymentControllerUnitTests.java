@@ -4,19 +4,20 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import java.io.IOException;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.service.PaymentService;
 import com.coc.payments.vo.PaymentData;
 import com.coc.payments.vo.PaymentRequest;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 public class PaymentControllerUnitTests {
 
     @Mock
@@ -26,11 +27,11 @@ public class PaymentControllerUnitTests {
     PaymentController paymentController;
 
     @Test
-    public void givenPaymentController_whenCreatePaymentCalled_thenValidRedirectUrl() throws IOException {
+    public void givenPaymentController_whenCreatePaymentCalled_thenValidRedirectUrl() throws PaymentCreationException {
         PaymentRequest request = new PaymentRequest();
-        String redirectUrl = "";
-        when(paymentService.createPayment(any(PaymentData.class))).thenReturn(redirectUrl);
-        assertEquals(redirectUrl, paymentController.createPayment(request));
+        String authUrl = "https://paypal.com/auth";
+        when(paymentService.createPayment(any(PaymentData.class))).thenReturn(Optional.ofNullable(authUrl));
+        assertEquals(authUrl, paymentController.createPayment(request));
     }
 
 }

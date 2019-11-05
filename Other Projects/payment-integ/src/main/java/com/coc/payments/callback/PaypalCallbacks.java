@@ -1,6 +1,6 @@
 package com.coc.payments.callback;
 
-import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coc.payments.exception.PaymentRecordMissingException;
 import com.coc.payments.service.PaymentService;
 
 @RestController
@@ -23,15 +24,24 @@ public class PaypalCallbacks {
     PaymentService service;
 
     @GetMapping("/process")
-    public ResponseEntity<String> authSuccess(@RequestParam String paymentId, @RequestParam String PayerID, @RequestParam String token) {
-        logger.info("Paypal payment authentication passed with details, PaymentId: " + paymentId + " PayerId: " + PayerID + " Token: " + token);
-        String status = service.executePayment(paymentId, PayerID);
+    public ResponseEntity<String> authSuccess(@RequestParam String token, @RequestParam String paymentId, @RequestParam(name = "PayerID") String payerID) {
+        if (logger.isInfoEnabled())
+            logger.info(String.format("Paypal payment authentication passed with details, PaymentId: %s PayerId: %s Token: %s", paymentId, payerID, token));
+        String status = "/error";
+        try {
+            Optional<String> optional = service.authenticatePayment(token, paymentId, payerID);
+            if(optional.isPresent())
+                status = optional.get();
+        } catch (PaymentRecordMissingException e) {
+            logger.error(e.getMessage());
+        }
         return ResponseEntity.ok(status);
     }
 
     @GetMapping("/cancel")
-    public ResponseEntity<String> authFailure(@RequestParam String token, HttpServletResponse response) throws IOException {
-        logger.info("Paypal payment authentication failed with details, Token: " + token);
+    public ResponseEntity<String> authFailure(@RequestParam String token, HttpServletResponse response) {
+        if (logger.isInfoEnabled())
+            logger.info(String.format("Paypal payment authentication failed with details, Token: %s", token));
         return ResponseEntity.badRequest()
             .body("Paypal authentication failed, please try again later.");
     }

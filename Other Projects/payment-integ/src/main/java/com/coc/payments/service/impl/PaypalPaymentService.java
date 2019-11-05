@@ -1,10 +1,10 @@
 package com.coc.payments.service.impl;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -13,160 +13,163 @@ import org.springframework.stereotype.Service;
 
 import com.coc.payments.domain.Operation;
 import com.coc.payments.domain.PaymentRecord;
+import com.coc.payments.domain.PaymentRequest;
 import com.coc.payments.event.PaymentEvent;
-import com.coc.payments.repository.PaymentRepository;
+import com.coc.payments.exception.PaymentCreationException;
+import com.coc.payments.exception.PaymentExecutionException;
+import com.coc.payments.exception.PaymentRecordMissingException;
+import com.coc.payments.integration.PaypalIntegration;
+import com.coc.payments.repository.PaymentRecordRepository;
+import com.coc.payments.repository.PaymentRequestRepository;
 import com.coc.payments.service.PaymentService;
 import com.coc.payments.vo.PaymentData;
-import com.paypal.api.payments.Amount;
-import com.paypal.api.payments.Details;
-import com.paypal.api.payments.Links;
-import com.paypal.api.payments.Payer;
-import com.paypal.api.payments.Payment;
-import com.paypal.api.payments.PaymentExecution;
-import com.paypal.api.payments.RedirectUrls;
-import com.paypal.api.payments.Transaction;
-import com.paypal.base.rest.APIContext;
-import com.paypal.base.rest.PayPalRESTException;
 
 @Service
 @PropertySource(value = "classpath:application.yml")
 public class PaypalPaymentService implements PaymentService {
 
-    @Autowired
-    private PaymentRepository repository;
+    private static final String TRANSACTION_FAILED = "failed";
+    private static final String PAYMENT_CREATED = "created";
+    private static final String PAYMENT_AUTHENTICATED = "authenticated";
+    private static final String PAYMENT_EXECUTED = "executed";
+
+    Logger logger = LoggerFactory.getLogger(PaypalPaymentService.class);
 
     @Autowired
-    private KafkaTemplate<String, PaymentEvent> kafkaTemplate;
-    
+    private PaypalIntegration paypalInteg;
+
+    @Autowired
+    private PaymentRecordRepository recordRepository;
+
+    @Autowired
+    private PaymentRequestRepository requestRepository;
+
+    @Autowired
+    private KafkaTemplate<String, PaymentEvent> broker;
+
     @Value("${payments.kafka.topic}")
     private String topic;
 
-    @Value("${payments.paypal.clientId}")
-    private String clientId;
-
-    @Value("${payments.paypal.clientSecret}")
-    private String clientSecret;
-
-    @Value("${payments.paypal.successUrl}")
-    private String successUrl;
-
-    @Value("${payments.paypal.failureUrl}")
-    private String failureUrl;
-
     @Override
-    public String createPayment(PaymentData paymentData) {
+    public Optional<String> createPayment(PaymentData paymentData) throws PaymentCreationException {
 
-        // Create payment details
+        Optional<PaymentRequest> requestOptional = requestRepository.findById(paymentData.getIdempotencyKey());
+        if (requestOptional.isPresent())
+            return Optional.of(requestOptional.get()
+                .getAuthUrl());
+
+        PaymentData paymentResponse = paypalInteg.createPayment(paymentData);
+
+        if (TRANSACTION_FAILED.equals(paymentResponse.getState()))
+            throw new PaymentCreationException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
+
         Operation operation = new Operation();
         operation.setId(UUID.randomUUID());
-        PaymentRecord record = repository.findById(UUID.fromString("aae90430-fbb9-11e9-a936-e176235bcdf6"))
-            .get();
-        // record.setId(UUID.randomUUID());
+        operation.setType(PAYMENT_CREATED);
+        PaymentRecord record = new PaymentRecord();
+        record.setId(paymentResponse.getId());
+        record.setIdempotencyKey(paymentData.getIdempotencyKey());
+        record.setIntent(paymentData.getIntent());
+        record.setPaymentStatus(PAYMENT_CREATED);
+        record.setPaymentProvider(paymentData.getPaymentProvider());
+        record.setPaymentMethod(paymentData.getPaymentMethod());
+        record.setDescription(paymentData.getDescription());
+        record.setUserId(paymentData.getUserId());
+        record.setCurrency(paymentData.getCurrency());
+        record.setTotal(paymentData.getTotal());
+        record.setSubTotal(paymentData.getSubTotal());
+        record.setShipping(paymentData.getShipping());
+        record.setTax(paymentData.getTax());
         record.getTransactions()
             .add(operation);
+        recordRepository.save(record);
 
-        // Persist payment details in Cassandra
-        repository.save(record);
-        
-        // Create payment event
+        PaymentRequest request = new PaymentRequest();
+        request.setIdempotencyKey(paymentData.getIdempotencyKey());
+        request.setPaymentId(paymentResponse.getId());
+        request.setPaymentStatus(record.getPaymentStatus());
+        request.setAuthUrl(paymentResponse.getAuthUrl());
+        requestRepository.save(request);
+
         PaymentEvent event = new PaymentEvent();
-        event.setId(UUID.randomUUID());
-        
-        // Dispatch event to Kafka
-        kafkaTemplate.send(topic, event);
+        event.setId(paymentResponse.getId());
+        event.setType(PAYMENT_CREATED);
+        broker.send(topic, event);
 
-        // Set payer details
-        Payer payer = new Payer();
-        payer.setPaymentMethod("paypal");
+        return Optional.ofNullable(paymentResponse.getAuthUrl());
+    }
 
-        // Set redirect URLs
-        RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl(failureUrl);
-        redirectUrls.setReturnUrl(successUrl);
+    @Override
+    public Optional<PaymentData> fetchPayment(String paymentId) {
+        return Optional.ofNullable(null);
+    }
 
-        // Set payment details
-        Details details = new Details();
-        details.setShipping("1");
-        details.setSubtotal("5");
-        details.setTax("1");
+    @Override
+    public Optional<String> authenticatePayment(String token, String paymentId, String payerId) throws PaymentRecordMissingException {
 
-        // Payment amount
-        Amount amount = new Amount();
-        amount.setCurrency("USD");
-        // Total must be equal to sum of shipping, tax and subtotal.
-        amount.setTotal("7");
-        amount.setDetails(details);
+        Optional<PaymentRecord> paymentOptional = recordRepository.findById(paymentId);
+        if (!paymentOptional.isPresent())
+            throw new PaymentRecordMissingException(String.format("Payment Record Missing with ID %s", paymentId));
 
-        // Transaction information
-        Transaction transaction = new Transaction();
-        transaction.setAmount(amount);
-        transaction.setDescription("This is the payment transaction description.");
+        PaymentRecord record = paymentOptional.get();
+        PaymentRecord savedRecord = null;
 
-        // Add transaction to a list
-        List<Transaction> transactions = new ArrayList<Transaction>();
-        transactions.add(transaction);
-
-        // Add payment details
-        Payment payment = new Payment();
-        payment.setIntent("sale");
-        payment.setPayer(payer);
-        payment.setRedirectUrls(redirectUrls);
-        payment.setTransactions(transactions);
-
-        // Create payment
-        String authUrl = null;
-        try {
-            APIContext apiContext = new APIContext(clientId, clientSecret, "sandbox");
-            Payment createdPayment = payment.create(apiContext);
-
-            Iterator<Links> links = createdPayment.getLinks()
-                .iterator();
-            while (links.hasNext()) {
-                Links link = links.next();
-                if (link.getRel()
-                    .equalsIgnoreCase("approval_url")) {
-                    // Redirect the customer to link.getHref()
-                    authUrl = link.getHref();
-                    System.out.println(link.getHref());
-                }
-            }
-        } catch (PayPalRESTException e) {
-            System.err.println(e.getDetails());
+        if (PAYMENT_CREATED.equals(record.getPaymentStatus())) {
+            Operation operation = new Operation();
+            operation.setId(UUID.randomUUID());
+            operation.setType(PAYMENT_AUTHENTICATED);
+            record.setPayerId(payerId);
+            record.setPaymentStatus(PAYMENT_AUTHENTICATED);
+            record.getTransactions()
+                .add(operation);
+            savedRecord = recordRepository.save(record);
         }
 
-        return authUrl;
+        PaymentEvent event = new PaymentEvent();
+        event.setId(paymentId);
+        event.setType(PAYMENT_AUTHENTICATED);
+        broker.send(topic, event);
+
+        return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
     }
 
     @Override
-    public PaymentData fetchPayment(String paymentId) {
-        // TODO Auto-generated method stub
-        return null;
+    public Optional<String> capturePayment(String paymentId, Float amount) {
+        return Optional.ofNullable(null);
     }
 
     @Override
-    public String executePayment(String paymentId, String payerId) {
+    public Optional<String> executePayment(String id) throws PaymentRecordMissingException, PaymentExecutionException {
 
-        Payment payment = new Payment();
-        payment.setId(paymentId);
+        Optional<PaymentRecord> paymentOptional = recordRepository.findById(id);
+        if (!paymentOptional.isPresent())
+            throw new PaymentRecordMissingException(String.format("Payment Record Missing with ID %s", id));
 
-        PaymentExecution paymentExecution = new PaymentExecution();
-        paymentExecution.setPayerId(payerId);
+        PaymentRecord record = paymentOptional.get();
 
-        Payment createdPayment = null;
-        try {
-            APIContext apiContext = new APIContext(clientId, clientSecret, "sandbox");
-            createdPayment = payment.execute(apiContext, paymentExecution);
-            System.out.println(createdPayment);
-        } catch (PayPalRESTException e) {
-            System.err.println(e.getDetails());
+        PaymentRecord savedRecord = null;
+
+        if (PAYMENT_AUTHENTICATED.equals(record.getPaymentStatus())) {
+            String state = paypalInteg.executePayment(record.getId(), record.getPayerId());
+            if (TRANSACTION_FAILED.equals(state))
+                throw new PaymentExecutionException(String.format("Payment Execution Failed for id %s", id));
+
+            Operation operation = new Operation();
+            operation.setId(UUID.randomUUID());
+            operation.setType(PAYMENT_EXECUTED);
+            record.setPaymentStatus(PAYMENT_EXECUTED);
+            record.getTransactions()
+                .add(operation);
+            savedRecord = recordRepository.save(record);
         }
-        return createdPayment.getState();
-    }
 
-    @Override
-    public String capturePayment(String paymentId, Float amount) {
-        // TODO Auto-generated method stub
-        return null;
+        PaymentEvent event = new PaymentEvent();
+        event.setId(id);
+        event.setType(PAYMENT_EXECUTED);
+
+        broker.send(topic, event);
+
+        return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
     }
 
 }
