@@ -1,3 +1,31 @@
+CONFIG SERVER
+=============
+cd apps\e2e-application\cloud\config-server
+mvn spring-boot:run
+
+KAFKA
+=====
+Apps\kafka_2.11-2.1.0\bin\windows\zookeeper-server-start.bat Apps\kafka_2.11-2.1.0\config\zookeeper.properties
+Apps\kafka_2.11-2.1.0\bin\windows\kafka-server-start.bat Apps\kafka_2.11-2.1.0\config\server.properties
+Apps\kafka_2.11-2.1.0\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic coc_payments
+
+CASSANDRA
+=========
+cassandra
+cqlsh -u cassandra -p cassandra -k coc_payments
+
+OAUTH MOCK
+==========
+cd Apps\wiremock-standalone-2.25.1
+java -jar wiremock-standalone-2.25.1.jar --port 9999
+
+PAYMENT SERVICE
+===============
+cd C:\Users\kumchand0\Apps\sts-workspace\Other Projects\payment-integ
+mvn spring-boot:run
+
+TEST SERVICE
+============
 curl -X POST \
   http://localhost:8080/payments/paypal \
   -H 'Accept: */*' \

@@ -6,7 +6,7 @@ payments:
     username: cassandra
     password: cassandra
   kafka:
-    server: localhost:9092
+    cluster: localhost:9092
     topic: coc_payments
     groupid: coc_consumer
   oauth:
@@ -21,3 +21,32 @@ payments:
     successUrl: http://localhost:8080/process
     failureUrl: http://localhost:8080/cancel
     mode: sandbox
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+  main:
+    allow-bean-definition-overriding: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+api:
+  version: 1.0
+swagger:
+  enabled: true
+  title: Payments Service Specification
+  description: Payments Service Specification for Paypal, Cybersource and similiar payment providers.
+  useDefaultResponseMessages: false
+  enableUrlTemplating: false
+  deepLinking: true
+  defaultModelsExpandDepth: 1
+  defaultModelExpandDepth: 1
+  displayOperationId: false
+  displayRequestDuration: false
+  filter: false
+  maxDisplayedTags: 0
+  showExtensions: false

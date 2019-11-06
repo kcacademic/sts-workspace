@@ -17,10 +17,11 @@ import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.event.PaymentEventSerializer;
 
 @Configuration
+//@RefreshScope
 @PropertySource(value = "classpath:application.yml")
 public class KafkaProducerConfig {
     
-    @Value("${payments.kafka.server:localhost:9092}")
+    @Value("${payments.kafka.cluster:localhost:9092}")
     private String server;
     
     @Bean

@@ -16,7 +16,13 @@ import com.coc.payments.service.PaymentService;
 import com.coc.payments.vo.PaymentData;
 import com.coc.payments.vo.PaymentRequest;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+
 @RestController
+@Api(tags = "Payments API")
 public class PaymentController {
 
     Logger logger = LoggerFactory.getLogger(PaymentController.class);
@@ -25,6 +31,8 @@ public class PaymentController {
     PaymentService service;
 
     @PostMapping("/payments/paypal")
+    @ApiOperation(value = "Paypal Payment Creation Operation", response = String.class)
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 500, message = "Payment with Paypal could not be processed at this moment.") })
     public ResponseEntity<String> createPayment(@RequestBody PaymentRequest request) {
         PaymentData payment = new PaymentData();
         payment.setIdempotencyKey(request.getIdempotencyKey());

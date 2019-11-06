@@ -8,7 +8,6 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
@@ -16,7 +15,6 @@ import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
 import org.springframework.data.cassandra.config.CassandraEntityClassScanner;
 import org.springframework.data.cassandra.config.CassandraSessionFactoryBean;
 import org.springframework.data.cassandra.config.SchemaAction;
-import org.springframework.data.cassandra.core.convert.CassandraConverter;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
 import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecification;
 import org.springframework.data.cassandra.core.cql.keyspace.KeyspaceOption;
@@ -25,6 +23,7 @@ import org.springframework.data.cassandra.core.mapping.SimpleUserTypeResolver;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
+// @RefreshScope
 @PropertySource(value = "classpath:application.yml")
 @EnableCassandraRepositories(basePackages = "com.coc.payments.repository")
 public class CassandraConfig extends AbstractCassandraConfiguration {
@@ -33,16 +32,12 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
 
     @Value("${payments.cassandra.keyspace:coc_payments}")
     private String keySpace;
-
     @Value("${payments.cassandra.host:127.0.0.1}")
     private String host;
-
     @Value("${payments.cassandra.port:9042}")
     private int port;
-
     @Value("${payments.cassandra.username}")
     private String username;
-
     @Value("${payments.cassandra.password}")
     private String password;
 
@@ -51,7 +46,6 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         return keySpace;
     }
 
-    @Bean
     @Override
     public CassandraClusterFactoryBean cluster() {
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
@@ -62,7 +56,6 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         return cluster;
     }
 
-    @Bean
     @Override
     public CassandraMappingContext cassandraMapping() {
         CassandraMappingContext mappingContext = new CassandraMappingContext();
@@ -90,25 +83,14 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         return Arrays.asList(specification);
     }
 
-    @Bean
     @Override
     public CassandraSessionFactoryBean session() {
         CassandraSessionFactoryBean session = new CassandraSessionFactoryBean();
         session.setCluster(cluster().getObject());
         session.setKeyspaceName(getKeyspaceName());
-        session.setConverter(converter());
+        session.setConverter(new MappingCassandraConverter(cassandraMapping()));
         session.setSchemaAction(SchemaAction.CREATE_IF_NOT_EXISTS);
         return session;
-    }
-
-    @Bean
-    public CassandraConverter converter() {
-        return new MappingCassandraConverter(cassandraMapping());
-    }
-
-    @Override
-    public SchemaAction getSchemaAction() {
-        return SchemaAction.CREATE_IF_NOT_EXISTS;
     }
 
     @Override

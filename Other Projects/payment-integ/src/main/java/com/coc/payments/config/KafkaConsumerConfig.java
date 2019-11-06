@@ -19,10 +19,11 @@ import com.coc.payments.event.PaymentEventDeserializer;
 
 @EnableKafka
 @Configuration
+//@RefreshScope
 @PropertySource(value = "classpath:application.yml")
 public class KafkaConsumerConfig {
 
-    @Value("${payments.kafka.server:localhost:9092}")
+    @Value("${payments.kafka.cluster:localhost:9092}")
     private String server;
 
     @Value("${payments.kafka.groupid:localhost:coc_consumer}")
