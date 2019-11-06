@@ -1,4 +1,4 @@
-package com.coc.payments.cybersource;
+package com.coc.payments.service.impl;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,11 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.cybersource.ws.client.Client;
 import com.cybersource.ws.client.ClientException;
 import com.cybersource.ws.client.FaultException;
 
-public class CybersourceSDK {
+public class CybersourcePaymentService {
+
+    static Logger logger = LoggerFactory.getLogger(CybersourcePaymentService.class);
 
     public static void main(String[] args) {
 
@@ -20,13 +25,10 @@ public class CybersourceSDK {
             props.load(fis);
             fis.close();
         } catch (IOException ioe) {
-            System.out.println("File not found");
+            logger.error("File not found");
         }
-        // props.put("merchantID", "");
-        // props.put("targetAPIVersion", "1.18");
-        // props.put("keysDirectory", "keys");
 
-        HashMap<String, String> request = new HashMap<String, String>();
+        HashMap<String, String> request = new HashMap<>();
         // In this sample, we are processing a credit card authorization.
         request.put("ccAuthService_run", "true");
         // Add required fields
@@ -53,11 +55,10 @@ public class CybersourceSDK {
         try {
             @SuppressWarnings({ "rawtypes" })
             Map reply = Client.runTransaction(request, props);
-            System.out.println("Hello: " + reply.toString());
-        } catch (ClientException e) {
-            System.out.println(e);
-        } catch (FaultException e) {
-            System.out.println(e);
+            if (logger.isDebugEnabled())
+                logger.debug(reply.toString());
+        } catch (ClientException | FaultException e) {
+            logger.error(e.getMessage());
         }
     }
 }
