@@ -22,7 +22,13 @@ java -jar wiremock-standalone-2.25.1.jar --port 9999
 PAYMENT SERVICE
 ===============
 cd C:\Users\kumchand0\Apps\sts-workspace\Other Projects\payment-integ
+mvn clean compile
+mvn clean test jacoco:report
 mvn spring-boot:run
+mvn package
+mvn install dockerfile:build
+docker run --rm --name=payment-integ -p 8080:8080 coc/payment-integ:latest
+docker stop payment-integ
 
 TEST SERVICE
 ============

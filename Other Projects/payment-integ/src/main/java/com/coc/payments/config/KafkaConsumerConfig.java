@@ -26,7 +26,7 @@ public class KafkaConsumerConfig {
     @Value("${payments.kafka.cluster:localhost:9092}")
     private String server;
 
-    @Value("${payments.kafka.groupid:localhost:coc_consumer}")
+    @Value("${payments.kafka.groupid:coc_consumer}")
     private String groupId;
 
     @Bean

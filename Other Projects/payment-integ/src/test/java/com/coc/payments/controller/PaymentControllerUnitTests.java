@@ -31,7 +31,7 @@ public class PaymentControllerUnitTests {
         PaymentRequest request = new PaymentRequest();
         String authUrl = "https://paypal.com/auth";
         when(paymentService.createPayment(any(PaymentData.class))).thenReturn(Optional.ofNullable(authUrl));
-        assertEquals(authUrl, paymentController.createPayment(request));
+        assertEquals(authUrl, paymentController.createPayment(request).getBody());
     }
 
 }
