@@ -1,12 +1,12 @@
 payments:
   cassandra:
     keyspace: coc_payments
-    host: host.docker.internal
+    host: cassandra
     post: 9042
     username: cassandra
     password: cassandra
   kafka:
-    cluster: host.docker.internal:9092
+    cluster: kafka:9092
     topic: coc_payments
     groupid: coc_consumer
   oauth:
@@ -26,7 +26,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: host.docker.internal:9092
+          brokers: kafka:9092
   main:
     allow-bean-definition-overriding: false
 management:

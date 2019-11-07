@@ -31,32 +31,9 @@ public class SwaggerConfig {
 
     @Value("${api.version}")
     private String apiVersion;
+    
     @Value("${swagger.enabled}")
     private String enabled = "false";
-    @Value("${swagger.title}")
-    private String title;
-    @Value("${swagger.description}")
-    private String description;
-    @Value("${swagger.useDefaultResponseMessages}")
-    private String useDefaultResponseMessages;
-    @Value("${swagger.enableUrlTemplating}")
-    private String enableUrlTemplating;
-    @Value("${swagger.deepLinking}")
-    private String deepLinking;
-    @Value("${swagger.defaultModelsExpandDepth}")
-    private String defaultModelsExpandDepth;
-    @Value("${swagger.defaultModelExpandDepth}")
-    private String defaultModelExpandDepth;
-    @Value("${swagger.displayOperationId}")
-    private String displayOperationId;
-    @Value("${swagger.displayRequestDuration}")
-    private String displayRequestDuration;
-    @Value("${swagger.filter}")
-    private String filter;
-    @Value("${swagger.maxDisplayedTags}")
-    private String maxDisplayedTags;
-    @Value("${swagger.showExtensions}")
-    private String showExtensions;
 
     @Bean
     public Docket eDesignApi() {
@@ -69,24 +46,24 @@ public class SwaggerConfig {
             .pathMapping("/")
             .directModelSubstitute(LocalDate.class, String.class)
             .genericModelSubstitutes(ResponseEntity.class)
-            .useDefaultResponseMessages(Boolean.valueOf(useDefaultResponseMessages))
-            .enableUrlTemplating(Boolean.valueOf(enableUrlTemplating));
+            .useDefaultResponseMessages(false)
+            .enableUrlTemplating(false);
     }
 
     @Bean
     UiConfiguration uiConfig() {
         return UiConfigurationBuilder.builder()
-            .deepLinking(Boolean.valueOf(deepLinking))
-            .displayOperationId(Boolean.valueOf(displayOperationId))
-            .defaultModelsExpandDepth(Integer.valueOf(defaultModelsExpandDepth))
-            .defaultModelExpandDepth(Integer.valueOf(defaultModelExpandDepth))
+            .deepLinking(true)
+            .displayOperationId(false)
+            .defaultModelsExpandDepth(1)
+            .defaultModelExpandDepth(1)
             .defaultModelRendering(ModelRendering.EXAMPLE)
-            .displayRequestDuration(Boolean.valueOf(displayRequestDuration))
+            .displayRequestDuration(false)
             .docExpansion(DocExpansion.NONE)
-            .filter(Boolean.valueOf(filter))
-            .maxDisplayedTags(Integer.valueOf(maxDisplayedTags))
+            .filter(false)
+            .maxDisplayedTags(0)
             .operationsSorter(OperationsSorter.ALPHA)
-            .showExtensions(Boolean.valueOf(showExtensions))
+            .showExtensions(false)
             .tagsSorter(TagsSorter.ALPHA)
             .supportedSubmitMethods(UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS)
             .validatorUrl(null)
@@ -94,8 +71,8 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title(title)
-            .description(description)
+        return new ApiInfoBuilder().title("Payments Service Specification")
+            .description("Payments Service Specification for Paypal, Cybersource and similiar payment providers.")
             .version(apiVersion)
             .build();
     }

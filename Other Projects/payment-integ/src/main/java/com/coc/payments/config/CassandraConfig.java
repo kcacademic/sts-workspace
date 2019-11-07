@@ -22,6 +22,8 @@ import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.core.mapping.SimpleUserTypeResolver;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
+import com.datastax.driver.core.SocketOptions;
+
 @Configuration
 // @RefreshScope
 @PropertySource(value = "classpath:application.yml")
@@ -48,7 +50,13 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
 
     @Override
     public CassandraClusterFactoryBean cluster() {
+        SocketOptions socketOptions = new SocketOptions();
+        socketOptions.setConnectTimeoutMillis(5000);
+        socketOptions.setReadTimeoutMillis(5000);
+
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
+        cluster.setKeyspaceCreations(getKeyspaceCreations());
+        cluster.setSocketOptions(socketOptions);
         cluster.setContactPoints(host);
         cluster.setPort(port);
         cluster.setUsername(username);
