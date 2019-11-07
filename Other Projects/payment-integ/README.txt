@@ -29,6 +29,8 @@ mvn package
 mvn install dockerfile:build
 docker run --rm --name=payment-integ -p 8080:8080 coc/payment-integ:latest
 docker stop payment-integ
+docker-compose up
+docker-compose down
 
 TEST SERVICE
 ============
