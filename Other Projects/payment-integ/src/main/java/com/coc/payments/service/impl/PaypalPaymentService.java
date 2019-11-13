@@ -11,9 +11,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.coc.payments.domain.Operation;
+import com.coc.payments.domain.AddressType;
+import com.coc.payments.domain.AmountType;
 import com.coc.payments.domain.PaymentRecord;
 import com.coc.payments.domain.PaymentRequest;
+import com.coc.payments.domain.TransactionType;
 import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.exception.PaymentExecutionException;
@@ -68,9 +70,41 @@ public class PaypalPaymentService implements PaymentService {
         if (TRANSACTION_FAILED.equals(paymentResponse.getState()))
             throw new PaymentCreationException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
 
-        Operation operation = new Operation();
-        operation.setId(UUID.randomUUID());
-        operation.setType(PAYMENT_CREATED);
+        TransactionType transaction = new TransactionType();
+        transaction.setId(UUID.randomUUID());
+        transaction.setType(PAYMENT_CREATED);
+        transaction.setUserId(paymentData.getUserId());
+        transaction.setAmount(paymentData.getAmount()
+            .getTotal());
+        AmountType amount = new AmountType();
+        amount.setCurrency(paymentData.getAmount()
+            .getCurrency());
+        amount.setTotal(paymentData.getAmount()
+            .getTotal());
+        amount.setSubTotal(paymentData.getAmount()
+            .getSubTotal());
+        amount.setShipping(paymentData.getAmount()
+            .getShipping());
+        amount.setTax(paymentData.getAmount()
+            .getTax());
+        AddressType address = new AddressType();
+        address.setName(paymentData.getAddress()
+            .getName());
+        address.setLine1(paymentData.getAddress()
+            .getLine1());
+        address.setLine2(paymentData.getAddress()
+            .getLine2());
+        address.setCity(paymentData.getAddress()
+            .getCity());
+        address.setPostCode(paymentData.getAddress()
+            .getPostCode());
+        address.setCountryCode(paymentData.getAddress()
+            .getCountryCode());
+        address.setState(paymentData.getAddress()
+            .getState());
+        address.setPhone(paymentData.getAddress()
+            .getPhone());
+
         PaymentRecord record = new PaymentRecord();
         record.setId(paymentResponse.getId());
         record.setIdempotencyKey(paymentData.getIdempotencyKey());
@@ -80,13 +114,11 @@ public class PaypalPaymentService implements PaymentService {
         record.setPaymentMethod(paymentData.getPaymentMethod());
         record.setDescription(paymentData.getDescription());
         record.setUserId(paymentData.getUserId());
-        record.setCurrency(paymentData.getCurrency());
-        record.setTotal(paymentData.getTotal());
-        record.setSubTotal(paymentData.getSubTotal());
-        record.setShipping(paymentData.getShipping());
-        record.setTax(paymentData.getTax());
+
         record.getTransactions()
-            .add(operation);
+            .add(transaction);
+        record.setAmount(amount);
+        record.setAddress(address);
         recordRepository.save(record);
 
         request = new PaymentRequest();
@@ -120,13 +152,13 @@ public class PaypalPaymentService implements PaymentService {
         PaymentRecord savedRecord = null;
 
         if (PAYMENT_CREATED.equals(record.getPaymentStatus())) {
-            Operation operation = new Operation();
-            operation.setId(UUID.randomUUID());
-            operation.setType(PAYMENT_AUTHENTICATED);
+            TransactionType transaction = new TransactionType();
+            transaction.setId(UUID.randomUUID());
+            transaction.setType(PAYMENT_AUTHENTICATED);
             record.setPayerId(payerId);
             record.setPaymentStatus(PAYMENT_AUTHENTICATED);
             record.getTransactions()
-                .add(operation);
+                .add(transaction);
             savedRecord = recordRepository.save(record);
 
             Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
@@ -166,12 +198,12 @@ public class PaypalPaymentService implements PaymentService {
             if (TRANSACTION_FAILED.equals(state))
                 throw new PaymentExecutionException(String.format("Payment Execution Failed for id %s", id));
 
-            Operation operation = new Operation();
-            operation.setId(UUID.randomUUID());
-            operation.setType(PAYMENT_EXECUTED);
+            TransactionType transaction = new TransactionType();
+            transaction.setId(UUID.randomUUID());
+            transaction.setType(PAYMENT_EXECUTED);
             record.setPaymentStatus(PAYMENT_EXECUTED);
             record.getTransactions()
-                .add(operation);
+                .add(transaction);
             savedRecord = recordRepository.save(record);
 
             Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());

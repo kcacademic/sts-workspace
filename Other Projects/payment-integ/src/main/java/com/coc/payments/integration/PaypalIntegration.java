@@ -61,15 +61,20 @@ public class PaypalIntegration {
 
         // Set payment details
         Details details = new Details();
-        details.setShipping(paymentData.getShipping());
-        details.setSubtotal(paymentData.getSubTotal());
-        details.setTax(paymentData.getTax());
+        details.setShipping(paymentData.getAmount()
+            .getShipping());
+        details.setSubtotal(paymentData.getAmount()
+            .getSubTotal());
+        details.setTax(paymentData.getAmount()
+            .getTax());
 
         // Payment amount
         Amount amount = new Amount();
-        amount.setCurrency(paymentData.getCurrency());
+        amount.setCurrency(paymentData.getAmount()
+            .getCurrency());
         // Total must be equal to sum of shipping, tax and subtotal.
-        amount.setTotal(paymentData.getTotal());
+        amount.setTotal(paymentData.getAmount()
+            .getTotal());
         amount.setDetails(details);
 
         // Transaction information

@@ -6,36 +6,58 @@ CREATE KEYSPACE coc_payments
 
 USE coc_payments;
 
-CREATE TYPE IF NOT EXISTS transaction (
-	id uuid,
-	type text
+CREATE TYPE coc_payments.address (
+    city text,
+    countrycode text,
+    line1 text,
+    line2 text,
+    name text,
+    phone text,
+    postcode text,
+    state text
 );
 
-CREATE TABLE IF NOT EXISTS paymentRecord (
-	id text,
-	idempotency_key text,
-	payment_provider text,
-	payment_method text,
-	description text,
-	intent text,
-	payer_id text,
-	user_id text,
-	total text,
-	sub_total text,
-	shipping text,
-	tax text,
-	currency text,
-	payment_status text,
-	transactions set<FROZEN<transaction>>,
-	PRIMARY KEY(id)
+CREATE TYPE coc_payments.amount (
+    currency text,
+    shipping text,
+    subtotal text,
+    tax text,
+    total text
 );
 
-CREATE TABLE IF NOT EXISTS paymentrequest (
+CREATE TYPE coc_payments.transaction (
+    amount text,
+    id uuid,
+    type text,
+    userid text
+);
+
+CREATE TABLE coc_payments.paymentrecord (
+    id text PRIMARY KEY,
+    address frozen<address>,
+    amount frozen<amount>,
+    currency text,
+    description text,
+    idempotency_key text,
+    intent text,
+    payer_id text,
+    payment_method text,
+    payment_provider text,
+    payment_status text,
+    shipping text,
+    sub_total text,
+    tax text,
+    total text,
+    transactions set<frozen<transaction>>,
+    user_id text
+);
+
+CREATE TABLE coc_payments.paymentrequest (
     idempotency_key text PRIMARY KEY,
     auth_url text,
     payment_id text,
     payment_status text
-)
+);
 
 INSERT INTO paymentRecord (id, idempotency_key, payment_provider, payment_method, description, intent, payer_id, user_id, total, sub_total, shipping, tax, currency, payment_status, transactions) 
 VALUES ('id', 'idempotency_key', 'paypal', 'paypal', 'description', 'sale', 'payer_id', 'user_id', '7', '5', '1', '1', 'USD', 'created', {{ id : now(), type : 'create' }});

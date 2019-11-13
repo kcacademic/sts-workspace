@@ -1,4 +1,6 @@
-package com.coc.payments.vo;
+package com.coc.payments.to;
+
+import javax.validation.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -12,29 +14,22 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PaymentRequest {
+public class PaymentAmount {
     
-    @ApiModelProperty(notes = "The idempotency key for the payment request.", required = true)
-    private String idempotencyKey;
-    @ApiModelProperty(notes = "The user ID initiating the payment creation.", required = false)
-    private String userId;
-    @ApiModelProperty(notes = "The payment provider to create payment (paypal/cybersource).", required = true)
-    private String paymentProvider;
-    @ApiModelProperty(notes = "The payment method to use to create payment,(paypal, credit card).", required = true)
-    private String paymentMethod;
-    @ApiModelProperty(notes = "The description for the payment.", required = false)
-    private String description;
-    @ApiModelProperty(notes = "The intent to create payment with, (sale/auth).", required = true)
-    private String intent;
     @ApiModelProperty(notes = "The sub total value of the payment to be created.", required = true)
+    @NotBlank(message = "Sub total of the order value is mandatory.")
     private String subTotal;
     @ApiModelProperty(notes = "The shipping value of the payment to be created.", required = true)
+    @NotBlank(message = "Shipping of the order value is mandatory.")
     private String shipping;
     @ApiModelProperty(notes = "The tax value of the payment to be created.", required = true)
+    @NotBlank(message = "Tax of the order value is mandatory.")
     private String tax;
     @ApiModelProperty(notes = "The total value of the payment to be created.", required = true)
+    @NotBlank(message = "Total of the order value is mandatory.")
     private String total;
     @ApiModelProperty(notes = "The currency of the payment to be created.", required = true)
+    @NotBlank(message = "Currency of the order value is mandatory.")
     private String currency;
 
 }

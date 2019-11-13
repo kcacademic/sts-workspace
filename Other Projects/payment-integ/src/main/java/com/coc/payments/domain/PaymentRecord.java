@@ -3,6 +3,8 @@ package com.coc.payments.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
 import org.springframework.data.cassandra.core.mapping.Column;
@@ -24,51 +26,46 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class PaymentRecord {
-    
+
     @Id
     @PrimaryKey("id")
     private String id;
-    
+
     @Column("payer_id")
     private String payerId;
-    
+
     @Column("user_id")
+    @NotBlank(message = "User ID is mandatory")
     private String userId;
-    
+
     @Column("idempotency_key")
     private String idempotencyKey;
-    
+
     @Column("intent")
     private String intent;
-    
+
     @Column("payment_provider")
+    @NotBlank(message = "Payment Provider is mandatory")
     private String paymentProvider;
-    
+
     @Column("payment_method")
+    @NotBlank(message = "Payment Method is mandatory")
     private String paymentMethod;
-    
+
     @Column("description")
     private String description;
-    
-    @Column("total")
-    private String total;
-    
-    @Column("sub_total")
-    private String subTotal;
-    
-    @Column("shipping")
-    private String shipping;
-    
-    @Column("tax")
-    private String tax;
-    
-    @Column("currency")
-    private String currency;
-    
+
     @Column("payment_status")
+    @NotBlank(message = "Payment Status is mandatory")
     private String paymentStatus;
-    
-    @CassandraType(type = DataType.Name.UDT, userTypeName = "transaction") 
-    private Set<Operation> transactions = new HashSet<>();
+
+    @CassandraType(type = DataType.Name.UDT, userTypeName = "amount")
+    private AmountType amount;
+
+    @CassandraType(type = DataType.Name.UDT, userTypeName = "address")
+    private AddressType address;
+
+    @CassandraType(type = DataType.Name.UDT, userTypeName = "transaction")
+    private Set<TransactionType> transactions = new HashSet<>();
 
 }

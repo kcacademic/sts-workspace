@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 @Builder(toBuilder = true)
 public class PaymentData {
-    
+
     private String id;
     private String idempotencyKey;
     private String userId;
@@ -24,10 +24,8 @@ public class PaymentData {
     private String paymentMethod;
     private String description;
     private String intent;
-    private String subTotal;
-    private String shipping;
-    private String tax;
-    private String total;
-    private String currency;
+
+    private Amount amount;
+    private Address address;
 
 }

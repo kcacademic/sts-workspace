@@ -1,6 +1,7 @@
 package com.coc.payments.vo;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,9 +12,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PaymentResponse {
-    
-    private String id;
-    private String status;
+@Builder(toBuilder = true)
+public class Amount {
+
+    private String subTotal;
+    private String shipping;
+    private String tax;
+    private String total;
+    private String currency;
 
 }

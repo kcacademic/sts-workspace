@@ -1,18 +1,18 @@
 payments:
   cassandra:
     keyspace: coc_payments
-    host: localhost
+    host: host.docker.internal
     post: 9042
     username: cassandra
     password: cassandra
   kafka:
-    cluster: localhost:9092
+    cluster: host.docker.internal:9092
     topic: coc_payments
     groupid: coc_consumer
   oauth:
     token:
       endpoint:
-        url: http://localhost:9999/oauth/check_token
+        url: http://host.docker.internal:9999/oauth/check_token
         clientId: testClient
         clientSecret: testSecret
   paypal:
@@ -26,7 +26,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: host.docker.internal:9092
   main:
     allow-bean-definition-overriding: false
 management:

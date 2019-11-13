@@ -19,6 +19,8 @@ import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.integration.PaypalIntegration;
 import com.coc.payments.repository.PaymentRecordRepository;
 import com.coc.payments.repository.PaymentRequestRepository;
+import com.coc.payments.vo.Address;
+import com.coc.payments.vo.Amount;
 import com.coc.payments.vo.PaymentData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,6 +48,10 @@ public class PaypalPaymentServiceUnitTests {
         PaymentData paymentData = new PaymentData();
         paymentData.setIdempotencyKey("12345");
         paymentData.setAuthUrl(authUrl);
+        Amount amount = new Amount();
+        paymentData.setAmount(amount);
+        Address address = new Address();
+        paymentData.setAddress(address);
         when(paypalIntegration.createPayment(any(PaymentData.class))).thenReturn(paymentData);
         when(requestRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(null));
         when(paymentRepository.save(any(PaymentRecord.class))).thenReturn(null);

@@ -41,22 +41,35 @@ curl -X POST \
   -H 'Authorization: Bearer 9e97aff7-d211-42ae-b59a-1f9defa869fc' \
   -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Length: 247' \
+  -H 'Content-Length: 461' \
   -H 'Content-Type: application/json' \
   -H 'Host: localhost:8080' \
-  -H 'Postman-Token: ca60b28a-3c95-41eb-88c2-6c9766179cbd,c9a2f3e7-ce25-4ba0-8e85-5311a4abbc3e' \
+  -H 'Postman-Token: 092e22a5-ee6d-4e49-85ad-6a36ec2596de,4c233a99-5463-4623-82e7-cfa524b024cb' \
   -H 'User-Agent: PostmanRuntime/7.19.0' \
   -H 'cache-control: no-cache' \
   -d '{
-	"idempotencyKey":"12345",
+	"idempotencyKey":"123451",
 	"userId":"user",
+	"orderId": "12345",
 	"paymentProvider":"paypal",
 	"paymentMethod":"paypal",
-	"description":"This is a dummy transaction.",
 	"intent":"sale",
-	"subTotal":"5",
-	"shipping":"1",
-	"tax":"1",
-	"total":"7",
-	"currency":"USD"
+	"description":"This is a dummy transaction.",
+	"amount": {
+		"subTotal":"5",
+		"shipping":"1",
+		"tax":"1",
+		"total":"7",
+		"currency":"USD"
+	},
+	"address": {
+		"name":"Kumar Chandrakant",
+		"line1":"Sapient",
+		"line2":"Boulder Av.",
+		"city":"NY",
+		"postCode":"11011",
+		"countryCode":"US",
+		"state":"NY",
+		"phone":"1111111111"
+	}
 }'
