@@ -11,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.coc.payments.constant.PaymentConstant;
 import com.coc.payments.domain.AddressType;
 import com.coc.payments.domain.AmountType;
 import com.coc.payments.domain.PaymentRecord;
@@ -29,11 +30,6 @@ import com.coc.payments.vo.PaymentData;
 @Service
 @PropertySource(value = "classpath:application.yml")
 public class PaypalPaymentService implements PaymentService {
-
-    private static final String TRANSACTION_FAILED = "failed";
-    private static final String PAYMENT_CREATED = "created";
-    private static final String PAYMENT_AUTHENTICATED = "authenticated";
-    private static final String PAYMENT_EXECUTED = "executed";
 
     Logger logger = LoggerFactory.getLogger(PaypalPaymentService.class);
 
@@ -59,7 +55,7 @@ public class PaypalPaymentService implements PaymentService {
         PaymentRequest request = null;
         if (requestOptional.isPresent()) {
             request = requestOptional.get();
-            if (PAYMENT_AUTHENTICATED.equals(request.getPaymentStatus()) || PAYMENT_EXECUTED.equals(request.getPaymentStatus()))
+            if (PaymentConstant.PAYMENT_AUTHENTICATED.equals(request.getPaymentStatus()) || PaymentConstant.PAYMENT_EXECUTED.equals(request.getPaymentStatus()))
                 throw new PaymentCreationException(String.format("Payment with the key %s has already been processed.", paymentData.getIdempotencyKey()));
             return Optional.of(requestOptional.get()
                 .getAuthUrl());
@@ -67,12 +63,12 @@ public class PaypalPaymentService implements PaymentService {
 
         PaymentData paymentResponse = paypalInteg.createPayment(paymentData);
 
-        if (TRANSACTION_FAILED.equals(paymentResponse.getState()))
+        if (PaymentConstant.TRANSACTION_FAILED.equals(paymentResponse.getState()))
             throw new PaymentCreationException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
 
         TransactionType transaction = new TransactionType();
         transaction.setId(UUID.randomUUID());
-        transaction.setType(PAYMENT_CREATED);
+        transaction.setType(PaymentConstant.PAYMENT_CREATED);
         transaction.setUserId(paymentData.getUserId());
         transaction.setAmount(paymentData.getAmount()
             .getTotal());
@@ -109,7 +105,7 @@ public class PaypalPaymentService implements PaymentService {
         record.setId(paymentResponse.getId());
         record.setIdempotencyKey(paymentData.getIdempotencyKey());
         record.setIntent(paymentData.getIntent());
-        record.setPaymentStatus(PAYMENT_CREATED);
+        record.setPaymentStatus(PaymentConstant.PAYMENT_CREATED);
         record.setPaymentProvider(paymentData.getPaymentProvider());
         record.setPaymentMethod(paymentData.getPaymentMethod());
         record.setDescription(paymentData.getDescription());
@@ -130,15 +126,10 @@ public class PaypalPaymentService implements PaymentService {
 
         PaymentEvent event = new PaymentEvent();
         event.setId(paymentResponse.getId());
-        event.setType(PAYMENT_CREATED);
+        event.setType(PaymentConstant.PAYMENT_CREATED);
         broker.send(topic, event);
 
         return Optional.ofNullable(paymentResponse.getAuthUrl());
-    }
-
-    @Override
-    public Optional<PaymentData> fetchPayment(String paymentId) {
-        return Optional.ofNullable(null);
     }
 
     @Override
@@ -151,12 +142,12 @@ public class PaypalPaymentService implements PaymentService {
         PaymentRecord record = paymentOptional.get();
         PaymentRecord savedRecord = null;
 
-        if (PAYMENT_CREATED.equals(record.getPaymentStatus())) {
+        if (PaymentConstant.PAYMENT_CREATED.equals(record.getPaymentStatus())) {
             TransactionType transaction = new TransactionType();
             transaction.setId(UUID.randomUUID());
-            transaction.setType(PAYMENT_AUTHENTICATED);
+            transaction.setType(PaymentConstant.PAYMENT_AUTHENTICATED);
             record.setPayerId(payerId);
-            record.setPaymentStatus(PAYMENT_AUTHENTICATED);
+            record.setPaymentStatus(PaymentConstant.PAYMENT_AUTHENTICATED);
             record.getTransactions()
                 .add(transaction);
             savedRecord = recordRepository.save(record);
@@ -164,22 +155,17 @@ public class PaypalPaymentService implements PaymentService {
             Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
             if (requestOptional.isPresent()) {
                 PaymentRequest request = requestOptional.get();
-                request.setPaymentStatus(PAYMENT_AUTHENTICATED);
+                request.setPaymentStatus(PaymentConstant.PAYMENT_AUTHENTICATED);
                 requestRepository.save(request);
             }
         }
 
         PaymentEvent event = new PaymentEvent();
         event.setId(paymentId);
-        event.setType(PAYMENT_AUTHENTICATED);
+        event.setType(PaymentConstant.PAYMENT_AUTHENTICATED);
         broker.send(topic, event);
 
         return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
-    }
-
-    @Override
-    public Optional<String> capturePayment(String paymentId, Float amount) {
-        return Optional.ofNullable(null);
     }
 
     @Override
@@ -193,15 +179,15 @@ public class PaypalPaymentService implements PaymentService {
 
         PaymentRecord savedRecord = null;
 
-        if (PAYMENT_AUTHENTICATED.equals(record.getPaymentStatus())) {
+        if (PaymentConstant.PAYMENT_AUTHENTICATED.equals(record.getPaymentStatus())) {
             String state = paypalInteg.executePayment(record.getId(), record.getPayerId());
-            if (TRANSACTION_FAILED.equals(state))
+            if (PaymentConstant.TRANSACTION_FAILED.equals(state))
                 throw new PaymentExecutionException(String.format("Payment Execution Failed for id %s", id));
 
             TransactionType transaction = new TransactionType();
             transaction.setId(UUID.randomUUID());
-            transaction.setType(PAYMENT_EXECUTED);
-            record.setPaymentStatus(PAYMENT_EXECUTED);
+            transaction.setType(PaymentConstant.PAYMENT_EXECUTED);
+            record.setPaymentStatus(PaymentConstant.PAYMENT_EXECUTED);
             record.getTransactions()
                 .add(transaction);
             savedRecord = recordRepository.save(record);
@@ -209,18 +195,28 @@ public class PaypalPaymentService implements PaymentService {
             Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
             if (requestOptional.isPresent()) {
                 PaymentRequest request = requestOptional.get();
-                request.setPaymentStatus(PAYMENT_EXECUTED);
+                request.setPaymentStatus(PaymentConstant.PAYMENT_EXECUTED);
                 requestRepository.save(request);
             }
         }
 
         PaymentEvent event = new PaymentEvent();
         event.setId(id);
-        event.setType(PAYMENT_EXECUTED);
+        event.setType(PaymentConstant.PAYMENT_EXECUTED);
 
         broker.send(topic, event);
 
         return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
+    }
+
+    @Override
+    public Optional<String> capturePayment(String paymentId, String amount) throws PaymentRecordMissingException {
+        return Optional.ofNullable(null);
+    }
+
+    @Override
+    public Optional<PaymentData> fetchPayment(String paymentId) throws PaymentRecordMissingException {
+        return Optional.ofNullable(null);
     }
 
 }

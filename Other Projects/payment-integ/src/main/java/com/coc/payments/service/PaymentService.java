@@ -14,9 +14,9 @@ public interface PaymentService {
     public Optional<String> authenticatePayment(String token, String paymentId, String payerId) throws PaymentRecordMissingException;
 
     public Optional<String> executePayment(String paymentId) throws PaymentRecordMissingException, PaymentExecutionException;
-
+    
+    public Optional<String> capturePayment(String paymentId, String amount) throws PaymentRecordMissingException;
+    
     public Optional<PaymentData> fetchPayment(String paymentId) throws PaymentRecordMissingException;
-
-    public Optional<String> capturePayment(String paymentId, Float amount) throws PaymentRecordMissingException;
 
 }

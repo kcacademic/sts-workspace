@@ -2,8 +2,6 @@ package com.coc.payments.callback;
 
 import java.util.Optional;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +43,7 @@ public class PaypalCallbacks {
     }
 
     @GetMapping("/cancel")
-    public ResponseEntity<String> authFailure(@RequestParam String token, HttpServletResponse response) {
+    public ResponseEntity<String> authFailure(@RequestParam String token) {
         if (logger.isInfoEnabled())
             logger.info(String.format("Paypal payment authentication failed with details, Token: %s", token));
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
