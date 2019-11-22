@@ -35,7 +35,7 @@ docker-compose down
 TEST SERVICE
 ============
 curl -X POST \
-  http://localhost:8080/payments/paypal \
+  http://localhost:11008/payments/paypal \
   -H 'Accept: */*' \
   -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: Bearer 9e97aff7-d211-42ae-b59a-1f9defa869fc' \
@@ -71,5 +71,53 @@ curl -X POST \
 		"countryCode":"US",
 		"state":"NY",
 		"phone":"1111111111"
+	}
+}'
+
+curl -X POST \
+  http://localhost:11008/payments/cybersource \
+  -H 'Accept: */*' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'Authorization: Bearer 9e97aff7-d211-42ae-b59a-1f9defa869fc' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Length: 670' \
+  -H 'Content-Type: application/json' \
+  -H 'Host: localhost:11008' \
+  -H 'Postman-Token: d5fc38ce-f635-473b-afe3-fdb3b4be9533,2c637f56-8738-49ae-ae37-775e685dadd9' \
+  -H 'User-Agent: PostmanRuntime/7.19.0' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"idempotencyKey":"1324524",
+	"orderId": "12345",
+	"userId":"user",
+	"paymentProvider":"paypal",
+	"paymentMethod":"paypal",
+	"intent":"sale",
+	"description":"This is a dummy transaction.",
+	"amount": {
+		"subTotal":"5",
+		"shipping":"1",
+		"tax":"1",
+		"total":"7",
+		"currency":"USD"
+	},
+	"address": {
+		"name":"Kumar Chandrakant",
+		"line1":"Sapient",
+		"line2":"Boulder Av.",
+		"city":"NY",
+		"postCode":"11011",
+		"countryCode":"US",
+		"state":"NY",
+		"phone":"1111111111",
+		"email": "kchandrakant@sapient.com"
+	},
+	"card": {
+		"number": "4111111111111111",
+		"expirationYear": "2030",
+		"expirationMonth": "12",
+		"securityCode": "123",
+		"saveCard": "true"
 	}
 }'
