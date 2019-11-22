@@ -2,10 +2,10 @@ package com.coc.payments.service;
 
 import java.util.Optional;
 
+import com.coc.payments.entity.PaymentData;
 import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.exception.PaymentExecutionException;
 import com.coc.payments.exception.PaymentRecordMissingException;
-import com.coc.payments.vo.PaymentData;
 
 public interface PaymentService {
 

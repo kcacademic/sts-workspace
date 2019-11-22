@@ -1,4 +1,4 @@
-package com.coc.payments.to;
+package com.coc.payments.vo;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -35,12 +35,15 @@ public class PaymentRequest {
     private String intent;
     @ApiModelProperty(notes = "The description of the payment to be created.", required = false)
     private String description;
-    
+
     @ApiModelProperty(notes = "The payment details for which the payment needs to be created.", required = true)
     @Valid
     private PaymentAmount amount;
     @ApiModelProperty(notes = "The billing address for which the payment needs to be created.", required = true)
     @Valid
     private PaymentAddress address;
-    
+    @ApiModelProperty(notes = "The card data with which the payment needs to be created.", required = true)
+    @Valid
+    private PaymentCard card;
+
 }

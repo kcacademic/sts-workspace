@@ -20,7 +20,7 @@ public class PaypalCallbacks {
     Logger logger = LoggerFactory.getLogger(PaypalCallbacks.class);
 
     @Autowired
-    PaymentService service;
+    PaymentService paypalService;
 
     @GetMapping("/process")
     public ResponseEntity<String> authSuccess(@RequestParam String token, @RequestParam String paymentId, @RequestParam(name = "PayerID") String payerID) {
@@ -28,7 +28,7 @@ public class PaypalCallbacks {
             logger.info(String.format("Paypal payment authentication passed with details, PaymentId: %s PayerId: %s Token: %s", paymentId, payerID, token));
         String status = "/error";
         try {
-            Optional<String> optional = service.authenticatePayment(token, paymentId, payerID);
+            Optional<String> optional = paypalService.authenticatePayment(token, paymentId, payerID);
             if (optional.isPresent())
                 status = optional.get();
             else

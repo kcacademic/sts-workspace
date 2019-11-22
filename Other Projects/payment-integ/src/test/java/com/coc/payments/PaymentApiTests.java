@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.with;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.coc.payments.to.PaymentRequest;
+import com.coc.payments.vo.PaymentRequest;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
 import io.restassured.RestAssured;

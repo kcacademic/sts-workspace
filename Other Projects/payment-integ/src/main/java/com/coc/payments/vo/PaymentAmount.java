@@ -1,4 +1,4 @@
-package com.coc.payments.to;
+package com.coc.payments.vo;
 
 import javax.validation.constraints.NotBlank;
 

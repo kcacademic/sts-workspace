@@ -17,6 +17,7 @@ import com.coc.payments.domain.AmountType;
 import com.coc.payments.domain.PaymentRecord;
 import com.coc.payments.domain.PaymentRequest;
 import com.coc.payments.domain.TransactionType;
+import com.coc.payments.entity.PaymentData;
 import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.exception.PaymentExecutionException;
@@ -25,9 +26,8 @@ import com.coc.payments.integration.PaypalIntegration;
 import com.coc.payments.repository.PaymentRecordRepository;
 import com.coc.payments.repository.PaymentRequestRepository;
 import com.coc.payments.service.PaymentService;
-import com.coc.payments.vo.PaymentData;
 
-@Service
+@Service("paypalService")
 @PropertySource(value = "classpath:application.yml")
 public class PaypalPaymentService implements PaymentService {
 
@@ -85,7 +85,9 @@ public class PaypalPaymentService implements PaymentService {
             .getTax());
         AddressType address = new AddressType();
         address.setName(paymentData.getAddress()
-            .getName());
+            .getFirstName() + " "
+            + paymentData.getAddress()
+                .getLastName());
         address.setLine1(paymentData.getAddress()
             .getLine1());
         address.setLine2(paymentData.getAddress()

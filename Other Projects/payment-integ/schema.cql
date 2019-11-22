@@ -59,11 +59,22 @@ CREATE TABLE coc_payments.paymentrequest (
     payment_status text
 );
 
+CREATE TABLE coc_payments.paymentcard (
+    user_id text PRIMARY KEY,
+    expiration_month text,
+    expiration_year text,
+    id text,
+    number text
+);
+
 INSERT INTO paymentRecord (id, idempotency_key, payment_provider, payment_method, description, intent, payer_id, user_id, total, sub_total, shipping, tax, currency, payment_status, transactions) 
 VALUES ('id', 'idempotency_key', 'paypal', 'paypal', 'description', 'sale', 'payer_id', 'user_id', '7', '5', '1', '1', 'USD', 'created', {{ id : now(), type : 'create' }});
 
 INSERT INTO paymentRequest (idempotency_key, payment_id, payment_status, auth_url)
 VALUES ('idempotency_key', 'id', 'created', 'http://paypal.com/auth');
+
+INSERT INTO paymentRequest (id, number, expiration_year, expiration_month, security_code)
+VALUES ('id', '4111111111111111', '2030', '12', '123');
 
 SELECT * FROM paymentRecord WHERE id = 2aa40790-fcd4-11e9-a936-e176235bcdf6;
 
@@ -72,12 +83,20 @@ SET transactions = transactions + {{ id : now(), type : 'update' }} WHERE id = a
 
 SELECT * FROM paymentRecord;
 SELECT * FROM paymentRequest;
+SELECT * FROM paymentCard;
 TRUNCATE paymentRecord;
 TRUNCATE paymentRequest;
+TRUNCATE paymentCard;
+DESCRIBE TYPE address;
+DESCRIBE TYPE amount;
 DESCRIBE TYPE transaction;
 DESCRIBE paymentRecord;
 DESCRIBE paymentRequest;
+DESCRIBE paymentCard;
 DROP TABLE IF EXISTS paymentRequest;
 DROP TABLE IF EXISTS paymentRecord;
+DROP TABLE IF EXISTS paymentCard;
 DROP TYPE IF EXISTS transaction;
+DROP TYPE IF EXISTS address;
+DROP TYPE IF EXISTS amount;
 DROP KEYSPACE IF EXISTS coc_payments;

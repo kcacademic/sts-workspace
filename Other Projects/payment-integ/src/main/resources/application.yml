@@ -12,7 +12,7 @@ payments:
   oauth:
     token:
       endpoint:
-        url: http://localhost:9999/oauth/check_token
+        url: http://localhost:8080/oauth/check_token
         clientId: testClient
         clientSecret: testSecret
   paypal:
@@ -21,6 +21,10 @@ payments:
     successUrl: http://localhost:8080/process
     failureUrl: http://localhost:8080/cancel
     mode: sandbox
+  cybersource:
+    merchandId: coc_cybersource
+    keyAlias: coc_cybersource
+    keyPass: coc_cybersource
 spring:
   cloud:
     stream:

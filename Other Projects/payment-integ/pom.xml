@@ -86,7 +86,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.cybersource</groupId>
-			<artifactId>cybersource-sdk-java</artifactId>
+			<artifactId>cybersource-rest-client-java</artifactId>
 			<version>LATEST</version>
 		</dependency>
 

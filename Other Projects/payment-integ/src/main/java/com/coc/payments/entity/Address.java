@@ -1,4 +1,4 @@
-package com.coc.payments.vo;
+package com.coc.payments.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +15,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class Address {
 
-    private String name;
+    private String firstName;
+    private String lastName;
     private String line1;
     private String line2;
     private String city;
@@ -23,5 +24,6 @@ public class Address {
     private String postCode;
     private String phone;
     private String state;
+    private String email;
 
 }

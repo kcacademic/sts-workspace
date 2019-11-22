@@ -1,4 +1,4 @@
-package com.coc.payments.to;
+package com.coc.payments.vo;
 
 import javax.validation.constraints.NotBlank;
 
@@ -38,5 +38,7 @@ public class PaymentAddress {
     @ApiModelProperty(notes = "The state code of the billing address.", required = true)
     @NotBlank(message = "State as part of billing address is mandatory.")
     private String state;
+    @ApiModelProperty(notes = "The email of the billing address.", required = false)
+    private String email;
 
 }

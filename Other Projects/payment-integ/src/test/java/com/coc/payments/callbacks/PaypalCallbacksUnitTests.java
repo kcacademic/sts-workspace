@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.coc.payments.callback.PaypalCallbacks;
 import com.coc.payments.exception.PaymentRecordMissingException;
 import com.coc.payments.service.PaymentService;
-import com.coc.payments.to.PaymentAddress;
-import com.coc.payments.to.PaymentAmount;
-import com.coc.payments.to.PaymentRequest;
+import com.coc.payments.vo.PaymentAddress;
+import com.coc.payments.vo.PaymentAmount;
+import com.coc.payments.vo.PaymentRequest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class PaypalCallbacksUnitTests {

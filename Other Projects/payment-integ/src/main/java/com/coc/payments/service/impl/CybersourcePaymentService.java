@@ -1,64 +1,178 @@
 package com.coc.payments.service.impl;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
-import com.cybersource.ws.client.Client;
-import com.cybersource.ws.client.ClientException;
-import com.cybersource.ws.client.FaultException;
+import com.coc.payments.constant.PaymentConstant;
+import com.coc.payments.domain.AddressType;
+import com.coc.payments.domain.AmountType;
+import com.coc.payments.domain.PaymentCard;
+import com.coc.payments.domain.PaymentRecord;
+import com.coc.payments.domain.PaymentRequest;
+import com.coc.payments.domain.TransactionType;
+import com.coc.payments.entity.PaymentData;
+import com.coc.payments.event.PaymentEvent;
+import com.coc.payments.exception.PaymentCreationException;
+import com.coc.payments.exception.PaymentExecutionException;
+import com.coc.payments.exception.PaymentRecordMissingException;
+import com.coc.payments.integration.CybersourceIntegration;
+import com.coc.payments.repository.PaymentCardRepository;
+import com.coc.payments.repository.PaymentRecordRepository;
+import com.coc.payments.repository.PaymentRequestRepository;
+import com.coc.payments.service.PaymentService;
 
-public class CybersourcePaymentService {
+@Service("cybersourceService")
+@PropertySource(value = "classpath:application.yml")
+public class CybersourcePaymentService implements PaymentService {
 
     static Logger logger = LoggerFactory.getLogger(CybersourcePaymentService.class);
 
-    public static void main(String[] args) {
+    @Autowired
+    private CybersourceIntegration cybersourceIntegration;
 
-        Properties props = new Properties();
-        try {
-            FileInputStream fis = new FileInputStream("src/main/resources/cybs.properties");
-            props.load(fis);
-            fis.close();
-        } catch (IOException ioe) {
-            logger.error("File not found");
+    @Autowired
+    private PaymentRecordRepository recordRepository;
+
+    @Autowired
+    private PaymentRequestRepository requestRepository;
+
+    @Autowired
+    private PaymentCardRepository cardRepository;
+
+    @Autowired
+    private KafkaTemplate<String, PaymentEvent> broker;
+
+    @Value("${payments.kafka.topic}")
+    private String topic;
+
+    @Override
+    public Optional<String> createPayment(PaymentData paymentData) throws PaymentCreationException {
+
+        Optional<PaymentRequest> requestOptional = requestRepository.findById(paymentData.getIdempotencyKey());
+        PaymentRequest request = null;
+        if (requestOptional.isPresent()) {
+            request = requestOptional.get();
+            if (PaymentConstant.PAYMENT_EXECUTED.equals(request.getPaymentStatus()))
+                throw new PaymentCreationException(String.format("Payment with the key %s has already been processed.", paymentData.getIdempotencyKey()));
+            return Optional.of(requestOptional.get()
+                .getAuthUrl());
         }
 
-        HashMap<String, String> request = new HashMap<>();
-        // In this sample, we are processing a credit card authorization.
-        request.put("ccAuthService_run", "true");
-        // Add required fields
-        request.put("merchantReferenceCode", "coc_cybersource");
-        request.put("billTo_firstName", "Kumar");
-        request.put("billTo_lastName", "Chandrakant");
-        request.put("billTo_street1", "Hudson St.");
-        request.put("billTo_city", "Mountain View");
-        request.put("billTo_state", "NY");
-        request.put("billTo_postalCode", "10014");
-        request.put("billTo_country", "US");
-        request.put("billTo_email", "kchandrakant@sapient.com");
-        request.put("card_accountNumber", "4111111111111111");
-        request.put("card_expirationMonth", "12");
-        request.put("card_expirationYear", "2010");
-        request.put("purchaseTotals_currency", "USD");
-        // This sample order contains two line items.
-        request.put("item_0_unitPrice", "12.34");
-        request.put("item_1_unitPrice", "56.78");
-        // Add optional fields here according to your business needs.
-        // For information about processing the reply,
-        // see Using the Decision and Reason Code Fields.
+        PaymentData paymentResponse = cybersourceIntegration.createPayment(paymentData);
 
-        try {
-            @SuppressWarnings({ "rawtypes" })
-            Map reply = Client.runTransaction(request, props);
-            if (logger.isDebugEnabled())
-                logger.debug(reply.toString());
-        } catch (ClientException | FaultException e) {
-            logger.error(e.getMessage());
+        if (PaymentConstant.TRANSACTION_FAILED.equals(paymentResponse.getState()))
+            throw new PaymentCreationException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
+
+        TransactionType transaction = new TransactionType();
+        transaction.setId(UUID.randomUUID());
+        transaction.setType(PaymentConstant.PAYMENT_EXECUTED);
+        transaction.setUserId(paymentData.getUserId());
+        transaction.setAmount(paymentData.getAmount()
+            .getTotal());
+        AmountType amount = new AmountType();
+        amount.setCurrency(paymentData.getAmount()
+            .getCurrency());
+        amount.setTotal(paymentData.getAmount()
+            .getTotal());
+        amount.setSubTotal(paymentData.getAmount()
+            .getSubTotal());
+        amount.setShipping(paymentData.getAmount()
+            .getShipping());
+        amount.setTax(paymentData.getAmount()
+            .getTax());
+        AddressType address = new AddressType();
+        address.setName(paymentData.getAddress()
+            .getFirstName() + " "
+            + paymentData.getAddress()
+                .getLastName());
+        address.setLine1(paymentData.getAddress()
+            .getLine1());
+        address.setLine2(paymentData.getAddress()
+            .getLine2());
+        address.setCity(paymentData.getAddress()
+            .getCity());
+        address.setPostCode(paymentData.getAddress()
+            .getPostCode());
+        address.setCountryCode(paymentData.getAddress()
+            .getCountryCode());
+        address.setState(paymentData.getAddress()
+            .getState());
+        address.setPhone(paymentData.getAddress()
+            .getPhone());
+        address.setEmail(paymentData.getAddress()
+            .getEmail());
+
+        PaymentRecord record = new PaymentRecord();
+        record.setId(paymentResponse.getId());
+        record.setIdempotencyKey(paymentData.getIdempotencyKey());
+        record.setIntent(paymentData.getIntent());
+        record.setPaymentStatus(PaymentConstant.PAYMENT_EXECUTED);
+        record.setPaymentProvider(paymentData.getPaymentProvider());
+        record.setPaymentMethod(paymentData.getPaymentMethod());
+        record.setDescription(paymentData.getDescription());
+        record.setUserId(paymentData.getUserId());
+
+        record.getTransactions()
+            .add(transaction);
+        record.setAmount(amount);
+        record.setAddress(address);
+        recordRepository.save(record);
+
+        request = new PaymentRequest();
+        request.setIdempotencyKey(paymentData.getIdempotencyKey());
+        request.setPaymentId(paymentResponse.getId());
+        request.setPaymentStatus(record.getPaymentStatus());
+        requestRepository.save(request);
+
+        if (paymentData.getCard()
+            .isSaveCard()) {
+            PaymentCard card = new PaymentCard();
+            card.setId(UUID.randomUUID()
+                .toString());
+            card.setUserId(paymentData.getUserId());
+            card.setNumber(paymentData.getCard()
+                .getNumber());
+            card.setExpirationYear(paymentData.getCard()
+                .getExpirationYear());
+            card.setExpirationMonth(paymentData.getCard()
+                .getExpirationMonth());
+            cardRepository.save(card);
         }
+
+        PaymentEvent event = new PaymentEvent();
+        event.setId(paymentResponse.getId());
+        event.setType(PaymentConstant.PAYMENT_EXECUTED);
+        broker.send(topic, event);
+
+        return Optional.ofNullable(paymentResponse.getId());
     }
+
+    @Override
+    public Optional<String> authenticatePayment(String token, String paymentId, String payerId) throws PaymentRecordMissingException {
+        return Optional.ofNullable(null);
+    }
+
+    @Override
+    public Optional<String> executePayment(String id) throws PaymentRecordMissingException, PaymentExecutionException {
+        return Optional.ofNullable(null);
+    }
+
+    @Override
+    public Optional<String> capturePayment(String paymentId, String amount) throws PaymentRecordMissingException {
+        return Optional.ofNullable(null);
+    }
+
+    @Override
+    public Optional<PaymentData> fetchPayment(String paymentId) throws PaymentRecordMissingException {
+        return Optional.ofNullable(null);
+    }
+
 }

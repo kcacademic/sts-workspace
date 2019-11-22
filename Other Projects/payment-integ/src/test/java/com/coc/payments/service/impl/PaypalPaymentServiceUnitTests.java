@@ -15,6 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.coc.payments.constant.PaymentConstant;
 import com.coc.payments.domain.PaymentRecord;
+import com.coc.payments.entity.Address;
+import com.coc.payments.entity.Amount;
+import com.coc.payments.entity.PaymentData;
 import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.exception.PaymentExecutionException;
@@ -22,9 +25,6 @@ import com.coc.payments.exception.PaymentRecordMissingException;
 import com.coc.payments.integration.PaypalIntegration;
 import com.coc.payments.repository.PaymentRecordRepository;
 import com.coc.payments.repository.PaymentRequestRepository;
-import com.coc.payments.vo.Address;
-import com.coc.payments.vo.Amount;
-import com.coc.payments.vo.PaymentData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class PaypalPaymentServiceUnitTests {

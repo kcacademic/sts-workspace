@@ -1,6 +1,6 @@
 package com.coc.payments.bdd;
 
-import com.coc.payments.to.PaymentRequest;
+import com.coc.payments.vo.PaymentRequest;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

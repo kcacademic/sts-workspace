@@ -17,7 +17,7 @@ public class PaymentListener {
     Logger logger = LoggerFactory.getLogger(PaymentListener.class);
 
     @Autowired
-    PaymentService service;
+    PaymentService paypalService;
 
     @KafkaListener(topics = "coc_payments", groupId = "coc_consumer")
     public void listen(PaymentEvent event) {
@@ -25,7 +25,7 @@ public class PaymentListener {
             logger.info(String.format("Received Messasge in group - coc_consumer: %s", event));
         if (PAYMENT_AUTHENTICATED.equals(event.getType())) {
             try {
-                service.executePayment(event.getId());
+                paypalService.executePayment(event.getId());
             } catch (Exception e) {
                 logger.error(e.getMessage());
             }

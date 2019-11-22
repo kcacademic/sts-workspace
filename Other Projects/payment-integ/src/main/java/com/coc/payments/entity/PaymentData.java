@@ -1,4 +1,4 @@
-package com.coc.payments.vo;
+package com.coc.payments.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,5 +27,6 @@ public class PaymentData {
 
     private Amount amount;
     private Address address;
+    private Card card;
 
 }

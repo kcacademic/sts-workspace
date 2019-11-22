@@ -32,4 +32,6 @@ public class AddressType {
     private String phone;
     @NotBlank(message = "State is mandatory")
     private String state;
+    private String email;
+    
 }

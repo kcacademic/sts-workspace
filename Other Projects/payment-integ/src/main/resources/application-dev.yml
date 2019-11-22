@@ -21,6 +21,10 @@ payments:
     successUrl: http://localhost:8080/process
     failureUrl: http://localhost:8080/cancel
     mode: sandbox
+  cybersource:
+    merchandId: coc_cybersource
+    keyAlias: coc_cybersource
+    keyPass: coc_cybersource
 spring:
   cloud:
     stream:
