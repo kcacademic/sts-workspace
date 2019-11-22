@@ -98,6 +98,7 @@ public class PaypalIntegration {
         String authUrl = null;
         try {
             APIContext apiContext = new APIContext(clientId, clientSecret, mode);
+            apiContext.setRequestId(paymentData.getIdempotencyKey());
             createdPayment = payment.create(apiContext);
 
             Iterator<Links> links = createdPayment.getLinks()
