@@ -64,7 +64,7 @@ public class CybersourceCardService implements CardService {
 
         Optional<CardByUserId> savedCard = repository.findByUserIdAndCardId(userId, cardId);
         if (savedCard.isPresent()) {
-            repository.deleteByUserIdAndCardId(userId, cardId);
+            repository.delete(savedCard.get());
             return Optional.of(TransformationUtility.createCardFromPaymentCard(savedCard.get()));
         } else
             throw new PaymentCardMissingException(String.format("The payment card with id: %s could not be found.", cardId));

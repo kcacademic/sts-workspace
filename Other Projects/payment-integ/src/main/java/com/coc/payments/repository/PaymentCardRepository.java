@@ -13,5 +13,4 @@ public interface PaymentCardRepository extends CassandraRepository<CardByUserId,
 
     Optional<CardByUserId> findByUserIdAndCardId(String userId, String cardId);
 
-    void deleteByUserIdAndCardId(String userId, String cardId);
 }
