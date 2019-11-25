@@ -13,8 +13,9 @@ import org.mockito.Mock;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.coc.payments.client.PaypalClient;
 import com.coc.payments.constant.PaymentConstant;
-import com.coc.payments.domain.PaymentRecord;
+import com.coc.payments.domain.PaymentByPaymentId;
 import com.coc.payments.entity.Address;
 import com.coc.payments.entity.Amount;
 import com.coc.payments.entity.PaymentData;
@@ -22,7 +23,6 @@ import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.exception.PaymentExecutionException;
 import com.coc.payments.exception.PaymentRecordMissingException;
-import com.coc.payments.integration.PaypalIntegration;
 import com.coc.payments.repository.PaymentRecordRepository;
 import com.coc.payments.repository.PaymentRequestRepository;
 
@@ -30,7 +30,7 @@ import com.coc.payments.repository.PaymentRequestRepository;
 public class PaypalPaymentServiceUnitTests {
 
     @Mock
-    PaypalIntegration paypalIntegration;
+    PaypalClient paypalIntegration;
 
     @Mock
     PaymentRecordRepository recordRepository;
@@ -57,7 +57,7 @@ public class PaypalPaymentServiceUnitTests {
         paymentData.setAddress(address);
         when(paypalIntegration.createPayment(any(PaymentData.class))).thenReturn(paymentData);
         when(requestRepository.findById(any(String.class))).thenReturn(Optional.ofNullable(null));
-        when(recordRepository.save(any(PaymentRecord.class))).thenReturn(null);
+        when(recordRepository.save(any(PaymentByPaymentId.class))).thenReturn(null);
         when(paymentBroker.send(any(String.class), any(PaymentEvent.class))).thenReturn(null);
         assertEquals(authUrl, paymentService.createPayment(paymentData)
             .get());
@@ -70,16 +70,20 @@ public class PaypalPaymentServiceUnitTests {
         String token = "dummyToken";
         String paymentId = "dummyPaymentId";
         String payerId = "dummyPayerId";
+        PaymentData paymentData = new PaymentData();
+        paymentData.setId(paymentId);
+        paymentData.setToken(token);
+        paymentData.setPayerId(payerId);
 
-        PaymentRecord record = new PaymentRecord();
+        PaymentByPaymentId record = new PaymentByPaymentId();
         record.setPaymentStatus(PaymentConstant.PAYMENT_CREATED);
         record.setId(paymentId);
 
         when(recordRepository.findById(any(String.class))).thenReturn(Optional.of(record));
-        when(recordRepository.save(any(PaymentRecord.class))).thenReturn(record);
+        when(recordRepository.save(any(PaymentByPaymentId.class))).thenReturn(record);
         when(paymentBroker.send(any(String.class), any(PaymentEvent.class))).thenReturn(null);
 
-        assertEquals(paymentId, paymentService.authenticatePayment(token, paymentId, payerId)
+        assertEquals(paymentId, paymentService.authenticatePayment(paymentData)
             .get());
     }
 
@@ -88,32 +92,35 @@ public class PaypalPaymentServiceUnitTests {
 
         String paymentId = "dummyPaymentId";
         String payerId = "dummyPayerId";
+        PaymentData paymentData = new PaymentData();
+        paymentData.setId(paymentId);
+        paymentData.setPayerId(payerId);
 
-        PaymentRecord record = new PaymentRecord();
+        PaymentByPaymentId record = new PaymentByPaymentId();
         record.setPaymentStatus(PaymentConstant.PAYMENT_AUTHENTICATED);
         record.setId(paymentId);
         record.setPayerId(payerId);
 
         when(paypalIntegration.executePayment(paymentId, payerId)).thenReturn(PaymentConstant.PAYMENT_CREATED);
         when(recordRepository.findById(paymentId)).thenReturn(Optional.of(record));
-        when(recordRepository.save(any(PaymentRecord.class))).thenReturn(record);
+        when(recordRepository.save(any(PaymentByPaymentId.class))).thenReturn(record);
         when(paymentBroker.send(any(String.class), any(PaymentEvent.class))).thenReturn(null);
 
-        assertEquals(paymentId, paymentService.executePayment(paymentId)
+        assertEquals(paymentId, paymentService.executePayment(paymentData)
             .get());
     }
 
     @Test
     public void givenPaymentService_whenFetchPaymentCalled_thenReturnPaymentData() throws PaymentRecordMissingException {
 
-        assertEquals(Optional.ofNullable(null), paymentService.fetchPayment("12345"));
+        assertEquals(Optional.ofNullable(null), paymentService.fetchPayment(new PaymentData()));
 
     }
 
     @Test
     public void givenPaymentService_whenCapturePaymentCalled_thenPaymentCaptured() throws PaymentRecordMissingException {
 
-        assertEquals(Optional.ofNullable(null), paymentService.capturePayment("12345", "1"));
+        assertEquals(Optional.ofNullable(null), paymentService.capturePayment(new PaymentData()));
 
     }
 

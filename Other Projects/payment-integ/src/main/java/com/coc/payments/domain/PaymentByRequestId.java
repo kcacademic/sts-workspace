@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table
+@Table("paymentRequest")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PaymentRequest {
+public class PaymentByRequestId {
     
     @Id
     @PrimaryKey("idempotency_key")

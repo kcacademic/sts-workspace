@@ -73,8 +73,8 @@ VALUES ('id', 'idempotency_key', 'paypal', 'paypal', 'description', 'sale', 'pay
 INSERT INTO paymentRequest (idempotency_key, payment_id, payment_status, auth_url)
 VALUES ('idempotency_key', 'id', 'created', 'http://paypal.com/auth');
 
-INSERT INTO paymentRequest (id, number, expiration_year, expiration_month, security_code)
-VALUES ('id', '4111111111111111', '2030', '12', '123');
+INSERT INTO paymentCard (id, user_id, number, expiration_year, expiration_month)
+VALUES ('id', '1234', '4111111111111111', '2030', '12');
 
 SELECT * FROM paymentRecord WHERE id = 2aa40790-fcd4-11e9-a936-e176235bcdf6;
 

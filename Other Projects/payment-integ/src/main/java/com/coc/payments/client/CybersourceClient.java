@@ -1,14 +1,14 @@
-package com.coc.payments.integration;
+package com.coc.payments.client;
 
 import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.coc.payments.entity.PaymentData;
-import com.coc.payments.exception.PaymentCreationException;
+import com.coc.payments.exception.PaymentExecutionException;
 import com.cybersource.authsdk.core.ConfigException;
 import com.cybersource.authsdk.core.MerchantConfig;
 
@@ -26,10 +26,10 @@ import Model.Ptsv2paymentsPaymentInformationCard;
 import Model.Ptsv2paymentsPointOfSaleInformation;
 import Model.Ptsv2paymentsProcessingInformation;
 
-@Service
-public class CybersourceIntegration {
+@Component
+public class CybersourceClient {
 
-    Logger logger = LoggerFactory.getLogger(CybersourceIntegration.class);
+    Logger logger = LoggerFactory.getLogger(CybersourceClient.class);
 
     @Value("${payments.cybersource.merchandId:coc_cybersource}")
     private String merchandId;
@@ -40,7 +40,7 @@ public class CybersourceIntegration {
     @Value("${payments.cybersource.keyPass:coc_cybersource}")
     private String keyPass;
 
-    public PaymentData createPayment(PaymentData paymentData) throws PaymentCreationException {
+    public PaymentData executePayment(PaymentData paymentData) throws PaymentExecutionException {
 
         PaymentData paymentResponse = paymentData.toBuilder()
             .build();
@@ -63,7 +63,7 @@ public class CybersourceIntegration {
         }
 
         if (response == null)
-            throw new PaymentCreationException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
+            throw new PaymentExecutionException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
 
         paymentResponse.setId(response.getId());
         paymentResponse.setState(response.getStatus());

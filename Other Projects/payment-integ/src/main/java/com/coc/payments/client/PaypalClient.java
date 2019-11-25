@@ -1,4 +1,4 @@
-package com.coc.payments.integration;
+package com.coc.payments.client;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.coc.payments.entity.PaymentData;
 import com.coc.payments.exception.PaymentCreationException;
@@ -23,10 +23,10 @@ import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
 
-@Service
-public class PaypalIntegration {
+@Component
+public class PaypalClient {
 
-    Logger logger = LoggerFactory.getLogger(PaypalIntegration.class);
+    Logger logger = LoggerFactory.getLogger(PaypalClient.class);
 
     private static final String APPROVAL_URL = "approval_url";
 

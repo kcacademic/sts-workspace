@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.coc.payments.entity.PaymentData;
 import com.coc.payments.exception.PaymentRecordMissingException;
 import com.coc.payments.service.PaymentService;
 
@@ -28,7 +29,11 @@ public class PaypalCallbacks {
             logger.info(String.format("Paypal payment authentication passed with details, PaymentId: %s PayerId: %s Token: %s", paymentId, payerID, token));
         String status = "/error";
         try {
-            Optional<String> optional = paypalService.authenticatePayment(token, paymentId, payerID);
+            PaymentData paymentData = new PaymentData();
+            paymentData.setId(paymentId);
+            paymentData.setToken(token);
+            paymentData.setPayerId(payerID);
+            Optional<String> optional = paypalService.authenticatePayment(paymentData);
             if (optional.isPresent())
                 status = optional.get();
             else

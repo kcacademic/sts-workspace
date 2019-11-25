@@ -15,6 +15,8 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 public class Card {
 
+    private String cardId;
+    private String userId;
     private String number;
     private String expirationYear;
     private String expirationMonth;

@@ -19,13 +19,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table
+@Table("paymentRecord")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PaymentRecord {
+public class PaymentByPaymentId {
 
     @Id
     @PrimaryKey("id")

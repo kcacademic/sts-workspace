@@ -11,21 +11,21 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.coc.payments.client.PaypalClient;
 import com.coc.payments.constant.PaymentConstant;
-import com.coc.payments.domain.AddressType;
-import com.coc.payments.domain.AmountType;
-import com.coc.payments.domain.PaymentRecord;
-import com.coc.payments.domain.PaymentRequest;
+import com.coc.payments.domain.PaymentByPaymentId;
+import com.coc.payments.domain.PaymentByRequestId;
 import com.coc.payments.domain.TransactionType;
+import com.coc.payments.entity.Amount;
 import com.coc.payments.entity.PaymentData;
 import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.exception.PaymentCreationException;
 import com.coc.payments.exception.PaymentExecutionException;
 import com.coc.payments.exception.PaymentRecordMissingException;
-import com.coc.payments.integration.PaypalIntegration;
 import com.coc.payments.repository.PaymentRecordRepository;
 import com.coc.payments.repository.PaymentRequestRepository;
 import com.coc.payments.service.PaymentService;
+import com.coc.payments.utility.TransformationUtility;
 
 @Service("paypalService")
 @PropertySource(value = "classpath:application.yml")
@@ -34,7 +34,7 @@ public class PaypalPaymentService implements PaymentService {
     Logger logger = LoggerFactory.getLogger(PaypalPaymentService.class);
 
     @Autowired
-    private PaypalIntegration paypalInteg;
+    private PaypalClient paypalInteg;
 
     @Autowired
     private PaymentRecordRepository recordRepository;
@@ -51,173 +51,108 @@ public class PaypalPaymentService implements PaymentService {
     @Override
     public Optional<String> createPayment(PaymentData paymentData) throws PaymentCreationException {
 
-        Optional<PaymentRequest> requestOptional = requestRepository.findById(paymentData.getIdempotencyKey());
-        PaymentRequest request = null;
+        Optional<PaymentByRequestId> requestOptional = requestRepository.findById(paymentData.getIdempotencyKey());
         if (requestOptional.isPresent()) {
-            request = requestOptional.get();
+            PaymentByRequestId request = requestOptional.get();
             if (PaymentConstant.PAYMENT_AUTHENTICATED.equals(request.getPaymentStatus()) || PaymentConstant.PAYMENT_EXECUTED.equals(request.getPaymentStatus()))
                 throw new PaymentCreationException(String.format("Payment with the key %s has already been processed.", paymentData.getIdempotencyKey()));
-            return Optional.of(requestOptional.get()
-                .getAuthUrl());
+            return Optional.of(request.getAuthUrl());
         }
 
         PaymentData paymentResponse = paypalInteg.createPayment(paymentData);
 
         if (PaymentConstant.TRANSACTION_FAILED.equals(paymentResponse.getState()))
-            throw new PaymentCreationException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
+            throw new PaymentCreationException(String.format("Payment Creation Failed for key %s", paymentData.getIdempotencyKey()));
 
-        TransactionType transaction = new TransactionType();
-        transaction.setId(UUID.randomUUID());
-        transaction.setType(PaymentConstant.PAYMENT_CREATED);
-        transaction.setUserId(paymentData.getUserId());
-        transaction.setAmount(paymentData.getAmount()
-            .getTotal());
-        AmountType amount = new AmountType();
-        amount.setCurrency(paymentData.getAmount()
-            .getCurrency());
-        amount.setTotal(paymentData.getAmount()
-            .getTotal());
-        amount.setSubTotal(paymentData.getAmount()
-            .getSubTotal());
-        amount.setShipping(paymentData.getAmount()
-            .getShipping());
-        amount.setTax(paymentData.getAmount()
-            .getTax());
-        AddressType address = new AddressType();
-        address.setName(paymentData.getAddress()
-            .getFirstName() + " "
-            + paymentData.getAddress()
-                .getLastName());
-        address.setLine1(paymentData.getAddress()
-            .getLine1());
-        address.setLine2(paymentData.getAddress()
-            .getLine2());
-        address.setCity(paymentData.getAddress()
-            .getCity());
-        address.setPostCode(paymentData.getAddress()
-            .getPostCode());
-        address.setCountryCode(paymentData.getAddress()
-            .getCountryCode());
-        address.setState(paymentData.getAddress()
-            .getState());
-        address.setPhone(paymentData.getAddress()
-            .getPhone());
+        recordRepository.save(TransformationUtility.createPaymentRecord(paymentResponse));
 
-        PaymentRecord record = new PaymentRecord();
-        record.setId(paymentResponse.getId());
-        record.setIdempotencyKey(paymentData.getIdempotencyKey());
-        record.setIntent(paymentData.getIntent());
-        record.setPaymentStatus(PaymentConstant.PAYMENT_CREATED);
-        record.setPaymentProvider(paymentData.getPaymentProvider());
-        record.setPaymentMethod(paymentData.getPaymentMethod());
-        record.setDescription(paymentData.getDescription());
-        record.setUserId(paymentData.getUserId());
+        requestRepository.save(TransformationUtility.createPaymentRequest(paymentResponse));
 
-        record.getTransactions()
-            .add(transaction);
-        record.setAmount(amount);
-        record.setAddress(address);
-        recordRepository.save(record);
-
-        request = new PaymentRequest();
-        request.setIdempotencyKey(paymentData.getIdempotencyKey());
-        request.setPaymentId(paymentResponse.getId());
-        request.setPaymentStatus(record.getPaymentStatus());
-        request.setAuthUrl(paymentResponse.getAuthUrl());
-        requestRepository.save(request);
-
-        PaymentEvent event = new PaymentEvent();
-        event.setId(paymentResponse.getId());
-        event.setType(PaymentConstant.PAYMENT_CREATED);
-        broker.send(topic, event);
+        broker.send(topic, TransformationUtility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_CREATED));
 
         return Optional.ofNullable(paymentResponse.getAuthUrl());
     }
 
     @Override
-    public Optional<String> authenticatePayment(String token, String paymentId, String payerId) throws PaymentRecordMissingException {
+    public Optional<String> authenticatePayment(PaymentData paymentData) throws PaymentRecordMissingException {
 
-        Optional<PaymentRecord> paymentOptional = recordRepository.findById(paymentId);
+        Optional<PaymentByPaymentId> paymentOptional = recordRepository.findById(paymentData.getId());
         if (!paymentOptional.isPresent())
-            throw new PaymentRecordMissingException(String.format("Payment Record Missing with ID %s", paymentId));
+            throw new PaymentRecordMissingException(String.format("Payment Record Missing with Id %s", paymentData.getId()));
 
-        PaymentRecord record = paymentOptional.get();
-        PaymentRecord savedRecord = null;
+        PaymentByPaymentId record = paymentOptional.get();
+        PaymentByPaymentId savedRecord = null;
 
         if (PaymentConstant.PAYMENT_CREATED.equals(record.getPaymentStatus())) {
-            TransactionType transaction = new TransactionType();
-            transaction.setId(UUID.randomUUID());
-            transaction.setType(PaymentConstant.PAYMENT_AUTHENTICATED);
-            record.setPayerId(payerId);
+            TransactionType transaction = new TransactionType(UUID.randomUUID(), PaymentConstant.PAYMENT_AUTHENTICATED, paymentData.getUserId(), paymentData.getAmount()
+                .getTotal());
+            record.setPayerId(paymentData.getPayerId());
             record.setPaymentStatus(PaymentConstant.PAYMENT_AUTHENTICATED);
             record.getTransactions()
                 .add(transaction);
             savedRecord = recordRepository.save(record);
 
-            Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
+            Optional<PaymentByRequestId> requestOptional = requestRepository.findById(record.getIdempotencyKey());
             if (requestOptional.isPresent()) {
-                PaymentRequest request = requestOptional.get();
+                PaymentByRequestId request = requestOptional.get();
                 request.setPaymentStatus(PaymentConstant.PAYMENT_AUTHENTICATED);
                 requestRepository.save(request);
             }
         }
 
-        PaymentEvent event = new PaymentEvent();
-        event.setId(paymentId);
-        event.setType(PaymentConstant.PAYMENT_AUTHENTICATED);
-        broker.send(topic, event);
+        paymentData.setUserId(record.getUserId());
+        Amount amount = new Amount();
+        amount.setTotal(record.getAmount()
+            .getTotal());
+        paymentData.setAmount(amount);
+        broker.send(topic, TransformationUtility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_AUTHENTICATED));
 
         return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
     }
 
     @Override
-    public Optional<String> executePayment(String id) throws PaymentRecordMissingException, PaymentExecutionException {
+    public Optional<String> executePayment(PaymentData paymentData) throws PaymentRecordMissingException, PaymentExecutionException {
 
-        Optional<PaymentRecord> paymentOptional = recordRepository.findById(id);
+        Optional<PaymentByPaymentId> paymentOptional = recordRepository.findById(paymentData.getId());
         if (!paymentOptional.isPresent())
-            throw new PaymentRecordMissingException(String.format("Payment Record Missing with ID %s", id));
+            throw new PaymentRecordMissingException(String.format("Payment Record Missing with Id %s", paymentData.getId()));
 
-        PaymentRecord record = paymentOptional.get();
+        PaymentByPaymentId record = paymentOptional.get();
 
-        PaymentRecord savedRecord = null;
+        PaymentByPaymentId savedRecord = null;
 
         if (PaymentConstant.PAYMENT_AUTHENTICATED.equals(record.getPaymentStatus())) {
             String state = paypalInteg.executePayment(record.getId(), record.getPayerId());
             if (PaymentConstant.TRANSACTION_FAILED.equals(state))
-                throw new PaymentExecutionException(String.format("Payment Execution Failed for id %s", id));
+                throw new PaymentExecutionException(String.format("Payment Execution Failed for id %s", paymentData.getId()));
 
-            TransactionType transaction = new TransactionType();
-            transaction.setId(UUID.randomUUID());
-            transaction.setType(PaymentConstant.PAYMENT_EXECUTED);
+            TransactionType transaction = new TransactionType(UUID.randomUUID(), PaymentConstant.PAYMENT_EXECUTED, paymentData.getUserId(), paymentData.getAmount()
+                .getTotal());
             record.setPaymentStatus(PaymentConstant.PAYMENT_EXECUTED);
             record.getTransactions()
                 .add(transaction);
             savedRecord = recordRepository.save(record);
 
-            Optional<PaymentRequest> requestOptional = requestRepository.findById(record.getIdempotencyKey());
+            Optional<PaymentByRequestId> requestOptional = requestRepository.findById(record.getIdempotencyKey());
             if (requestOptional.isPresent()) {
-                PaymentRequest request = requestOptional.get();
+                PaymentByRequestId request = requestOptional.get();
                 request.setPaymentStatus(PaymentConstant.PAYMENT_EXECUTED);
                 requestRepository.save(request);
             }
         }
 
-        PaymentEvent event = new PaymentEvent();
-        event.setId(id);
-        event.setType(PaymentConstant.PAYMENT_EXECUTED);
-
-        broker.send(topic, event);
+        broker.send(topic, TransformationUtility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_EXECUTED));
 
         return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
     }
 
     @Override
-    public Optional<String> capturePayment(String paymentId, String amount) throws PaymentRecordMissingException {
+    public Optional<String> capturePayment(PaymentData paymentData) throws PaymentRecordMissingException {
         return Optional.ofNullable(null);
     }
 
     @Override
-    public Optional<PaymentData> fetchPayment(String paymentId) throws PaymentRecordMissingException {
+    public Optional<PaymentData> fetchPayment(PaymentData paymentData) throws PaymentRecordMissingException {
         return Optional.ofNullable(null);
     }
 

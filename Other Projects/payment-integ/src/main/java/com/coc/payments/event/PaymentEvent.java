@@ -12,9 +12,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class PaymentEvent {
-    
+
     private String id;
-    
-    private String type;
+    private String userId;
+    private String paymentProvider;
+    private String paymentMethod;
+    private String eventType;
+    private String amount;
 
 }

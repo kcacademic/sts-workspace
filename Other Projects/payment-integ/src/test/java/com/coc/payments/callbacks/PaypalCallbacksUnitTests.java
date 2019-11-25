@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.coc.payments.callback.PaypalCallbacks;
+import com.coc.payments.entity.PaymentData;
 import com.coc.payments.exception.PaymentRecordMissingException;
 import com.coc.payments.service.PaymentService;
 import com.coc.payments.vo.PaymentAddress;
@@ -34,13 +35,17 @@ public class PaypalCallbacksUnitTests {
         String token = "dummyToken";
         String paymentId = "dummyPaymentId";
         String payerId = "dummyPayerId";
+        PaymentData paymentData = new PaymentData();
+        paymentData.setId(paymentId);
+        paymentData.setToken(token);
+        paymentData.setPayerId(payerId);
 
         PaymentRequest request = new PaymentRequest();
         PaymentAmount amount = new PaymentAmount();
         request.setAmount(amount);
         PaymentAddress address = new PaymentAddress();
         request.setAddress(address);
-        when(paymentService.authenticatePayment(token, paymentId, payerId)).thenReturn(Optional.of(paymentId));
+        when(paymentService.authenticatePayment(paymentData)).thenReturn(Optional.of(paymentId));
         assertEquals(paymentId, paypalCallbacks.authSuccess(token, paymentId, payerId)
             .getBody());
     }

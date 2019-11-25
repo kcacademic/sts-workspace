@@ -24,6 +24,8 @@ public class PaymentData {
     private String paymentMethod;
     private String description;
     private String intent;
+    private String payerId;
+    private String token;
 
     private Amount amount;
     private Address address;
