@@ -2,6 +2,7 @@ package com.coc.payments.utility;
 
 import java.util.UUID;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -194,10 +195,13 @@ public class TransformationUtility {
         Card card = new Card();
         card.setCardId(paymentCard.getCardId());
         card.setUserId(paymentCard.getUserId());
-        card.setNumber(cryptoUtility.decrypt(paymentCard.getNumber()));
+        String number = cryptoUtility.decrypt(paymentCard.getNumber());
+        number = StringUtils.overlay(number, StringUtils.repeat("x", number.length()-4), 0, number.length()-4);
+        card.setNumber(number);
         card.setExpirationYear(cryptoUtility.decrypt(paymentCard.getExpirationYear()));
         card.setExpirationMonth(cryptoUtility.decrypt(paymentCard.getExpirationMonth()));
-
+        card.setSaveCard(true);
+        
         return card;
     }
 
