@@ -25,6 +25,9 @@ payments:
     merchandId: coc_cybersource
     keyAlias: coc_cybersource
     keyPass: coc_cybersource
+  crypto:
+    key: aesEncryptionKey
+    initVector: encryptionIntVec
 spring:
   cloud:
     stream:

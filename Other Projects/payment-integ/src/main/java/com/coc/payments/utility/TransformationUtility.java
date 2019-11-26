@@ -2,6 +2,9 @@ package com.coc.payments.utility;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.coc.payments.constant.PaymentConstant;
 import com.coc.payments.domain.AddressType;
 import com.coc.payments.domain.AmountType;
@@ -17,13 +20,13 @@ import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.vo.PaymentCard;
 import com.coc.payments.vo.PaymentRequest;
 
+@Component
 public class TransformationUtility {
 
-    private TransformationUtility() {
+    @Autowired
+    CryptoUtility cryptoUtility;
 
-    }
-
-    public static PaymentData createPaymentDataFromPaymentRequest(PaymentRequest request) {
+    public PaymentData createPaymentDataFromPaymentRequest(PaymentRequest request) {
 
         PaymentData payment = new PaymentData();
 
@@ -73,7 +76,8 @@ public class TransformationUtility {
         if (request.getCard() != null) {
             Card card = new Card();
             card.setUserId(request.getUserId());
-            card.setCardId(request.getCard().getCardId());
+            card.setCardId(request.getCard()
+                .getCardId());
             card.setNumber(request.getCard()
                 .getNumber());
             card.setExpirationYear(request.getCard()
@@ -90,7 +94,7 @@ public class TransformationUtility {
         return payment;
     }
 
-    public static Card createCardDataFromCardRequest(PaymentCard cardRequest) {
+    public Card createCardDataFromCardRequest(PaymentCard cardRequest) {
 
         Card card = new Card();
         card.setNumber(cardRequest.getNumber());
@@ -102,7 +106,7 @@ public class TransformationUtility {
         return card;
     }
 
-    public static PaymentByPaymentId createPaymentRecord(PaymentData paymentData) {
+    public PaymentByPaymentId createPaymentRecordFromPaymentData(PaymentData paymentData) {
 
         TransactionType transaction = new TransactionType();
         transaction.setId(UUID.randomUUID());
@@ -161,7 +165,7 @@ public class TransformationUtility {
         return record;
     }
 
-    public static PaymentByRequestId createPaymentRequest(PaymentData paymentData) {
+    public PaymentByRequestId createPaymentRequestFromPaymentData(PaymentData paymentData) {
 
         PaymentByRequestId request = new PaymentByRequestId();
         request.setIdempotencyKey(paymentData.getIdempotencyKey());
@@ -172,32 +176,32 @@ public class TransformationUtility {
         return request;
     }
 
-    public static CardByUserId createPaymentCardFromCardData(Card card) {
+    public CardByUserId createPaymentCardFromCardData(Card card) {
 
         CardByUserId paymentCard = new CardByUserId();
         paymentCard.setCardId(UUID.randomUUID()
             .toString());
         paymentCard.setUserId(card.getUserId());
-        paymentCard.setNumber(CryptoUtility.encrypt(card.getNumber()));
-        paymentCard.setExpirationYear(CryptoUtility.encrypt(card.getExpirationYear()));
-        paymentCard.setExpirationMonth(CryptoUtility.encrypt(card.getExpirationMonth()));
+        paymentCard.setNumber(cryptoUtility.encrypt(card.getNumber()));
+        paymentCard.setExpirationYear(cryptoUtility.encrypt(card.getExpirationYear()));
+        paymentCard.setExpirationMonth(cryptoUtility.encrypt(card.getExpirationMonth()));
 
         return paymentCard;
     }
 
-    public static Card createCardFromPaymentCard(CardByUserId paymentCard) {
+    public Card createCardFromPaymentCard(CardByUserId paymentCard) {
 
         Card card = new Card();
         card.setCardId(paymentCard.getCardId());
         card.setUserId(paymentCard.getUserId());
-        card.setNumber(CryptoUtility.decrypt(paymentCard.getNumber()));
-        card.setExpirationYear(CryptoUtility.decrypt(paymentCard.getExpirationYear()));
-        card.setExpirationMonth(CryptoUtility.decrypt(paymentCard.getExpirationMonth()));
+        card.setNumber(cryptoUtility.decrypt(paymentCard.getNumber()));
+        card.setExpirationYear(cryptoUtility.decrypt(paymentCard.getExpirationYear()));
+        card.setExpirationMonth(cryptoUtility.decrypt(paymentCard.getExpirationMonth()));
 
         return card;
     }
 
-    public static PaymentEvent createPaymentEvent(PaymentData paymentData, String eventType) {
+    public PaymentEvent createPaymentEvent(PaymentData paymentData, String eventType) {
 
         PaymentEvent event = new PaymentEvent();
         event.setId(paymentData.getId());

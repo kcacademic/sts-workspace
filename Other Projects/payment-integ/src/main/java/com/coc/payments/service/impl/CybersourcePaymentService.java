@@ -46,6 +46,9 @@ public class CybersourcePaymentService implements PaymentService {
 
     @Autowired
     private KafkaTemplate<String, PaymentEvent> broker;
+    
+    @Autowired
+    TransformationUtility utility;
 
     @Value("${payments.kafka.topic}")
     private String topic;
@@ -88,16 +91,16 @@ public class CybersourcePaymentService implements PaymentService {
         if (PaymentConstant.TRANSACTION_FAILED.equals(paymentResponse.getState()))
             throw new PaymentExecutionException(String.format("Payment Creation Failed for id %s", paymentData.getIdempotencyKey()));
 
-        recordRepository.save(TransformationUtility.createPaymentRecord(paymentResponse));
+        recordRepository.save(utility.createPaymentRecordFromPaymentData(paymentResponse));
 
-        requestRepository.save(TransformationUtility.createPaymentRequest(paymentResponse));
+        requestRepository.save(utility.createPaymentRequestFromPaymentData(paymentResponse));
 
         if (paymentData.getCard()
             .isSaveCard()) {
             cardService.saveCard(paymentResponse.getUserId(), paymentResponse.getCard());
         }
 
-        broker.send(topic, TransformationUtility.createPaymentEvent(paymentResponse, PaymentConstant.PAYMENT_EXECUTED));
+        broker.send(topic, utility.createPaymentEvent(paymentResponse, PaymentConstant.PAYMENT_EXECUTED));
 
         return Optional.ofNullable(paymentResponse.getId());
     }

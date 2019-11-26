@@ -36,6 +36,9 @@ public class CardController {
 
     @Autowired
     CardService cardService;
+    
+    @Autowired
+    TransformationUtility utility;
 
     @GetMapping("/payments/cards/{userId}")
     @ApiOperation(value = "Payment Card by User Id Retrival Operation", response = String.class)
@@ -69,7 +72,7 @@ public class CardController {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 500, message = "Card details for this user could not be saved.") })
     public ResponseEntity<Card> saveCard(@PathVariable String userId, @Valid @RequestBody PaymentCard cardRequest) {
 
-        Card card = TransformationUtility.createCardDataFromCardRequest(cardRequest);
+        Card card = utility.createCardDataFromCardRequest(cardRequest);
         card.setUserId(userId);
         Optional<Card> optional = cardService.saveCard(userId, card);
         if (optional.isPresent())

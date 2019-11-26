@@ -40,6 +40,9 @@ public class PaymentController {
 
     @Autowired
     PaymentService cybersourceService;
+    
+    @Autowired
+    TransformationUtility utility;
 
     @PostMapping("/payments/paypal")
     @ApiOperation(value = "Paypal Payment Creation Operation", response = String.class)
@@ -48,7 +51,7 @@ public class PaymentController {
 
         PaymentResponse response = new PaymentResponse();
         try {
-            Optional<String> optional = paypalService.createPayment(TransformationUtility.createPaymentDataFromPaymentRequest(request));
+            Optional<String> optional = paypalService.createPayment(utility.createPaymentDataFromPaymentRequest(request));
             if (optional.isPresent()) {
                 response.setStatus(HttpStatus.OK.getReasonPhrase());
                 response.setMessage("Payment with Paypal successfully created, please proceed with authentication.");
@@ -86,7 +89,7 @@ public class PaymentController {
         }
         
         try {
-            Optional<String> optional = cybersourceService.executePayment(TransformationUtility.createPaymentDataFromPaymentRequest(request));
+            Optional<String> optional = cybersourceService.executePayment(utility.createPaymentDataFromPaymentRequest(request));
             if (optional.isPresent()) {
                 response.setStatus(HttpStatus.OK.getReasonPhrase());
                 response.setMessage("Payment with Cybersource successfully created.");

@@ -4,14 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.coc.payments.entity.Amount;
 import com.coc.payments.entity.PaymentData;
 import com.coc.payments.event.PaymentEvent;
 import com.coc.payments.service.PaymentService;
 
-@Service
+@Component
 public class PaymentListener {
 
     private static final String PAYMENT_AUTHENTICATED = "authenticated";
@@ -21,7 +21,7 @@ public class PaymentListener {
     @Autowired
     PaymentService paypalService;
 
-    @KafkaListener(topics = "coc_payments", groupId = "coc_consumer")
+    @KafkaListener(topics = "${payments.kafka.topic}", groupId = "${payments.kafka.groupid}")
     public void listen(PaymentEvent event) {
         if (logger.isInfoEnabled())
             logger.info(String.format("Received Messasge in group - coc_consumer: %s", event));

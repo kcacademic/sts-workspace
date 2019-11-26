@@ -20,12 +20,15 @@ public class CybersourceCardService implements CardService {
 
     @Autowired
     PaymentCardRepository repository;
+    
+    @Autowired
+    TransformationUtility utility;
 
     @Override
     public Optional<Card> getCard(String userId, String cardId) throws PaymentCardMissingException {
         Optional<CardByUserId> savedCard = repository.findByUserIdAndCardId(userId, cardId);
         if (savedCard.isPresent())
-            return Optional.of(TransformationUtility.createCardFromPaymentCard(savedCard.get()));
+            return Optional.of(utility.createCardFromPaymentCard(savedCard.get()));
         else
             throw new PaymentCardMissingException(String.format("The payment card with id: %s could not be found.", cardId));
     }
@@ -34,7 +37,7 @@ public class CybersourceCardService implements CardService {
     public Optional<Set<Card>> getCards(String userId) {
         List<CardByUserId> savedCards = repository.findByUserId(userId);
         Set<Card> cards = savedCards.stream()
-            .map(TransformationUtility::createCardFromPaymentCard)
+            .map(utility::createCardFromPaymentCard)
             .collect(Collectors.toSet());
         return Optional.of(cards);
     }
@@ -53,8 +56,8 @@ public class CybersourceCardService implements CardService {
         }
         CardByUserId cardSaved = null;
         if (!saved) {
-            cardSaved = repository.save(TransformationUtility.createPaymentCardFromCardData(card));
-            return Optional.of(TransformationUtility.createCardFromPaymentCard(cardSaved));
+            cardSaved = repository.save(utility.createPaymentCardFromCardData(card));
+            return Optional.of(utility.createCardFromPaymentCard(cardSaved));
         } else
             return Optional.ofNullable(null);
     }
@@ -65,7 +68,7 @@ public class CybersourceCardService implements CardService {
         Optional<CardByUserId> savedCard = repository.findByUserIdAndCardId(userId, cardId);
         if (savedCard.isPresent()) {
             repository.delete(savedCard.get());
-            return Optional.of(TransformationUtility.createCardFromPaymentCard(savedCard.get()));
+            return Optional.of(utility.createCardFromPaymentCard(savedCard.get()));
         } else
             throw new PaymentCardMissingException(String.format("The payment card with id: %s could not be found.", cardId));
     }

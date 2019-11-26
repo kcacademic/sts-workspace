@@ -44,6 +44,9 @@ public class PaypalPaymentService implements PaymentService {
 
     @Autowired
     private KafkaTemplate<String, PaymentEvent> broker;
+    
+    @Autowired
+    TransformationUtility utility;
 
     @Value("${payments.kafka.topic}")
     private String topic;
@@ -64,11 +67,11 @@ public class PaypalPaymentService implements PaymentService {
         if (PaymentConstant.TRANSACTION_FAILED.equals(paymentResponse.getState()))
             throw new PaymentCreationException(String.format("Payment Creation Failed for key %s", paymentData.getIdempotencyKey()));
 
-        recordRepository.save(TransformationUtility.createPaymentRecord(paymentResponse));
+        recordRepository.save(utility.createPaymentRecordFromPaymentData(paymentResponse));
 
-        requestRepository.save(TransformationUtility.createPaymentRequest(paymentResponse));
+        requestRepository.save(utility.createPaymentRequestFromPaymentData(paymentResponse));
 
-        broker.send(topic, TransformationUtility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_CREATED));
+        broker.send(topic, utility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_CREATED));
 
         return Optional.ofNullable(paymentResponse.getAuthUrl());
     }
@@ -105,7 +108,7 @@ public class PaypalPaymentService implements PaymentService {
         amount.setTotal(record.getAmount()
             .getTotal());
         paymentData.setAmount(amount);
-        broker.send(topic, TransformationUtility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_AUTHENTICATED));
+        broker.send(topic, utility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_AUTHENTICATED));
 
         return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
     }
@@ -141,7 +144,7 @@ public class PaypalPaymentService implements PaymentService {
             }
         }
 
-        broker.send(topic, TransformationUtility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_EXECUTED));
+        broker.send(topic, utility.createPaymentEvent(paymentData, PaymentConstant.PAYMENT_EXECUTED));
 
         return Optional.ofNullable(savedRecord != null ? savedRecord.getId() : null);
     }
