@@ -13,7 +13,7 @@ import com.sapient.learning.interleave.MyCounter;
 
 public class MyCounterTests {
 
-	MyCounter counter;
+	private MyCounter counter;
 
 	@ThreadedBefore
 	public void before() {
@@ -37,10 +37,9 @@ public class MyCounterTests {
 
 	// This method is invoked by the regular JUnit test runner.
 	@Test
-	public void testThreading() {
-		AnnotatedTestRunner runner = new AnnotatedTestRunner();
+	public void testCounter() {
 		// Run all Weaver tests in this class, using MyList as the Class Under Test.
-		runner.runTests(this.getClass(), MyCounter.class);
+		new AnnotatedTestRunner().runTests(this.getClass(), MyCounter.class);
 	}
 
 }
