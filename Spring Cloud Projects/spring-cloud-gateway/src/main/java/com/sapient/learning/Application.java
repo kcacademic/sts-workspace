@@ -16,6 +16,6 @@ public class Application {
 
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes().route("car-service", r -> r.path("/cars").uri("lb://car-service")).build();
+		return builder.routes().route("myservice", r -> r.path("/cars").uri("lb://myservice")).build();
 	}
 }

@@ -9,3 +9,6 @@ Apache Samza [http://samza.apache.org/]
 Apache Ignite [https://ignite.apache.org/]
 JClarity [https://www.jclarity.com/index.php]
 StatefulJ [https://github.com/statefulj/statefulj]
+
+Spring Circuit Breaker [https://spring.io/projects/spring-cloud-circuitbreaker]
+Spring Schema Registry [https://spring.io/projects/spring-cloud-schema-registry]

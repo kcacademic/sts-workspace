@@ -8,10 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("unused")
 public class Car {
+
 	private UUID id;
 	private String name;
 	private LocalDate releaseDate;
