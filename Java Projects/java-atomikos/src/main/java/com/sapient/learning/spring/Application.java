@@ -2,12 +2,12 @@ package com.sapient.learning.spring;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.UUID;
 
 import javax.sql.DataSource;
 
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
 public class Application {
 
 	private DataSource inventoryDataSource;
@@ -19,14 +19,17 @@ public class Application {
 		this.orderDataSource = orderDataSource;
 	}
 
-	public void placeOrder(String orderId, String productId, int amount) throws Exception {
+	@Transactional(rollbackFor = Exception.class)
+	public void placeOrder(String productId, int amount) throws Exception {
+
+		String orderId = UUID.randomUUID().toString();
 
 		Connection inventoryConnection = inventoryDataSource.getConnection();
 		Connection orderConnection = orderDataSource.getConnection();
 
 		// perform operations on inventory database
 		Statement s1 = inventoryConnection.createStatement();
-		String q1 = "update Inventory set balance = balance - " + amount + " where id ='" + productId + "'";
+		String q1 = "update Inventory set balance = balance - " + amount + " where productId ='" + productId + "'";
 		s1.executeUpdate(q1);
 		s1.close();
 

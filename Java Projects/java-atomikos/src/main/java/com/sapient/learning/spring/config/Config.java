@@ -6,6 +6,7 @@ import javax.transaction.SystemException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.jta.JtaTransactionManager;
 
 import com.atomikos.icatch.jta.UserTransactionManager;
@@ -13,6 +14,7 @@ import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.sapient.learning.spring.Application;
 
 @Configuration
+@EnableTransactionManagement
 public class Config {
 
 	@Bean(initMethod = "init", destroyMethod = "close")
@@ -25,7 +27,7 @@ public class Config {
 		xaProperties.put("databaseName", "db1");
 		xaProperties.put("createDatabase", "create");
 		dataSource.setXaProperties(xaProperties);
-		// set properties, etc.
+		dataSource.setPoolSize(10);
 		return dataSource;
 	}
 
@@ -39,7 +41,7 @@ public class Config {
 		xaProperties.put("databaseName", "db2");
 		xaProperties.put("createDatabase", "create");
 		dataSource.setXaProperties(xaProperties);
-		// set properties, etc.
+		dataSource.setPoolSize(10);
 		return dataSource;
 	}
 

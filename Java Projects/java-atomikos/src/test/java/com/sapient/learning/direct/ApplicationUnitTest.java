@@ -1,13 +1,17 @@
 package com.sapient.learning.direct;
 
+import static org.junit.Assert.assertEquals;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
+import java.util.UUID;
 
 import javax.sql.DataSource;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.atomikos.icatch.jta.UserTransactionImp;
@@ -18,58 +22,50 @@ public class ApplicationUnitTest {
 	private static DataSource inventoryDataSource;
 	private static DataSource orderDataSource;
 
-	@Test
-	public void testPlaceOrder() {
+	private static String productId = UUID.randomUUID().toString();
 
-		try {
-			setUp();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-		}
+	@Test
+	public void testPlaceOrderSuccess() throws Exception {
+
+		int amount = 1;
+
+		long initialBalance = getBalance(productId);
+
 		try {
 			Application application = new Application(inventoryDataSource, orderDataSource);
-			application.placeOrder("2", "1", 2);
+			application.placeOrder(productId, amount);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+
+		long finalBalance = getBalance(productId);
+
+		assertEquals(initialBalance - amount, finalBalance);
+
+	}
+
+	@Test
+	public void testPlaceOrderFailure() throws Exception {
+
+		int amount = 10;
+
+		long initialBalance = getBalance(productId);
+
 		try {
-			verify("2", "1");
+			Application application = new Application(inventoryDataSource, orderDataSource);
+			application.placeOrder(productId, amount);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 
-	}
+		long finalBalance = getBalance(productId);
 
-	private static void verify(String orderId, String productId) throws Exception {
-
-		UserTransactionImp utx = new UserTransactionImp();
-		utx.begin();
-
-		Connection inventoryConnection = inventoryDataSource.getConnection();
-		Connection orderConnection = orderDataSource.getConnection();
-
-		Statement s1 = inventoryConnection.createStatement();
-		String q1 = "select balance from Inventory where id='" + productId + "'";
-		ResultSet rs1 = s1.executeQuery(q1);
-		if (rs1 == null || !rs1.next())
-			throw new Exception("Product not found: " + productId);
-		System.out.println(rs1.getLong(1));
-
-		Statement s2 = orderConnection.createStatement();
-		String q2 = "select id from Orders where id='" + orderId + "'";
-		ResultSet rs2 = s2.executeQuery(q2);
-		if (rs2 == null || !rs2.next())
-			throw new Exception("Order not found: " + orderId);
-		System.out.println(rs2.getString(1));
-
-		inventoryConnection.close();
-		orderConnection.close();
-
-		utx.commit();
+		assertEquals(initialBalance, finalBalance);
 
 	}
 
-	private static void setUp() throws SQLException {
+	@BeforeClass
+	public static void setUp() throws SQLException {
 
 		inventoryDataSource = getDataSource("db1");
 		orderDataSource = getDataSource("db2");
@@ -78,8 +74,8 @@ public class ApplicationUnitTest {
 		Connection orderConnection = orderDataSource.getConnection();
 
 		String createInventoryTable = "create table Inventory ( "
-				+ " id VARCHAR ( 20 ) PRIMARY KEY, balance DECIMAL (19,0) )";
-		String createInventoryRow = "insert into Inventory values ( '1', 10000 )";
+				+ " productId VARCHAR ( 100 ) PRIMARY KEY, balance INT )";
+		String createInventoryRow = "insert into Inventory values ( '" + productId + "', 10000 )";
 		Statement s1 = inventoryConnection.createStatement();
 		try {
 			s1.executeUpdate(createInventoryTable);
@@ -93,7 +89,7 @@ public class ApplicationUnitTest {
 		}
 		s1.close();
 
-		String createOrderTable = "create table Orders ( id VARCHAR ( 20 ) PRIMARY KEY, product VARCHAR ( 20 ), balance DECIMAL (19,0) )";
+		String createOrderTable = "create table Orders ( orderId VARCHAR ( 100 ) PRIMARY KEY, productId VARCHAR ( 100 ), amount INT NOT NULL CHECK (amount <= 5) )";
 
 		Statement s2 = orderConnection.createStatement();
 		try {
@@ -121,6 +117,27 @@ public class ApplicationUnitTest {
 		ads.setBorrowConnectionTimeout(10); // optional
 		ds = ads;
 		return ds;
+
+	}
+
+	private static long getBalance(String productId) throws Exception {
+
+		UserTransactionImp utx = new UserTransactionImp();
+		utx.begin();
+
+		Connection inventoryConnection = inventoryDataSource.getConnection();
+
+		Statement s1 = inventoryConnection.createStatement();
+		String q1 = "select balance from Inventory where productId='" + productId + "'";
+		ResultSet rs1 = s1.executeQuery(q1);
+		if (rs1 == null || !rs1.next())
+			throw new Exception("Product not found: " + productId);
+		long balance = rs1.getLong(1);
+
+		inventoryConnection.close();
+		utx.commit();
+
+		return balance;
 
 	}
 

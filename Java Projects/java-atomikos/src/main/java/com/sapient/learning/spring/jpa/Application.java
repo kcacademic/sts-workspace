@@ -1,6 +1,7 @@
 package com.sapient.learning.spring.jpa;
 
 import java.sql.SQLException;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,21 +20,19 @@ public class Application {
 	private OrderRepository orderRepository;
 
 	@Transactional(rollbackFor = Exception.class)
-	public void placeOrder(String orderId, String productId, int amount) throws SQLException {
+	public void placeOrder(String productId, int amount) throws SQLException {
+
+		String orderId = UUID.randomUUID().toString();
 
 		Inventory inventory = inventoryRepository.findOne(productId);
 		inventory.setBalance(inventory.getBalance() - amount);
 		inventoryRepository.save(inventory);
-		if (orderRepository.exists(orderId)) {
-			throw new SQLException("Order already exists.");
-		} else {
-			Order order = new Order();
-			order.setId(orderId);
-			order.setProduct(productId);
-			order.setBalance(new Long(amount));
-			orderRepository.save(order);
-		}
 
+		Order order = new Order();
+		order.setOrderId(orderId);
+		order.setProductId(productId);
+		order.setAmount(new Long(amount));
+		orderRepository.save(order);
 	}
 
 }

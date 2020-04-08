@@ -9,15 +9,15 @@ import javax.persistence.Table;
 public class Inventory {
 
 	@Id
-	private String id;
+	private String productId;
 	private Long balance;
 
-	public String getId() {
-		return id;
+	public String getProductId() {
+		return productId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 	public Long getBalance() {

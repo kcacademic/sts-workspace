@@ -9,32 +9,32 @@ import javax.persistence.Table;
 public class Order {
 
 	@Id
-	private String id;
-	private String product;
-	private Long balance;
+	private String orderId;
+	private String productId;
+	private Long amount;
 
-	public String getId() {
-		return id;
+	public String getOrderId() {
+		return orderId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
-	public String getProduct() {
-		return product;
+	public String getProductId() {
+		return productId;
 	}
 
-	public void setProduct(String product) {
-		this.product = product;
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
-	public Long getBalance() {
-		return balance;
+	public Long getAmount() {
+		return amount;
 	}
 
-	public void setBalance(Long balance) {
-		this.balance = balance;
+	public void setAmount(Long amount) {
+		this.amount = amount;
 	}
 
 }
