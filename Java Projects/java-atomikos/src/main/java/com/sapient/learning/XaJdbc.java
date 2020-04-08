@@ -6,212 +6,106 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import javax.sql.DataSource;
-import javax.transaction.Status;
-import javax.transaction.UserTransaction;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 
 import com.atomikos.icatch.jta.UserTransactionImp;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
 
 public class XaJdbc {
 
-	// the globally unique resource name for the DB; change if needed
-	private static String resourceName = "simple.jdbc.xadatasource.AccountTest";
+	public static void main(String[] args) throws IllegalStateException, SecurityException, RollbackException,
+			HeuristicMixedException, HeuristicRollbackException, SystemException, SQLException, NotSupportedException {
 
-	// the data source, set by getDataSource
-	private static AtomikosDataSourceBean ds = null;
+		UserTransactionImp utx = new UserTransactionImp();
 
-	public static void checkTables() throws Exception {
-		boolean error = false;
-		Connection conn = null;
+		AtomikosDataSourceBean ds1 = new AtomikosDataSourceBean();
+		ds1.setXaDataSourceClassName("org.apache.derby.jdbc.EmbeddedXADataSource");
+		Properties properties1 = new Properties();
+		properties1.put("databaseName", "db1");
+		properties1.put("createDatabase", "create");
+		ds1.setXaProperties(properties1);
+		ds1.setUniqueResourceName("XaDB1");
+		ds1.setPoolSize(10); // optional
+		ds1.setBorrowConnectionTimeout(10); // optional
+
+		AtomikosDataSourceBean ds2 = new AtomikosDataSourceBean();
+		ds2.setXaDataSourceClassName("org.apache.derby.jdbc.EmbeddedXADataSource");
+		Properties properties2 = new Properties();
+		properties2.put("databaseName", "db2");
+		properties2.put("createDatabase", "create");
+		ds2.setXaProperties(properties2);
+		ds2.setUniqueResourceName("XaDB2");
+		ds2.setPoolSize(10); // optional
+		ds2.setBorrowConnectionTimeout(10); // optional
+
+		boolean rollback = false;
 		try {
-			conn = getConnection();
-		} catch (Exception noConnect) {
-			noConnect.printStackTrace();
-			System.err.println("Failed to connect.");
-			System.err.println("PLEASE MAKE SURE THAT DERBY IS INSTALLED AND RUNNING");
-			throw noConnect;
-		}
-		try {
+			// begin a transaction
+			utx.begin();
+			// access the datasource and do any JDBC you like
+			Connection conn1 = ds1.getConnection();
+			Connection conn2 = ds2.getConnection();
 
-			Statement s = conn.createStatement();
+			// perform operations on database
+			String createTable = "create table Accounts ( "
+					+ " account VARCHAR ( 20 ), owner VARCHAR(300), balance DECIMAL (19,0) )";
+			String createRow = "insert into Accounts values ( " + "'account" + 1 + "' , 'owner" + 1 + "', 10000 )";
+			Statement s1 = conn1.createStatement();
 			try {
-				s.executeQuery("select * from Accounts");
-			} catch (SQLException ex) {
-				// table not there => create it
-				System.err.println("Creating Accounts table...");
-				s.executeUpdate("create table Accounts ( "
-						+ " account VARCHAR ( 20 ), owner VARCHAR(300), balance DECIMAL (19,0) )");
-				for (int i = 0; i < 100; i++) {
-					s.executeUpdate(
-							"insert into Accounts values ( " + "'account" + i + "' , 'owner" + i + "', 10000 )");
-				}
+				s1.executeUpdate(createTable);
+			} catch (Exception e) {
+				System.out.println("Table exists");
 			}
-			s.close();
+			s1.executeUpdate(createRow);
+			String q1 = "update Accounts set balance = balance - " + 1000 + " where account ='account" + 1 + "'";
+			s1.executeUpdate(q1);
+			s1.close();
+			Statement s2 = conn2.createStatement();
+			try {
+				s2.executeUpdate(createTable);
+			} catch (Exception e) {
+				System.out.println("Table exists");
+			}
+			s2.executeUpdate(createRow);
+			String q2 = "update Accounts set balance = balance - " + 1000 + " where account ='account" + 1 + "'";
+			s2.executeUpdate(q2);
+			s2.close();
+
+			// always close the connection for reuse in the
+			// DataSource-internal connection pool
+			conn1.close();
+			conn2.close();
 		} catch (Exception e) {
-			error = true;
-			throw e;
+			System.out.println(e.getMessage());
+			// an exception means we should not commit
+			rollback = true;
 		} finally {
-			closeConnection(conn, error);
-
-		}
-
-		// That concludes setup
-
-	}
-
-	private static DataSource getDataSource() {
-
-		if (ds == null) {
-			// Find or construct a datasource instance;
-			// this could equally well be a JNDI lookup
-			// where available. To keep it simple, this
-			// demo merely constructs a new instance.
-			ds = new AtomikosDataSourceBean();
-			// REQUIRED: the full name of the XA datasource class
-
-			ds.setXaDataSourceClassName("org.apache.derby.jdbc.EmbeddedXADataSource");
-			Properties properties = new Properties();
-			properties.put("databaseName", "db");
-			properties.put("createDatabase", "create");
-			ds.setXaProperties(properties);
-
-			// REQUIRED: properties to set on the XA datasource class
-			// ds.getXaProperties().setProperty("user", "demo");
-			// REQUIRED: unique resource name for transaction recovery configuration
-			ds.setUniqueResourceName(resourceName);
-			// OPTIONAL: what is the pool size?
-			ds.setPoolSize(10);
-			// OPTIONAL: how long until the pool thread checks liveness of connections?
-			ds.setBorrowConnectionTimeout(60);
-
-			// NOTE: the resulting datasource can be bound in JNDI where available
-		}
-		return ds;
-	}
-
-	private static Connection getConnection() throws Exception {
-		DataSource ds = getDataSource();
-		Connection conn = null;
-
-		// Retrieve of construct the UserTransaction
-		// (can be bound in JNDI where available)
-		UserTransaction utx = new UserTransactionImp();
-		utx.setTransactionTimeout(60);
-
-		// First, create a transaction
-		utx.begin();
-		conn = ds.getConnection();
-
-		return conn;
-
-	}
-
-	private static void closeConnection(Connection conn, boolean error) throws Exception {
-		if (conn != null)
-			conn.close();
-
-		UserTransaction utx = new UserTransactionImp();
-		if (utx.getStatus() != Status.STATUS_NO_TRANSACTION) {
-			if (error)
-				utx.rollback();
-			else
+			if (!rollback)
 				utx.commit();
-		} else
-			System.out.println("WARNING: closeConnection called outside a tx");
+			else
+				utx.rollback();
+		}
 
-	}
-
-	public static long getBalance(int account) throws Exception {
-		long res = -1;
-		boolean error = false;
+		utx.begin();
+		String query = "select balance from Accounts where account='" + "account" + 1 + "'";
 		Connection conn = null;
-
-		try {
-			conn = getConnection();
-			Statement s = conn.createStatement();
-			String query = "select balance from Accounts where account='" + "account" + account + "'";
-			ResultSet rs = s.executeQuery(query);
-			if (rs == null || !rs.next())
-				throw new Exception("Account not found: " + account);
-			res = rs.getLong(1);
-			s.close();
-		} catch (Exception e) {
-			error = true;
-			throw e;
-		} finally {
-			closeConnection(conn, error);
-		}
-		return res;
-	}
-
-	public static void withdraw(int account, int amount) throws Exception {
-		boolean error = false;
-		Connection conn = null;
-
-		try {
-			conn = getConnection();
-			Statement s = conn.createStatement();
-
-			String sql = "update Accounts set balance = balance - " + amount + " where account ='account" + account
-					+ "'";
-			s.executeUpdate(sql);
-			s.close();
-		} catch (Exception e) {
-			error = true;
-			throw e;
-		} finally {
-			closeConnection(conn, error);
-
-		}
-
-	}
-
-	public static void main(String[] args) {
-		try {
-			// test if DB data has to be created
-			checkTables();
-
-			if (args.length < 2 || args.length > 3) {
-				System.err.println("Arguments required: <acc. number> <operation> [<amount>]");
-				System.exit(1);
-			}
-
-			// get account number
-			int accno = new Integer(args[0]).intValue();
-			if (accno < 0 || accno > 99) {
-				System.err.println("Account number should be between 0 and 99.");
-				System.exit(1);
-			}
-
-			// get operation
-			String op = args[1];
-
-			if (op.equals("balance")) {
-				long bal = getBalance(accno);
-				System.out.println("Balance of account " + accno + " is: " + bal);
-			} else {
-				// get amount
-				if (args.length < 3) {
-					System.err.println("Missing argument: amount.");
-					System.exit(1);
-				}
-				int amount = new Integer(args[2]).intValue();
-				if (op.equals("withdraw"))
-					withdraw(accno, amount);
-				else
-					withdraw(accno, amount * (-1));
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		// Simple, automatic initialization has the minor drawback of not exiting by
-		// itself
-		// since the JDBC pools and the transaction service are still running background
-		// threads.
-		System.exit(0);
+		Statement s = null;
+		ResultSet rs = null;
+		conn = ds1.getConnection();
+		s = conn.createStatement();
+		rs = s.executeQuery(query);
+		rs.next();
+		System.out.println(rs.getLong(1));
+		conn = ds2.getConnection();
+		s = conn.createStatement();
+		rs = s.executeQuery(query);
+		rs.next();
+		System.out.println(rs.getLong(1));
+		utx.commit();
 
 	}
 
