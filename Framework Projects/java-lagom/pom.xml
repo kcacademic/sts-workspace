@@ -14,6 +14,10 @@
         <module>hello-impl</module>
         <module>stream-api</module>
         <module>stream-impl</module>
+		<module>custom-api</module>
+        <module>custom-impl</module>
+		<module>my-api</module>
+        <module>my-impl</module>
         <module>integration-tests</module>
     </modules>
 
