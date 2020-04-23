@@ -2,6 +2,7 @@ package com.sapient.learning.custom.api;
 
 import static com.lightbend.lagom.javadsl.api.Service.named;
 import static com.lightbend.lagom.javadsl.api.Service.pathCall;
+import static com.lightbend.lagom.javadsl.api.ServiceAcl.path;
 
 import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
@@ -28,7 +29,8 @@ public interface CustomService extends Service {
 						pathCall("/api/custom/:id", this::custom), 
 						pathCall("/dowork", this::doWork),
 						pathCall("/status", this::status))
-				.withAutoAcl(true);
+				.withAutoAcl(true)
+				.withServiceAcls(path("/api/play"));
 	}
 
 	

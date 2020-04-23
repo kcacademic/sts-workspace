@@ -41,6 +41,6 @@ public class Worker extends AbstractActor {
 		topic.publish(JobStatus.of(job.getJobId(), "started"));
 		// perform the work...
 		topic.publish(JobStatus.of(job.getJobId(), "completed"));
-		context().stop(self());
+		// context().stop(self());
 	}
 }
