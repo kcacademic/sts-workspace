@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.sapient.learning.eventstore;
 
 import java.net.InetSocketAddress;
 import java.util.UUID;
@@ -27,7 +27,7 @@ import eventstore.j.ReadStreamEventsBuilder;
 import eventstore.j.SettingsBuilder;
 import eventstore.j.WriteEventsBuilder;
 
-public class Main {
+public class EventStore {
 
 	public static void main(String[] args) {
 
