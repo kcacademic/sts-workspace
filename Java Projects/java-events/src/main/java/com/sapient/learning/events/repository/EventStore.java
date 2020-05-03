@@ -1,9 +1,11 @@
-package com.sapient.learning.events.base;
+package com.sapient.learning.events.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.sapient.learning.events.base.Event;
 
 public class EventStore {
 	

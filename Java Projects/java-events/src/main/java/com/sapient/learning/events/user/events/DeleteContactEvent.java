@@ -11,6 +11,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 final public class DeleteContactEvent extends Event {
 
+	private final String userId;
 	private final String contact;
 
 }

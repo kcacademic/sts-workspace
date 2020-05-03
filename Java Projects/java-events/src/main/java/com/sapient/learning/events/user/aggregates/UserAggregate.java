@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import com.sapient.learning.events.base.Aggregate;
 import com.sapient.learning.events.base.Event;
-import com.sapient.learning.events.base.EventStore;
+import com.sapient.learning.events.repository.EventStore;
 import com.sapient.learning.events.user.commands.CreateUserCommand;
 import com.sapient.learning.events.user.commands.UpdateUserCommand;
 import com.sapient.learning.events.user.events.AddContactEvent;
@@ -57,11 +57,12 @@ public class UserAggregate extends Aggregate {
 		GenerateUserIdEvent generateUserIdEvent = new GenerateUserIdEvent();
 		apply(generateUserIdEvent);
 		repository.addEvent(generateUserIdEvent, id.toString());
-		AddNameEvent addNameEvent = new AddNameEvent(command.getName());
+		AddNameEvent addNameEvent = new AddNameEvent(userid, command.getName());
 		apply(addNameEvent);
 		repository.addEvent(addNameEvent, id.toString());
 		for (String contact : command.getContacts()) {
-			AddContactEvent addContactEvent = new AddContactEvent(contact);
+			AddContactEvent addContactEvent = new AddContactEvent(userid,
+					contact);
 			apply(addContactEvent);
 			repository.addEvent(addContactEvent, id.toString());
 		}
@@ -71,7 +72,7 @@ public class UserAggregate extends Aggregate {
 	public void handle(UpdateUserCommand command) {
 
 		if (!this.name.equals(command.getName())) {
-			UpdateNameEvent updateNameEvent = new UpdateNameEvent(
+			UpdateNameEvent updateNameEvent = new UpdateNameEvent(userid,
 					command.getName());
 			apply(updateNameEvent);
 			repository.addEvent(updateNameEvent, id.toString());
@@ -82,7 +83,7 @@ public class UserAggregate extends Aggregate {
 				.collect(Collectors.toList());
 		for (String contact : contactsToRemove) {
 			DeleteContactEvent deleteContactEvent = new DeleteContactEvent(
-					contact);
+					userid, contact);
 			apply(deleteContactEvent);
 			repository.addEvent(deleteContactEvent, id.toString());
 		}
@@ -91,7 +92,8 @@ public class UserAggregate extends Aggregate {
 				.filter(c -> !this.contacts.contains(c))
 				.collect(Collectors.toList());
 		for (String contact : contactsToAdd) {
-			AddContactEvent addContactEvent = new AddContactEvent(contact);
+			AddContactEvent addContactEvent = new AddContactEvent(userid,
+					contact);
 			apply(addContactEvent);
 			repository.addEvent(addContactEvent, id.toString());
 		}
