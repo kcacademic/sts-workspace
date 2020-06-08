@@ -1,1 +1,0 @@
-mvn com.sapient.learning:java-meven-plugin:version -Dgit.command="git rev-parse --short=4 HEAD"

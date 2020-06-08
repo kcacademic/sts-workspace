@@ -11,6 +11,9 @@ JClarity [https://www.jclarity.com/index.php]
 StatefulJ [https://github.com/statefulj/statefulj]
 MapStruct [https://mapstruct.org/]
 Skaffold [https://skaffold.dev/]
+Schematron [http://schematron.com/]
 
 Spring Circuit Breaker [https://spring.io/projects/spring-cloud-circuitbreaker]
 Spring Schema Registry [https://spring.io/projects/spring-cloud-schema-registry]
+
+SeedStack [http://seedstack.org/]
