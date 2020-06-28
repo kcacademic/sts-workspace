@@ -1,0 +1,687 @@
+00:43:14,786 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+00:43:14,926 (main) DEBUG [DataNucleus.General] - Registering bundle org.sonatype.inject version 2.3.0 at URL file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar.
+00:43:15,033 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+00:43:15,041 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+00:43:15,050 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar.
+00:43:15,083 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar!/plugin.xml.
+00:43:15,125 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar!/plugin.xml.
+00:43:15,128 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar.
+00:43:15,140 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar!/plugin.xml.
+00:43:15,143 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar!/plugin.xml.
+00:43:15,149 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar.
+00:43:15,156 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar!/plugin.xml.
+00:43:15,164 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar!/plugin.xml.
+00:43:15,209 (main) DEBUG [DataNucleus.Persistence] - Java types support initialising ...
+00:43:15,285 (main) DEBUG [DataNucleus.Persistence] - Java types support loaded : supported java types=[B, [C, [D, [F, [I, [J, [Ljava.lang.Boolean;, [Ljava.lang.Byte;, [Ljava.lang.Character;, [Ljava.lang.Double;, [Ljava.lang.Enum;, [Ljava.lang.Float;, [Ljava.lang.Integer;, [Ljava.lang.Long;, [Ljava.lang.Number;, [Ljava.lang.Object;, [Ljava.lang.Short;, [Ljava.lang.String;, [Ljava.math.BigDecimal;, [Ljava.math.BigInteger;, [Ljava.util.Date;, [Ljava.util.Locale;, [S, [Z, boolean, byte, char, double, float, int, java.awt.Color, java.awt.image.BufferedImage, java.lang.Boolean, java.lang.Byte, java.lang.Character, java.lang.Class, java.lang.Double, java.lang.Enum, java.lang.Float, java.lang.Integer, java.lang.Long, java.lang.Number, java.lang.Short, java.lang.String, java.lang.StringBuffer, java.lang.StringBuilder, java.math.BigDecimal, java.math.BigInteger, java.net.URI, java.net.URL, java.sql.Date, java.sql.Time, java.sql.Timestamp, java.time.Duration, java.time.Instant, java.time.LocalDate, java.time.LocalDateTime, java.time.LocalTime, java.time.MonthDay, java.time.OffsetDateTime, java.time.OffsetTime, java.time.Period, java.time.Year, java.time.YearMonth, java.time.ZonedDateTime, java.time.ZoneId, java.time.ZoneOffset, java.util.ArrayList, java.util.Arrays$ArrayList, java.util.BitSet, java.util.Calendar, java.util.Collection, java.util.Currency, java.util.Date, java.util.GregorianCalendar, java.util.HashMap, java.util.HashSet, java.util.Hashtable, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.List, java.util.Locale, java.util.Map, java.util.Optional, java.util.PriorityQueue, java.util.Properties, java.util.Queue, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.Stack, java.util.TimeZone, java.util.TreeMap, java.util.TreeSet, java.util.UUID, java.util.Vector, long, short
+00:43:15,288 (main) DEBUG [DataNucleus.MetaData] - MetaDataManager : Input=(XML,Annotations), XML-Validation=false, XML-Suffices=(persistence=*.jdo, orm=orm, query=*.jdoquery), JDO-listener=false
+00:43:15,288 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 5.1.1) for API "JDO"
+00:43:15,289 (main) DEBUG [DataNucleus.Enhancer] - DataNucleus Enhancer : Classpath
+00:43:15,289 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.2\datanucleus-maven-plugin-5.0.2.jar
+00:43:15,289 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar
+00:43:15,289 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar
+00:43:15,289 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar
+00:43:15,289 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar
+00:43:15,290 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar
+00:43:15,290 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar
+00:43:15,291 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar
+00:43:15,292 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar
+00:43:15,292 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar
+00:43:15,292 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar
+00:43:15,292 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes
+00:43:15,293 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-context\5.2.7.RELEASE\spring-context-5.2.7.RELEASE.jar
+00:43:15,293 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-aop\5.2.7.RELEASE\spring-aop-5.2.7.RELEASE.jar
+00:43:15,293 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-beans\5.2.7.RELEASE\spring-beans-5.2.7.RELEASE.jar
+00:43:15,294 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-core\5.2.7.RELEASE\spring-core-5.2.7.RELEASE.jar
+00:43:15,294 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-jcl\5.2.7.RELEASE\spring-jcl-5.2.7.RELEASE.jar
+00:43:15,294 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-expression\5.2.7.RELEASE\spring-expression-5.2.7.RELEASE.jar
+00:43:15,294 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\jdo\jdo-api\3.0.1\jdo-api-3.0.1.jar
+00:43:15,294 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar
+00:43:15,296 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-core\5.1.1\datanucleus-core-5.1.1.jar
+00:43:15,296 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-api-jdo\5.1.1\datanucleus-api-jdo-5.1.1.jar
+00:43:15,296 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\javax.jdo\3.2.0-m7\javax.jdo-3.2.0-m7.jar
+00:43:15,296 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\transaction\transaction-api\1.1\transaction-api-1.1.jar
+00:43:15,297 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-rdbms\5.1.1\datanucleus-rdbms-5.1.1.jar
+00:43:15,297 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\mysql\mysql-connector-java\8.0.20\mysql-connector-java-8.0.20.jar
+00:43:15,297 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar
+00:43:15,297 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\slf4j\slf4j-jdk14\1.7.25\slf4j-jdk14-1.7.25.jar
+00:43:15,297 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar
+00:43:15,298 (main) DEBUG [DataNucleus.Enhancer] - Reading fileListFile: C:\Users\KCHAND~1\AppData\Local\Temp\enhancer-308000649884333525.flf
+00:43:15,306 (main) DEBUG [DataNucleus.Enhancer] - Enhancing classes
+00:43:15,322 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Loading Metadata for classes "[com.sapient.learning.Application, com.sapient.learning.config.Config, com.sapient.learning.dao.ProductDao, com.sapient.learning.model.Product]" ...
+00:43:15,330 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /META-INF/package.jdo
+00:43:15,332 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /WEB-INF/package.jdo
+00:43:15,332 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /package.jdo
+00:43:15,333 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/package.jdo
+00:43:15,334 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com.jdo
+00:43:15,335 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/package.jdo
+00:43:15,336 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient.jdo
+00:43:15,337 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning/package.jdo
+00:43:15,337 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning.jdo
+00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning/Application.jdo
+00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" not found
+00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.Application" as not having MetaData.
+00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.Application" has no MetaData or annotations.
+00:43:15,340 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /META-INF/package.jdo
+00:43:15,341 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /WEB-INF/package.jdo
+00:43:15,341 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /package.jdo
+00:43:15,342 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/package.jdo
+00:43:15,342 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com.jdo
+00:43:15,343 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/package.jdo
+00:43:15,343 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient.jdo
+00:43:15,344 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/package.jdo
+00:43:15,345 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning.jdo
+00:43:15,345 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config/package.jdo
+00:43:15,346 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config.jdo
+00:43:15,346 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config/Config.jdo
+00:43:15,347 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" not found
+00:43:15,347 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.config.Config" as not having MetaData.
+00:43:15,347 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.config.Config" has no MetaData or annotations.
+00:43:15,359 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
+00:43:15,360 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /META-INF/package.jdo
+00:43:15,362 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /WEB-INF/package.jdo
+00:43:15,362 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /package.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/package.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/package.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/package.jdo
+00:43:15,364 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning.jdo
+00:43:15,364 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/package.jdo
+00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao.jdo
+00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/ProductDao.jdo
+00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" not found
+00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
+00:43:15,366 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.dao.ProductDao" as not having MetaData.
+00:43:15,366 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has no MetaData or annotations.
+00:43:15,409 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" has been specified with JDO annotations so using those.
+00:43:15,435 (main) DEBUG [DataNucleus.MetaData] - Populating all MetaData ...
+00:43:15,436 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" : Populating Meta-Data
+00:43:15,438 (main) DEBUG [DataNucleus.MetaData] - Initialising all MetaData ...
+00:43:15,439 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" : Initialising Meta-Data
+00:43:15,441 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Load of Metadata complete
+00:43:15,446 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.sapient.learning.model.Product" starting ...
+00:43:15,473 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt implement the interface "org.datanucleus.enhancement.Persistable" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnStateManager" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnInheritedFieldCount" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFlags" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldTypes" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldNames" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldFlags" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnPersistableSuperclass" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceField" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetStateManager" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsTransactional" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewInstance" but is required
+00:43:15,474 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewInstance" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnSuperClone" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnProvideFields" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "___dn$loadClass" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetManagedFieldCount" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDirty" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceStateManager" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceFlags" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDetached" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnMakeDirty" but is required
+00:43:15,475 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnPersistableSuperclassInit" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDeleted" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldFlagsInit" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldTypesInit" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnProvideField" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnPreSerialize" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetObjectId" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetVersion" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetTransactionalObjectId" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsNew" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyField" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetExecutionContext" but is required
+00:43:15,476 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyFields" but is required
+00:43:15,477 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnGetInheritedFieldCount" but is required
+00:43:15,477 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewObjectIdInstance" but is required
+00:43:15,477 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewObjectIdInstance" but is required
+00:43:15,477 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsPersistent" but is required
+00:43:15,477 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceFields" but is required
+00:43:15,477 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldNamesInit" but is required
+00:43:15,489 (main) DEBUG [DataNucleus.Enhancer] - Adding interface: org.datanucleus.enhancement.Persistable
+00:43:15,494 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.productId"
+00:43:15,494 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.category"
+00:43:15,494 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.name"
+00:43:15,494 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.description"
+00:43:15,494 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.price"
+00:43:15,495 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getProductId changing field "com.sapient.learning.model.Product.productId" for call to "dnGetproductId()"
+00:43:15,495 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setProductId changing field "com.sapient.learning.model.Product.productId" for call to "dnSetproductId()"
+00:43:15,495 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getCategory changing field "com.sapient.learning.model.Product.category" for call to "dnGetcategory()"
+00:43:15,495 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setCategory changing field "com.sapient.learning.model.Product.category" for call to "dnSetcategory()"
+00:43:15,496 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getName changing field "com.sapient.learning.model.Product.name" for call to "dnGetname()"
+00:43:15,496 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setName changing field "com.sapient.learning.model.Product.name" for call to "dnSetname()"
+00:43:15,496 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getDescription changing field "com.sapient.learning.model.Product.description" for call to "dnGetdescription()"
+00:43:15,496 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setDescription changing field "com.sapient.learning.model.Product.description" for call to "dnSetdescription()"
+00:43:15,499 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getPrice changing field "com.sapient.learning.model.Product.price" for call to "dnGetprice()"
+00:43:15,499 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setPrice changing field "com.sapient.learning.model.Product.price" for call to "dnSetprice()"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "org.datanucleus.enhancement.StateManager dnStateManager"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "byte dnFlags"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[B dnFieldFlags"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "java.lang.Class dnPersistableSuperclass"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[Ljava.lang.Class; dnFieldTypes"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[Ljava.lang.String; dnFieldNames"
+00:43:15,500 (main) DEBUG [DataNucleus.Enhancer] - Adding field "int dnInheritedFieldCount"
+00:43:15,501 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void <clinit>()"
+00:43:15,503 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsFromObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldConsumer fc, java.lang.Object oid)"
+00:43:15,503 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsFromObjectId(java.lang.Object oid)"
+00:43:15,504 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsToObjectId(java.lang.Object oid)"
+00:43:15,504 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsToObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldSupplier fs, java.lang.Object oid)"
+00:43:15,504 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetObjectId()"
+00:43:15,504 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetVersion()"
+00:43:15,504 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnPreSerialize()"
+00:43:15,505 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.ExecutionContextReference dnGetExecutionContext()"
+00:43:15,505 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.StateManager dnGetStateManager()"
+00:43:15,505 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetTransactionalObjectId()"
+00:43:15,506 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDeleted()"
+00:43:15,506 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDirty()"
+00:43:15,507 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsNew()"
+00:43:15,507 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsPersistent()"
+00:43:15,507 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsTransactional()"
+00:43:15,507 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnMakeDirty(java.lang.String fieldName)"
+00:43:15,507 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnNewObjectIdInstance()"
+00:43:15,508 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnNewObjectIdInstance(java.lang.Object key)"
+00:43:15,508 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnProvideFields([I indices)"
+00:43:15,508 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceFields([I indices)"
+00:43:15,508 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceFlags()"
+00:43:15,509 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceStateManager(org.datanucleus.enhancement.StateManager sm)"
+00:43:15,509 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDetached()"
+00:43:15,509 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm)"
+00:43:15,509 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm, java.lang.Object obj)"
+00:43:15,509 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceField(int index)"
+00:43:15,510 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnProvideField(int index)"
+00:43:15,510 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyField(com.sapient.learning.model.Product obj, int index)"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyFields(java.lang.Object obj, [I indices)"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[Ljava.lang.String; __dnFieldNamesInit()"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[Ljava.lang.Class; __dnFieldTypesInit()"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[B __dnFieldFlagsInit()"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "int __dnGetInheritedFieldCount()"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "int dnGetManagedFieldCount()"
+00:43:15,511 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Class __dnPersistableSuperclassInit()"
+00:43:15,512 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Class ___dn$loadClass(java.lang.String className)"
+00:43:15,512 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnSuperClone()"
+00:43:15,514 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void writeObject(java.io.ObjectOutputStream out)"
+00:43:15,515 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetcategory(com.sapient.learning.model.Product objPC)"
+00:43:15,515 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetcategory(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:43:15,515 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetdescription(com.sapient.learning.model.Product objPC)"
+00:43:15,515 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetdescription(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetname(com.sapient.learning.model.Product objPC)"
+00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetname(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Double dnGetprice(com.sapient.learning.model.Product objPC)"
+00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetprice(com.sapient.learning.model.Product objPC, java.lang.Double val)"
+00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Long dnGetproductId(com.sapient.learning.model.Product objPC)"
+00:43:15,517 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetproductId(com.sapient.learning.model.Product objPC, java.lang.Long val)"
+00:43:15,518 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\sapient\learning\model\Product.class" with enhanced definition
+00:43:15,520 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : com.sapient.learning.model.Product
+00:43:15,520 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.sapient.learning.model.Product" completed
+00:43:15,521 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=135 ms, enhance=79 ms, total=214 ms. Consult the log for full details
+00:46:20,602 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+00:46:20,677 (main) DEBUG [DataNucleus.General] - Registering bundle org.sonatype.inject version 2.3.0 at URL file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar.
+00:46:20,723 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+00:46:20,726 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+00:46:20,730 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar.
+00:46:20,749 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar!/plugin.xml.
+00:46:20,781 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar!/plugin.xml.
+00:46:20,784 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar.
+00:46:20,794 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar!/plugin.xml.
+00:46:20,797 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar!/plugin.xml.
+00:46:20,802 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar.
+00:46:20,811 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar!/plugin.xml.
+00:46:20,818 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar!/plugin.xml.
+00:46:20,868 (main) DEBUG [DataNucleus.Persistence] - Java types support initialising ...
+00:46:20,941 (main) DEBUG [DataNucleus.Persistence] - Java types support loaded : supported java types=[B, [C, [D, [F, [I, [J, [Ljava.lang.Boolean;, [Ljava.lang.Byte;, [Ljava.lang.Character;, [Ljava.lang.Double;, [Ljava.lang.Enum;, [Ljava.lang.Float;, [Ljava.lang.Integer;, [Ljava.lang.Long;, [Ljava.lang.Number;, [Ljava.lang.Object;, [Ljava.lang.Short;, [Ljava.lang.String;, [Ljava.math.BigDecimal;, [Ljava.math.BigInteger;, [Ljava.util.Date;, [Ljava.util.Locale;, [S, [Z, boolean, byte, char, double, float, int, java.awt.Color, java.awt.image.BufferedImage, java.lang.Boolean, java.lang.Byte, java.lang.Character, java.lang.Class, java.lang.Double, java.lang.Enum, java.lang.Float, java.lang.Integer, java.lang.Long, java.lang.Number, java.lang.Short, java.lang.String, java.lang.StringBuffer, java.lang.StringBuilder, java.math.BigDecimal, java.math.BigInteger, java.net.URI, java.net.URL, java.sql.Date, java.sql.Time, java.sql.Timestamp, java.time.Duration, java.time.Instant, java.time.LocalDate, java.time.LocalDateTime, java.time.LocalTime, java.time.MonthDay, java.time.OffsetDateTime, java.time.OffsetTime, java.time.Period, java.time.Year, java.time.YearMonth, java.time.ZonedDateTime, java.time.ZoneId, java.time.ZoneOffset, java.util.ArrayList, java.util.Arrays$ArrayList, java.util.BitSet, java.util.Calendar, java.util.Collection, java.util.Currency, java.util.Date, java.util.GregorianCalendar, java.util.HashMap, java.util.HashSet, java.util.Hashtable, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.List, java.util.Locale, java.util.Map, java.util.Optional, java.util.PriorityQueue, java.util.Properties, java.util.Queue, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.Stack, java.util.TimeZone, java.util.TreeMap, java.util.TreeSet, java.util.UUID, java.util.Vector, long, short
+00:46:20,944 (main) DEBUG [DataNucleus.MetaData] - MetaDataManager : Input=(XML,Annotations), XML-Validation=false, XML-Suffices=(persistence=*.jdo, orm=orm, query=*.jdoquery), JDO-listener=false
+00:46:20,945 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 5.1.1) for API "JDO"
+00:46:20,945 (main) DEBUG [DataNucleus.Enhancer] - DataNucleus Enhancer : Classpath
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.2\datanucleus-maven-plugin-5.0.2.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar
+00:46:20,946 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar
+00:46:20,947 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar
+00:46:20,947 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar
+00:46:20,947 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar
+00:46:20,947 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar
+00:46:20,947 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar
+00:46:20,947 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar
+00:46:20,948 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar
+00:46:20,948 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar
+00:46:20,948 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar
+00:46:20,948 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes
+00:46:20,948 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-context\5.2.7.RELEASE\spring-context-5.2.7.RELEASE.jar
+00:46:20,948 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-aop\5.2.7.RELEASE\spring-aop-5.2.7.RELEASE.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-beans\5.2.7.RELEASE\spring-beans-5.2.7.RELEASE.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-core\5.2.7.RELEASE\spring-core-5.2.7.RELEASE.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-jcl\5.2.7.RELEASE\spring-jcl-5.2.7.RELEASE.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-expression\5.2.7.RELEASE\spring-expression-5.2.7.RELEASE.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\jdo\jdo-api\3.0.1\jdo-api-3.0.1.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar
+00:46:20,949 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-core\5.1.1\datanucleus-core-5.1.1.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-api-jdo\5.1.1\datanucleus-api-jdo-5.1.1.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\javax.jdo\3.2.0-m7\javax.jdo-3.2.0-m7.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\transaction\transaction-api\1.1\transaction-api-1.1.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-rdbms\5.1.1\datanucleus-rdbms-5.1.1.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\mysql\mysql-connector-java\8.0.20\mysql-connector-java-8.0.20.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar
+00:46:20,950 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\slf4j\slf4j-jdk14\1.7.25\slf4j-jdk14-1.7.25.jar
+00:46:20,951 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar
+00:46:20,951 (main) DEBUG [DataNucleus.Enhancer] - Reading fileListFile: C:\Users\KCHAND~1\AppData\Local\Temp\enhancer-17645972538427390070.flf
+00:46:20,960 (main) DEBUG [DataNucleus.Enhancer] - Enhancing classes
+00:46:20,977 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Loading Metadata for classes "[com.sapient.learning.Application, com.sapient.learning.config.Config, com.sapient.learning.dao.ProductDao, com.sapient.learning.model.Product]" ...
+00:46:20,992 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /META-INF/package.jdo
+00:46:20,993 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /WEB-INF/package.jdo
+00:46:20,994 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /package.jdo
+00:46:20,996 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/package.jdo
+00:46:20,998 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com.jdo
+00:46:20,999 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/package.jdo
+00:46:21,000 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient.jdo
+00:46:21,001 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning/package.jdo
+00:46:21,002 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning.jdo
+00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning/Application.jdo
+00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" not found
+00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.Application" as not having MetaData.
+00:46:21,004 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.Application" has no MetaData or annotations.
+00:46:21,007 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /META-INF/package.jdo
+00:46:21,007 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /WEB-INF/package.jdo
+00:46:21,007 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /package.jdo
+00:46:21,008 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/package.jdo
+00:46:21,009 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com.jdo
+00:46:21,009 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/package.jdo
+00:46:21,010 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient.jdo
+00:46:21,011 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/package.jdo
+00:46:21,011 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning.jdo
+00:46:21,013 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config/package.jdo
+00:46:21,013 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config.jdo
+00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config/Config.jdo
+00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" not found
+00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.config.Config" as not having MetaData.
+00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.config.Config" has no MetaData or annotations.
+00:46:21,028 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
+00:46:21,028 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /META-INF/package.jdo
+00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /WEB-INF/package.jdo
+00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /package.jdo
+00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/package.jdo
+00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com.jdo
+00:46:21,030 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/package.jdo
+00:46:21,030 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient.jdo
+00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/package.jdo
+00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning.jdo
+00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/package.jdo
+00:46:21,032 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao.jdo
+00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/ProductDao.jdo
+00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" not found
+00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
+00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.dao.ProductDao" as not having MetaData.
+00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has no MetaData or annotations.
+00:46:21,076 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" has been specified with JDO annotations so using those.
+00:46:21,103 (main) DEBUG [DataNucleus.MetaData] - Populating all MetaData ...
+00:46:21,103 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" : Populating Meta-Data
+00:46:21,107 (main) DEBUG [DataNucleus.MetaData] - Initialising all MetaData ...
+00:46:21,107 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" : Initialising Meta-Data
+00:46:21,109 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Load of Metadata complete
+00:46:21,114 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.sapient.learning.model.Product" starting ...
+00:46:21,137 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt implement the interface "org.datanucleus.enhancement.Persistable" but is required
+00:46:21,137 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnStateManager" but is required
+00:46:21,137 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnInheritedFieldCount" but is required
+00:46:21,137 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFlags" but is required
+00:46:21,137 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldTypes" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldNames" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldFlags" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnPersistableSuperclass" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceField" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetStateManager" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsTransactional" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewInstance" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewInstance" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnSuperClone" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnProvideFields" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "___dn$loadClass" but is required
+00:46:21,138 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetManagedFieldCount" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDirty" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceStateManager" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceFlags" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDetached" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnMakeDirty" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnPersistableSuperclassInit" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDeleted" but is required
+00:46:21,139 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldFlagsInit" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldTypesInit" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnProvideField" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnPreSerialize" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetObjectId" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetVersion" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetTransactionalObjectId" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsNew" but is required
+00:46:21,140 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyField" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetExecutionContext" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyFields" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnGetInheritedFieldCount" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewObjectIdInstance" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewObjectIdInstance" but is required
+00:46:21,141 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsPersistent" but is required
+00:46:21,142 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceFields" but is required
+00:46:21,142 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldNamesInit" but is required
+00:46:21,154 (main) DEBUG [DataNucleus.Enhancer] - Adding interface: org.datanucleus.enhancement.Persistable
+00:46:21,160 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.productId"
+00:46:21,160 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.category"
+00:46:21,160 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.name"
+00:46:21,160 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.description"
+00:46:21,160 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.price"
+00:46:21,160 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getProductId changing field "com.sapient.learning.model.Product.productId" for call to "dnGetproductId()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setProductId changing field "com.sapient.learning.model.Product.productId" for call to "dnSetproductId()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getCategory changing field "com.sapient.learning.model.Product.category" for call to "dnGetcategory()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setCategory changing field "com.sapient.learning.model.Product.category" for call to "dnSetcategory()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getName changing field "com.sapient.learning.model.Product.name" for call to "dnGetname()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setName changing field "com.sapient.learning.model.Product.name" for call to "dnSetname()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getDescription changing field "com.sapient.learning.model.Product.description" for call to "dnGetdescription()"
+00:46:21,161 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setDescription changing field "com.sapient.learning.model.Product.description" for call to "dnSetdescription()"
+00:46:21,164 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getPrice changing field "com.sapient.learning.model.Product.price" for call to "dnGetprice()"
+00:46:21,165 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setPrice changing field "com.sapient.learning.model.Product.price" for call to "dnSetprice()"
+00:46:21,165 (main) DEBUG [DataNucleus.Enhancer] - Adding field "org.datanucleus.enhancement.StateManager dnStateManager"
+00:46:21,165 (main) DEBUG [DataNucleus.Enhancer] - Adding field "byte dnFlags"
+00:46:21,165 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[B dnFieldFlags"
+00:46:21,165 (main) DEBUG [DataNucleus.Enhancer] - Adding field "java.lang.Class dnPersistableSuperclass"
+00:46:21,166 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[Ljava.lang.Class; dnFieldTypes"
+00:46:21,166 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[Ljava.lang.String; dnFieldNames"
+00:46:21,166 (main) DEBUG [DataNucleus.Enhancer] - Adding field "int dnInheritedFieldCount"
+00:46:21,167 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void <clinit>()"
+00:46:21,168 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsFromObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldConsumer fc, java.lang.Object oid)"
+00:46:21,169 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsFromObjectId(java.lang.Object oid)"
+00:46:21,169 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsToObjectId(java.lang.Object oid)"
+00:46:21,169 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsToObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldSupplier fs, java.lang.Object oid)"
+00:46:21,169 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetObjectId()"
+00:46:21,169 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetVersion()"
+00:46:21,171 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnPreSerialize()"
+00:46:21,171 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.ExecutionContextReference dnGetExecutionContext()"
+00:46:21,171 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.StateManager dnGetStateManager()"
+00:46:21,171 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetTransactionalObjectId()"
+00:46:21,172 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDeleted()"
+00:46:21,172 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDirty()"
+00:46:21,172 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsNew()"
+00:46:21,172 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsPersistent()"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsTransactional()"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnMakeDirty(java.lang.String fieldName)"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnNewObjectIdInstance()"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnNewObjectIdInstance(java.lang.Object key)"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnProvideFields([I indices)"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceFields([I indices)"
+00:46:21,173 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceFlags()"
+00:46:21,174 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceStateManager(org.datanucleus.enhancement.StateManager sm)"
+00:46:21,175 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDetached()"
+00:46:21,175 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm)"
+00:46:21,175 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm, java.lang.Object obj)"
+00:46:21,175 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceField(int index)"
+00:46:21,175 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnProvideField(int index)"
+00:46:21,175 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyField(com.sapient.learning.model.Product obj, int index)"
+00:46:21,176 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyFields(java.lang.Object obj, [I indices)"
+00:46:21,176 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[Ljava.lang.String; __dnFieldNamesInit()"
+00:46:21,176 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[Ljava.lang.Class; __dnFieldTypesInit()"
+00:46:21,176 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[B __dnFieldFlagsInit()"
+00:46:21,177 (main) DEBUG [DataNucleus.Enhancer] - Adding method "int __dnGetInheritedFieldCount()"
+00:46:21,177 (main) DEBUG [DataNucleus.Enhancer] - Adding method "int dnGetManagedFieldCount()"
+00:46:21,177 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Class __dnPersistableSuperclassInit()"
+00:46:21,177 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Class ___dn$loadClass(java.lang.String className)"
+00:46:21,178 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnSuperClone()"
+00:46:21,179 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void writeObject(java.io.ObjectOutputStream out)"
+00:46:21,179 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetcategory(com.sapient.learning.model.Product objPC)"
+00:46:21,180 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetcategory(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:46:21,180 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetdescription(com.sapient.learning.model.Product objPC)"
+00:46:21,180 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetdescription(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetname(com.sapient.learning.model.Product objPC)"
+00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetname(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Double dnGetprice(com.sapient.learning.model.Product objPC)"
+00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetprice(com.sapient.learning.model.Product objPC, java.lang.Double val)"
+00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Long dnGetproductId(com.sapient.learning.model.Product objPC)"
+00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetproductId(com.sapient.learning.model.Product objPC, java.lang.Long val)"
+00:46:21,183 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\sapient\learning\model\Product.class" with enhanced definition
+00:46:21,185 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : com.sapient.learning.model.Product
+00:46:21,185 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.sapient.learning.model.Product" completed
+00:46:21,186 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=149 ms, enhance=76 ms, total=225 ms. Consult the log for full details
+00:58:12,845 (main) DEBUG [DataNucleus.General] - Using PluginRegistry org.datanucleus.plugin.NonManagedPluginRegistry
+00:58:12,914 (main) DEBUG [DataNucleus.General] - Registering bundle org.sonatype.inject version 2.3.0 at URL file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar.
+00:58:12,959 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+00:58:12,962 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/sonatype/sisu/sisu-inject-bean/2.3.0/sisu-inject-bean-2.3.0.jar!/plugin.xml.
+00:58:12,966 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar.
+00:58:12,986 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar!/plugin.xml.
+00:58:13,014 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-core/5.1.1/datanucleus-core-5.1.1.jar!/plugin.xml.
+00:58:13,016 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.api.jdo version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar.
+00:58:13,026 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar!/plugin.xml.
+00:58:13,029 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-api-jdo/5.1.1/datanucleus-api-jdo-5.1.1.jar!/plugin.xml.
+00:58:13,033 (main) DEBUG [DataNucleus.General] - Registering bundle org.datanucleus.store.rdbms version 5.1.1 at URL file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar.
+00:58:13,041 (main) DEBUG [DataNucleus.General] - Loading extension points from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar!/plugin.xml.
+00:58:13,046 (main) DEBUG [DataNucleus.General] - Loading extensions from plug-in file jar:file:/C:/Users/kchandrakant/.m2/repository/org/datanucleus/datanucleus-rdbms/5.1.1/datanucleus-rdbms-5.1.1.jar!/plugin.xml.
+00:58:13,090 (main) DEBUG [DataNucleus.Persistence] - Java types support initialising ...
+00:58:13,161 (main) DEBUG [DataNucleus.Persistence] - Java types support loaded : supported java types=[B, [C, [D, [F, [I, [J, [Ljava.lang.Boolean;, [Ljava.lang.Byte;, [Ljava.lang.Character;, [Ljava.lang.Double;, [Ljava.lang.Enum;, [Ljava.lang.Float;, [Ljava.lang.Integer;, [Ljava.lang.Long;, [Ljava.lang.Number;, [Ljava.lang.Object;, [Ljava.lang.Short;, [Ljava.lang.String;, [Ljava.math.BigDecimal;, [Ljava.math.BigInteger;, [Ljava.util.Date;, [Ljava.util.Locale;, [S, [Z, boolean, byte, char, double, float, int, java.awt.Color, java.awt.image.BufferedImage, java.lang.Boolean, java.lang.Byte, java.lang.Character, java.lang.Class, java.lang.Double, java.lang.Enum, java.lang.Float, java.lang.Integer, java.lang.Long, java.lang.Number, java.lang.Short, java.lang.String, java.lang.StringBuffer, java.lang.StringBuilder, java.math.BigDecimal, java.math.BigInteger, java.net.URI, java.net.URL, java.sql.Date, java.sql.Time, java.sql.Timestamp, java.time.Duration, java.time.Instant, java.time.LocalDate, java.time.LocalDateTime, java.time.LocalTime, java.time.MonthDay, java.time.OffsetDateTime, java.time.OffsetTime, java.time.Period, java.time.Year, java.time.YearMonth, java.time.ZonedDateTime, java.time.ZoneId, java.time.ZoneOffset, java.util.ArrayList, java.util.Arrays$ArrayList, java.util.BitSet, java.util.Calendar, java.util.Collection, java.util.Currency, java.util.Date, java.util.GregorianCalendar, java.util.HashMap, java.util.HashSet, java.util.Hashtable, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.List, java.util.Locale, java.util.Map, java.util.Optional, java.util.PriorityQueue, java.util.Properties, java.util.Queue, java.util.Set, java.util.SortedMap, java.util.SortedSet, java.util.Stack, java.util.TimeZone, java.util.TreeMap, java.util.TreeSet, java.util.UUID, java.util.Vector, long, short
+00:58:13,164 (main) DEBUG [DataNucleus.MetaData] - MetaDataManager : Input=(XML,Annotations), XML-Validation=false, XML-Suffices=(persistence=*.jdo, orm=orm, query=*.jdoquery), JDO-listener=false
+00:58:13,164 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 5.1.1) for API "JDO"
+00:58:13,164 (main) DEBUG [DataNucleus.Enhancer] - DataNucleus Enhancer : Classpath
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-maven-plugin\5.0.2\datanucleus-maven-plugin-5.0.2.jar
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-utils\3.0.8\plexus-utils-3.0.8.jar
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-artifact\3.0.4\maven-artifact-3.0.4.jar
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-plugin-api\3.0.4\maven-plugin-api-3.0.4.jar
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\maven\maven-model\3.0.4\maven-model-3.0.4.jar
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-inject-plexus\2.3.0\sisu-inject-plexus-2.3.0.jar
+00:58:13,165 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar
+00:58:13,166 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-inject-bean\2.3.0\sisu-inject-bean-2.3.0.jar
+00:58:13,166 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-guice\3.1.0\sisu-guice-3.1.0-no_aop.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\sonatype\sisu\sisu-guava\0.9.9\sisu-guava-0.9.9.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-container-default\1.5.5\plexus-container-default-1.5.5.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.2.2\plexus-classworlds-2.2.2.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\apache\xbean\xbean-reflect\3.4\xbean-reflect-3.4.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\log4j\log4j\1.2.12\log4j-1.2.12.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\com\google\collections\google-collections\1.0\google-collections-1.0.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes
+00:58:13,167 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-context\5.2.7.RELEASE\spring-context-5.2.7.RELEASE.jar
+00:58:13,168 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-aop\5.2.7.RELEASE\spring-aop-5.2.7.RELEASE.jar
+00:58:13,168 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-beans\5.2.7.RELEASE\spring-beans-5.2.7.RELEASE.jar
+00:58:13,168 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-core\5.2.7.RELEASE\spring-core-5.2.7.RELEASE.jar
+00:58:13,168 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-jcl\5.2.7.RELEASE\spring-jcl-5.2.7.RELEASE.jar
+00:58:13,168 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\springframework\spring-expression\5.2.7.RELEASE\spring-expression-5.2.7.RELEASE.jar
+00:58:13,168 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\jdo\jdo-api\3.0.1\jdo-api-3.0.1.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\transaction\jta\1.1\jta-1.1.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-core\5.1.1\datanucleus-core-5.1.1.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-api-jdo\5.1.1\datanucleus-api-jdo-5.1.1.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\javax.jdo\3.2.0-m7\javax.jdo-3.2.0-m7.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\javax\transaction\transaction-api\1.1\transaction-api-1.1.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\datanucleus\datanucleus-rdbms\5.1.1\datanucleus-rdbms-5.1.1.jar
+00:58:13,169 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\mysql\mysql-connector-java\8.0.20\mysql-connector-java-8.0.20.jar
+00:58:13,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\com\google\protobuf\protobuf-java\3.6.1\protobuf-java-3.6.1.jar
+00:58:13,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\slf4j\slf4j-jdk14\1.7.25\slf4j-jdk14-1.7.25.jar
+00:58:13,170 (main) DEBUG [DataNucleus.Enhancer] - >>  C:\Users\kchandrakant\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar
+00:58:13,170 (main) DEBUG [DataNucleus.Enhancer] - Reading fileListFile: C:\Users\KCHAND~1\AppData\Local\Temp\enhancer-9664984790826524503.flf
+00:58:13,179 (main) DEBUG [DataNucleus.Enhancer] - Enhancing classes
+00:58:13,195 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Loading Metadata for classes "[com.sapient.learning.Application, com.sapient.learning.config.Config, com.sapient.learning.dao.ProductDao, com.sapient.learning.model.Product]" ...
+00:58:13,204 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /META-INF/package.jdo
+00:58:13,205 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /WEB-INF/package.jdo
+00:58:13,206 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /package.jdo
+00:58:13,208 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/package.jdo
+00:58:13,209 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com.jdo
+00:58:13,210 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/package.jdo
+00:58:13,210 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient.jdo
+00:58:13,211 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning/package.jdo
+00:58:13,212 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning.jdo
+00:58:13,212 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" NOT found at /com/sapient/learning/Application.jdo
+00:58:13,213 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.Application" not found
+00:58:13,213 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.Application" as not having MetaData.
+00:58:13,213 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.Application" has no MetaData or annotations.
+00:58:13,216 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /META-INF/package.jdo
+00:58:13,217 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /WEB-INF/package.jdo
+00:58:13,217 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /package.jdo
+00:58:13,218 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/package.jdo
+00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com.jdo
+00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/package.jdo
+00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient.jdo
+00:58:13,221 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/package.jdo
+00:58:13,221 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning.jdo
+00:58:13,222 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config/package.jdo
+00:58:13,224 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config.jdo
+00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" NOT found at /com/sapient/learning/config/Config.jdo
+00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.config.Config" not found
+00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.config.Config" as not having MetaData.
+00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.config.Config" has no MetaData or annotations.
+00:58:13,240 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
+00:58:13,241 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /META-INF/package.jdo
+00:58:13,241 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /WEB-INF/package.jdo
+00:58:13,242 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /package.jdo
+00:58:13,243 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/package.jdo
+00:58:13,243 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com.jdo
+00:58:13,245 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/package.jdo
+00:58:13,245 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient.jdo
+00:58:13,246 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/package.jdo
+00:58:13,247 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning.jdo
+00:58:13,248 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/package.jdo
+00:58:13,248 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao.jdo
+00:58:13,249 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/ProductDao.jdo
+00:58:13,249 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.sapient.learning.dao.ProductDao" not found
+00:58:13,250 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
+00:58:13,250 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.sapient.learning.dao.ProductDao" as not having MetaData.
+00:58:13,250 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.dao.ProductDao" has no MetaData or annotations.
+00:58:13,296 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" has been specified with JDO annotations so using those.
+00:58:13,315 (main) DEBUG [DataNucleus.MetaData] - Populating all MetaData ...
+00:58:13,315 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" : Populating Meta-Data
+00:58:13,328 (main) DEBUG [DataNucleus.MetaData] - Initialising all MetaData ...
+00:58:13,329 (main) DEBUG [DataNucleus.MetaData] - Class "com.sapient.learning.model.Product" : Initialising Meta-Data
+00:58:13,332 (main) DEBUG [DataNucleus.MetaData] - MetaData Management : Load of Metadata complete
+00:58:13,337 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.sapient.learning.model.Product" starting ...
+00:58:13,365 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt implement the interface "org.datanucleus.enhancement.Persistable" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnStateManager" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnInheritedFieldCount" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFlags" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldTypes" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldNames" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnFieldFlags" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have field "dnPersistableSuperclass" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceField" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetStateManager" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsTransactional" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewInstance" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewInstance" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnSuperClone" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnProvideFields" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "___dn$loadClass" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetManagedFieldCount" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDirty" but is required
+00:58:13,366 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceStateManager" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceFlags" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDetached" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnMakeDirty" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnPersistableSuperclassInit" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsDeleted" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldFlagsInit" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldTypesInit" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnProvideField" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnPreSerialize" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetObjectId" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetVersion" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetTransactionalObjectId" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsNew" but is required
+00:58:13,367 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+00:58:13,368 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyField" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnGetExecutionContext" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnCopyFields" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnGetInheritedFieldCount" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewObjectIdInstance" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnNewObjectIdInstance" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnIsPersistent" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "dnReplaceFields" but is required
+00:58:13,369 (main) DEBUG [DataNucleus.Enhancer] - Class "com.sapient.learning.model.Product" doesnt have method "__dnFieldNamesInit" but is required
+00:58:13,384 (main) DEBUG [DataNucleus.Enhancer] - Adding interface: org.datanucleus.enhancement.Persistable
+00:58:13,391 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.productId"
+00:58:13,391 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.category"
+00:58:13,391 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.name"
+00:58:13,391 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.description"
+00:58:13,391 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.<init> : omitting enhance of set of field "com.sapient.learning.model.Product.price"
+00:58:13,392 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getProductId changing field "com.sapient.learning.model.Product.productId" for call to "dnGetproductId()"
+00:58:13,392 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setProductId changing field "com.sapient.learning.model.Product.productId" for call to "dnSetproductId()"
+00:58:13,392 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getCategory changing field "com.sapient.learning.model.Product.category" for call to "dnGetcategory()"
+00:58:13,393 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setCategory changing field "com.sapient.learning.model.Product.category" for call to "dnSetcategory()"
+00:58:13,393 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getName changing field "com.sapient.learning.model.Product.name" for call to "dnGetname()"
+00:58:13,393 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setName changing field "com.sapient.learning.model.Product.name" for call to "dnSetname()"
+00:58:13,393 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getDescription changing field "com.sapient.learning.model.Product.description" for call to "dnGetdescription()"
+00:58:13,393 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setDescription changing field "com.sapient.learning.model.Product.description" for call to "dnSetdescription()"
+00:58:13,394 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.getPrice changing field "com.sapient.learning.model.Product.price" for call to "dnGetprice()"
+00:58:13,394 (main) DEBUG [DataNucleus.Enhancer] - Enhancing original method com.sapient.learning.model.Product.setPrice changing field "com.sapient.learning.model.Product.price" for call to "dnSetprice()"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "org.datanucleus.enhancement.StateManager dnStateManager"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "byte dnFlags"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[B dnFieldFlags"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "java.lang.Class dnPersistableSuperclass"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[Ljava.lang.Class; dnFieldTypes"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "[Ljava.lang.String; dnFieldNames"
+00:58:13,398 (main) DEBUG [DataNucleus.Enhancer] - Adding field "int dnInheritedFieldCount"
+00:58:13,401 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void <clinit>()"
+00:58:13,403 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsFromObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldConsumer fc, java.lang.Object oid)"
+00:58:13,403 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsFromObjectId(java.lang.Object oid)"
+00:58:13,403 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsToObjectId(java.lang.Object oid)"
+00:58:13,403 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyKeyFieldsToObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldSupplier fs, java.lang.Object oid)"
+00:58:13,403 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetObjectId()"
+00:58:13,404 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetVersion()"
+00:58:13,405 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnPreSerialize()"
+00:58:13,405 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.ExecutionContextReference dnGetExecutionContext()"
+00:58:13,405 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.StateManager dnGetStateManager()"
+00:58:13,405 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnGetTransactionalObjectId()"
+00:58:13,406 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDeleted()"
+00:58:13,406 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDirty()"
+00:58:13,407 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsNew()"
+00:58:13,407 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsPersistent()"
+00:58:13,407 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsTransactional()"
+00:58:13,407 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnMakeDirty(java.lang.String fieldName)"
+00:58:13,407 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnNewObjectIdInstance()"
+00:58:13,408 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnNewObjectIdInstance(java.lang.Object key)"
+00:58:13,408 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnProvideFields([I indices)"
+00:58:13,408 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceFields([I indices)"
+00:58:13,409 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceFlags()"
+00:58:13,410 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceStateManager(org.datanucleus.enhancement.StateManager sm)"
+00:58:13,410 (main) DEBUG [DataNucleus.Enhancer] - Adding method "boolean dnIsDetached()"
+00:58:13,410 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm)"
+00:58:13,410 (main) DEBUG [DataNucleus.Enhancer] - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm, java.lang.Object obj)"
+00:58:13,410 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnReplaceField(int index)"
+00:58:13,411 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnProvideField(int index)"
+00:58:13,411 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyField(com.sapient.learning.model.Product obj, int index)"
+00:58:13,412 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnCopyFields(java.lang.Object obj, [I indices)"
+00:58:13,413 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[Ljava.lang.String; __dnFieldNamesInit()"
+00:58:13,413 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[Ljava.lang.Class; __dnFieldTypesInit()"
+00:58:13,413 (main) DEBUG [DataNucleus.Enhancer] - Adding method "[B __dnFieldFlagsInit()"
+00:58:13,413 (main) DEBUG [DataNucleus.Enhancer] - Adding method "int __dnGetInheritedFieldCount()"
+00:58:13,413 (main) DEBUG [DataNucleus.Enhancer] - Adding method "int dnGetManagedFieldCount()"
+00:58:13,413 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Class __dnPersistableSuperclassInit()"
+00:58:13,414 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Class ___dn$loadClass(java.lang.String className)"
+00:58:13,414 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Object dnSuperClone()"
+00:58:13,416 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void writeObject(java.io.ObjectOutputStream out)"
+00:58:13,417 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetcategory(com.sapient.learning.model.Product objPC)"
+00:58:13,417 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetcategory(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:58:13,417 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetdescription(com.sapient.learning.model.Product objPC)"
+00:58:13,417 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetdescription(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:58:13,418 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.String dnGetname(com.sapient.learning.model.Product objPC)"
+00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetname(com.sapient.learning.model.Product objPC, java.lang.String val)"
+00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Double dnGetprice(com.sapient.learning.model.Product objPC)"
+00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetprice(com.sapient.learning.model.Product objPC, java.lang.Double val)"
+00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Long dnGetproductId(com.sapient.learning.model.Product objPC)"
+00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetproductId(com.sapient.learning.model.Product objPC, java.lang.Long val)"
+00:58:13,421 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\sapient\learning\model\Product.class" with enhanced definition
+00:58:13,424 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : com.sapient.learning.model.Product
+00:58:13,424 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.sapient.learning.model.Product" completed
+00:58:13,425 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=153 ms, enhance=92 ms, total=245 ms. Consult the log for full details
