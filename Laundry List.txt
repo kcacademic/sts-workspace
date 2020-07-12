@@ -5,13 +5,15 @@ CloudEvents [https://cloudevents.io/]
 AsyncAPI [https://www.asyncapi.com/]
 OData [https://www.odata.org/]
 NiFi [https://nifi.apache.org/]
-Apache Samza [http://samza.apache.org/]
-Apache Ignite [https://ignite.apache.org/]
 JClarity [https://www.jclarity.com/index.php]
 StatefulJ [https://github.com/statefulj/statefulj]
 MapStruct [https://mapstruct.org/]
 Skaffold [https://skaffold.dev/]
 Schematron [http://schematron.com/]
+SeedStack [http://seedstack.org/]
+
+Apache Samza [http://samza.apache.org/]
+Apache Ignite [https://ignite.apache.org/]
 
 Spring Cloud Guides [https://spring.io/guides]
 Spring Cloud Circuit Breaker [https://spring.io/projects/spring-cloud-circuitbreaker]
@@ -19,7 +21,5 @@ Spring Cloud Schema Registry [https://spring.io/projects/spring-cloud-schema-reg
 Spring Cloud Valut           [https://spring.io/projects/spring-cloud-vault]
 Spring Cloud Security        [https://spring.io/projects/spring-cloud-security]
 Spring Cloud Sleuth          [https://spring.io/projects/spring-cloud-sleuth]
-
 Spring Cloud Gateway   	     [https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway]
 
-SeedStack [http://seedstack.org/]
