@@ -1,5 +1,4 @@
 R2DBC [https://r2dbc.io/]
-RestQL [http://restql.b2w.io/]
 NATS [https://nats.io/]
 CloudEvents [https://cloudevents.io/]
 AsyncAPI [https://www.asyncapi.com/]
