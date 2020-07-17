@@ -21,6 +21,14 @@ public class ResourceServerJwtConfig extends ResourceServerConfigurerAdapter {
     public void configure(ResourceServerSecurityConfigurer config) {
         config.tokenServices(tokenServices());
     }
+    
+    @Bean
+    @Primary
+    public DefaultTokenServices tokenServices() {
+        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+        defaultTokenServices.setTokenStore(tokenStore());
+        return defaultTokenServices;
+    }
  
     @Bean
     public TokenStore tokenStore() {
@@ -34,12 +42,6 @@ public class ResourceServerJwtConfig extends ResourceServerConfigurerAdapter {
         return converter;
     }
  
-    @Bean
-    @Primary
-    public DefaultTokenServices tokenServices() {
-        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore());
-        return defaultTokenServices;
-    }
+
 	
 }

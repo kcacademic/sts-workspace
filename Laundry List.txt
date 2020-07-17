@@ -10,6 +10,7 @@ MapStruct [https://mapstruct.org/]
 Skaffold [https://skaffold.dev/]
 Schematron [http://schematron.com/]
 SeedStack [http://seedstack.org/]
+Web3j [https://docs.web3j.io/]
 
 Apache Samza [http://samza.apache.org/]
 Apache Ignite [https://ignite.apache.org/]
