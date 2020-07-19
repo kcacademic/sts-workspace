@@ -3,6 +3,7 @@ package com.sapient.learning.config;
 import com.sapient.learning.utility.KeyUtility;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -15,12 +16,14 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
 
     @Bean
-    @Profile("jwtDefault")
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         System.out.println("Instantiating Bean: springSecurityFilterChain");
         http
                 .authorizeExchange(exchanges ->
-                        exchanges.anyExchange().authenticated()
+                        exchanges
+                        .pathMatchers(HttpMethod.GET, "/api/index").hasAnyAuthority("SCOPE_profile")
+                        .pathMatchers(HttpMethod.GET, "/api/update").hasAuthority("SCOPE_admin")
+                        .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth2ResourceServer ->
                         oauth2ResourceServer

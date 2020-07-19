@@ -1,11 +1,9 @@
+server:
+  port: 8081
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8081/.well-known/jwks.json
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
+          #jwk-set-uri: http://localhost:8081/.well-known/jwks.json
+          jwk-set-uri: http://localhost:8080/auth/realms/demo/protocol/openid-connect/certs

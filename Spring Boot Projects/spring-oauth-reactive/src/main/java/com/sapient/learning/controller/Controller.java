@@ -13,7 +13,14 @@ public class Controller {
 
     @GetMapping("/index")
     public Mono<String> index(@AuthenticationPrincipal Jwt jwt) {
-        return Mono.just(String.format("Hello, %s!", jwt.getSubject()));
+    	System.out.println(jwt.getClaims());
+        return Mono.just(String.format("Hello, %s!", jwt.getClaimAsString("name")));
+    }
+    
+    @GetMapping("/update")
+    public Mono<String> update(@AuthenticationPrincipal Jwt jwt) {
+    	System.out.println(jwt.getClaims());
+        return Mono.just(String.format("Hello, %s!", jwt.getClaimAsString("name")));
     }
 
 }
