@@ -15,6 +15,7 @@ Testcontainers [https://www.testcontainers.org/]
 WADL [https://www.w3.org/Submission/wadl/]
 CGLIB [https://github.com/cglib/cglib]
 AspectJ [https://www.eclipse.org/aspectj/]
+Jaeger [https://www.jaegertracing.io/]
 
 Apache Samza [http://samza.apache.org/]
 Apache Ignite [https://ignite.apache.org/]
@@ -25,5 +26,6 @@ Spring Cloud Schema Registry [https://spring.io/projects/spring-cloud-schema-reg
 Spring Cloud Valut           [https://spring.io/projects/spring-cloud-vault]
 Spring Cloud Security        [https://spring.io/projects/spring-cloud-security]
 Spring Cloud Sleuth          [https://spring.io/projects/spring-cloud-sleuth]
+Spring Cloud Data Flow       [https://spring.io/projects/spring-cloud-dataflow]
 Spring Cloud Gateway   	     [https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway]
 
