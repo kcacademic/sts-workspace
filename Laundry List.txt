@@ -16,6 +16,7 @@ WADL [https://www.w3.org/Submission/wadl/]
 CGLIB [https://github.com/cglib/cglib]
 AspectJ [https://www.eclipse.org/aspectj/]
 Jaeger [https://www.jaegertracing.io/]
+Opentracing [https://opentracing.io/]
 
 Apache Samza [http://samza.apache.org/]
 Apache Ignite [https://ignite.apache.org/]
