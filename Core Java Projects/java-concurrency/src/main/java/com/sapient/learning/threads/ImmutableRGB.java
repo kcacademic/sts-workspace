@@ -1,4 +1,4 @@
-package com.sapient.learning.general;
+package com.sapient.learning.threads;
 
 final public class ImmutableRGB {
 

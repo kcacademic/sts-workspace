@@ -1,4 +1,4 @@
-package com.sapient.learning.general;
+package com.sapient.learning.threads;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

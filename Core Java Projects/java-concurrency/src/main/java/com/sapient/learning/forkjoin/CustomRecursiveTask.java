@@ -1,4 +1,4 @@
-package com.sapient.learning.executors;
+package com.sapient.learning.forkjoin;
 
 import java.util.ArrayList;
 import java.util.Arrays;

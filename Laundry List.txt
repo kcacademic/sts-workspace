@@ -30,3 +30,5 @@ Spring Cloud Sleuth          [https://spring.io/projects/spring-cloud-sleuth]
 Spring Cloud Data Flow       [https://spring.io/projects/spring-cloud-dataflow]
 Spring Cloud Gateway   	     [https://spring.io/blog/2019/08/16/securing-services-with-spring-cloud-gateway]
 
+Super Type Tokens [https://www.artima.com/weblogs/viewpost.jsp?thread=206350]
+
