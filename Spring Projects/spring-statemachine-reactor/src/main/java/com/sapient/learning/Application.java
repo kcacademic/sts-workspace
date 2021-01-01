@@ -27,9 +27,7 @@ public class Application {
 
 		Flux<StateMachineEventResult<States, Events>> results = stateMachine.sendEvents(Flux.just(message1, message2));
 
-		results.doOnEach(e -> System.out.println(e)).doOnComplete(() -> {
-			System.out.println("Event handling complete");
-		}).subscribe();
+		results.subscribe();
 
 		context.close();
 	}

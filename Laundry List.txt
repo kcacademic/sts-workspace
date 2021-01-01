@@ -20,6 +20,7 @@ Opentracing [https://opentracing.io/]
 LMAX Disruptor [http://lmax-exchange.github.io/disruptor/]
 Zeppelin [http://zeppelin.apache.org/]
 Hibernate Reactive [https://github.com/hibernate/hibernate-reactive]
+MapZen [https://github.com/transitland/mapzen-geohash]
 
 Apache Samza [http://samza.apache.org/] [http://samza.apache.org/startup/quick-start/latest/samza.html]
 Apache Ignite [https://ignite.apache.org/] [https://ignite.apache.org/docs/latest/quick-start/java]
