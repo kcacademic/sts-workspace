@@ -1,3 +1,5 @@
+SLF4J [http://www.slf4j.org/]
+Micrometer [https://micrometer.io/]
 R2DBC [https://r2dbc.io/]
 NATS [https://nats.io/]
 CloudEvents [https://cloudevents.io/]
