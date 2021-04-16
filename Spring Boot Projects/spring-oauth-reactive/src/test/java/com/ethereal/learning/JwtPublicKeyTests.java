@@ -1,7 +1,8 @@
-package com.sapient.learning;
+package com.ethereal.learning;
 
-import com.sapient.learning.config.SecurityConfig;
-import com.sapient.learning.utility.TokenUtility;
+import com.ethereal.learning.config.SecurityConfig;
+import com.ethereal.learning.utility.TokenUtility;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;

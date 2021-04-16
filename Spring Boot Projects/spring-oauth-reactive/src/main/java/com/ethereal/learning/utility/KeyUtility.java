@@ -1,4 +1,4 @@
-package com.sapient.learning.utility;
+package com.ethereal.learning.utility;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 

@@ -1,7 +1,8 @@
-package com.sapient.learning;
+package com.ethereal.learning;
 
+import com.ethereal.learning.config.SecurityConfig;
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.sapient.learning.config.SecurityConfig;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

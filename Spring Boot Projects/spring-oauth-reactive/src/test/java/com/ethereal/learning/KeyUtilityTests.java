@@ -1,9 +1,10 @@
-package com.sapient.learning;
+package com.ethereal.learning;
 
-import com.sapient.learning.utility.KeyUtility;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
+
+import com.ethereal.learning.utility.KeyUtility;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

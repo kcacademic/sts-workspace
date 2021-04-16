@@ -1,12 +1,13 @@
-package com.sapient.learning.utility;
+package com.ethereal.learning.utility;
 
-import com.sapient.learning.utility.KeyUtility;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+import com.ethereal.learning.utility.KeyUtility;
 
 public class TokenUtility {
 

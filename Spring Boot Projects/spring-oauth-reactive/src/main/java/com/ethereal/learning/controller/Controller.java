@@ -1,4 +1,4 @@
-package com.sapient.learning.controller;
+package com.ethereal.learning.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;

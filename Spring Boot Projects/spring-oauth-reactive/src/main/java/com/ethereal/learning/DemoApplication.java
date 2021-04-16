@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.ethereal.learning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
