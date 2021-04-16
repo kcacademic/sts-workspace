@@ -9,7 +9,7 @@
 		<version>2.1.3.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sapient.learning</groupId>
+	<groupId>com.ethereal.learning</groupId>
 	<artifactId>spring-kerberos-sso</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-kerberos-sso</name>
@@ -81,7 +81,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.sapient.learning.client.SampleClient</mainClass>
+					<mainClass>com.ethereal.learning.client.SampleClient</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
