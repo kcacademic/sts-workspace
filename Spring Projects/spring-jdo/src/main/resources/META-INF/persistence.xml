@@ -5,7 +5,7 @@
 	version="1.0">
 
 	<persistence-unit name="PersistenceUnit">
-		<class>com.sapient.learning.model.Product</class>
+		<class>com.kchandrakant.learning.model.Product</class>
 		<exclude-unlisted-classes />
 		<properties>
 			<property name="datanucleus.ConnectionURL"

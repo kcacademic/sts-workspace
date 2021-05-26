@@ -37,6 +37,6 @@
 	</rabbit:listener-container>
 
 	<bean id="consumer"
-		class="com.sapient.learning.amqp.Consumer" />
+		class="com.kchandrakant.learning.amqp.Consumer" />
 
 </beans>

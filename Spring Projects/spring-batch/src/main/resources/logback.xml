@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.sapient.learning" level="debug"
+	<logger name="com.kchandrakant.learning" level="debug"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>

@@ -11,7 +11,7 @@
 		<relativePath />
 	</parent>
 	-->
-	<groupId>com.sapient.learning</groupId>
+	<groupId>com.kchandrakant.learning</groupId>
 	<artifactId>spring-kafka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-kafka</name>

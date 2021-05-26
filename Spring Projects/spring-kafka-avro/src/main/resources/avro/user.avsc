@@ -1,5 +1,5 @@
 {
-  "namespace": "com.sapient.learning",
+  "namespace": "com.kchandrakant.learning",
   "type": "record",
   "name": "User",
   "fields": [

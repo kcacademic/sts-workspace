@@ -12,7 +12,7 @@
 	</parent>
 	-->
 
-	<groupId>com.sapient.learning</groupId>
+	<groupId>com.kchandrakant.learning</groupId>
 	<artifactId>spring-amqp</artifactId>
 	<version>0.1.0</version>
 
