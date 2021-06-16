@@ -39,7 +39,7 @@ public class UserControllerJwtTests {
 	public void getUser() throws Exception {
 		mockMvc.perform(get("/api/users/me").header(HttpHeaders.AUTHORIZATION, "Bearer " + createToken("user"))).andDo(print())
 				.andExpect(status().isOk()).andExpect(content().string(
-						containsString("{\"name\":\"user\",\"email\":\"user@sapient.com\",\"authorities\":\"[ROLE_USER]\"}")));
+						containsString("{\"name\":\"user\",\"email\":\"user@gmail.com\",\"authorities\":\"[ROLE_USER]\"}")));
 	}
 
 	public static String createToken(String username) throws ParseException {

@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
-import com.sapient.learning.controller.ApplicationController;
+import com.kchandrakant.learning.controller.ApplicationController;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 

@@ -59,11 +59,11 @@
 00:43:15,332 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /package.jdo
 00:43:15,333 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/package.jdo
 00:43:15,334 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com.jdo
-00:43:15,335 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/package.jdo
-00:43:15,336 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient.jdo
-00:43:15,337 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning/package.jdo
-00:43:15,337 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning.jdo
-00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning/Application.jdo
+00:43:15,335 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/package.jdo
+00:43:15,336 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant.jdo
+00:43:15,337 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning/package.jdo
+00:43:15,337 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning.jdo
+00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning/Application.jdo
 00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" not found
 00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.Application" as not having MetaData.
 00:43:15,338 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.Application" has no MetaData or annotations.
@@ -72,13 +72,13 @@
 00:43:15,341 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /package.jdo
 00:43:15,342 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/package.jdo
 00:43:15,342 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com.jdo
-00:43:15,343 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/package.jdo
-00:43:15,343 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient.jdo
-00:43:15,344 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/package.jdo
-00:43:15,345 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning.jdo
-00:43:15,345 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config/package.jdo
-00:43:15,346 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config.jdo
-00:43:15,346 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config/Config.jdo
+00:43:15,343 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/package.jdo
+00:43:15,343 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant.jdo
+00:43:15,344 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/package.jdo
+00:43:15,345 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning.jdo
+00:43:15,345 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config/package.jdo
+00:43:15,346 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config.jdo
+00:43:15,346 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config/Config.jdo
 00:43:15,347 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" not found
 00:43:15,347 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.config.Config" as not having MetaData.
 00:43:15,347 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.config.Config" has no MetaData or annotations.
@@ -88,13 +88,13 @@
 00:43:15,362 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /package.jdo
 00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/package.jdo
 00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com.jdo
-00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/package.jdo
-00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient.jdo
-00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/package.jdo
-00:43:15,364 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning.jdo
-00:43:15,364 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/package.jdo
-00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao.jdo
-00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/ProductDao.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/package.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant.jdo
+00:43:15,363 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/package.jdo
+00:43:15,364 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning.jdo
+00:43:15,364 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao/package.jdo
+00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao.jdo
+00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao/ProductDao.jdo
 00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" not found
 00:43:15,365 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
 00:43:15,366 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.dao.ProductDao" as not having MetaData.
@@ -223,7 +223,7 @@
 00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetprice(com.kchandrakant.learning.model.Product objPC, java.lang.Double val)"
 00:43:15,516 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Long dnGetproductId(com.kchandrakant.learning.model.Product objPC)"
 00:43:15,517 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetproductId(com.kchandrakant.learning.model.Product objPC, java.lang.Long val)"
-00:43:15,518 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\sapient\learning\model\Product.class" with enhanced definition
+00:43:15,518 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\kchandrakant\learning\model\Product.class" with enhanced definition
 00:43:15,520 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : com.kchandrakant.learning.model.Product
 00:43:15,520 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.kchandrakant.learning.model.Product" completed
 00:43:15,521 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=135 ms, enhance=79 ms, total=214 ms. Consult the log for full details
@@ -288,11 +288,11 @@
 00:46:20,994 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /package.jdo
 00:46:20,996 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/package.jdo
 00:46:20,998 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com.jdo
-00:46:20,999 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/package.jdo
-00:46:21,000 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient.jdo
-00:46:21,001 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning/package.jdo
-00:46:21,002 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning.jdo
-00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning/Application.jdo
+00:46:20,999 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/package.jdo
+00:46:21,000 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant.jdo
+00:46:21,001 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning/package.jdo
+00:46:21,002 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning.jdo
+00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning/Application.jdo
 00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" not found
 00:46:21,003 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.Application" as not having MetaData.
 00:46:21,004 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.Application" has no MetaData or annotations.
@@ -301,13 +301,13 @@
 00:46:21,007 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /package.jdo
 00:46:21,008 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/package.jdo
 00:46:21,009 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com.jdo
-00:46:21,009 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/package.jdo
-00:46:21,010 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient.jdo
-00:46:21,011 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/package.jdo
-00:46:21,011 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning.jdo
-00:46:21,013 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config/package.jdo
-00:46:21,013 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config.jdo
-00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config/Config.jdo
+00:46:21,009 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/package.jdo
+00:46:21,010 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant.jdo
+00:46:21,011 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/package.jdo
+00:46:21,011 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning.jdo
+00:46:21,013 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config/package.jdo
+00:46:21,013 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config.jdo
+00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config/Config.jdo
 00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" not found
 00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.config.Config" as not having MetaData.
 00:46:21,015 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.config.Config" has no MetaData or annotations.
@@ -317,13 +317,13 @@
 00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /package.jdo
 00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/package.jdo
 00:46:21,029 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com.jdo
-00:46:21,030 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/package.jdo
-00:46:21,030 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient.jdo
-00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/package.jdo
-00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning.jdo
-00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/package.jdo
-00:46:21,032 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao.jdo
-00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/ProductDao.jdo
+00:46:21,030 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/package.jdo
+00:46:21,030 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant.jdo
+00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/package.jdo
+00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning.jdo
+00:46:21,031 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao/package.jdo
+00:46:21,032 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao.jdo
+00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao/ProductDao.jdo
 00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" not found
 00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
 00:46:21,033 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.dao.ProductDao" as not having MetaData.
@@ -452,7 +452,7 @@
 00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetprice(com.kchandrakant.learning.model.Product objPC, java.lang.Double val)"
 00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Long dnGetproductId(com.kchandrakant.learning.model.Product objPC)"
 00:46:21,181 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetproductId(com.kchandrakant.learning.model.Product objPC, java.lang.Long val)"
-00:46:21,183 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\sapient\learning\model\Product.class" with enhanced definition
+00:46:21,183 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\kchandrakant\learning\model\Product.class" with enhanced definition
 00:46:21,185 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : com.kchandrakant.learning.model.Product
 00:46:21,185 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.kchandrakant.learning.model.Product" completed
 00:46:21,186 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=149 ms, enhance=76 ms, total=225 ms. Consult the log for full details
@@ -517,11 +517,11 @@
 00:58:13,206 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /package.jdo
 00:58:13,208 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/package.jdo
 00:58:13,209 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com.jdo
-00:58:13,210 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/package.jdo
-00:58:13,210 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient.jdo
-00:58:13,211 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning/package.jdo
-00:58:13,212 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning.jdo
-00:58:13,212 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/sapient/learning/Application.jdo
+00:58:13,210 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/package.jdo
+00:58:13,210 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant.jdo
+00:58:13,211 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning/package.jdo
+00:58:13,212 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning.jdo
+00:58:13,212 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" NOT found at /com/kchandrakant/learning/Application.jdo
 00:58:13,213 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.Application" not found
 00:58:13,213 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.Application" as not having MetaData.
 00:58:13,213 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.Application" has no MetaData or annotations.
@@ -530,13 +530,13 @@
 00:58:13,217 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /package.jdo
 00:58:13,218 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/package.jdo
 00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com.jdo
-00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/package.jdo
-00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient.jdo
-00:58:13,221 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/package.jdo
-00:58:13,221 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning.jdo
-00:58:13,222 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config/package.jdo
-00:58:13,224 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config.jdo
-00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/sapient/learning/config/Config.jdo
+00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/package.jdo
+00:58:13,220 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant.jdo
+00:58:13,221 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/package.jdo
+00:58:13,221 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning.jdo
+00:58:13,222 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config/package.jdo
+00:58:13,224 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config.jdo
+00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" NOT found at /com/kchandrakant/learning/config/Config.jdo
 00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.config.Config" not found
 00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.config.Config" as not having MetaData.
 00:58:13,225 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.config.Config" has no MetaData or annotations.
@@ -546,13 +546,13 @@
 00:58:13,242 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /package.jdo
 00:58:13,243 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/package.jdo
 00:58:13,243 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com.jdo
-00:58:13,245 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/package.jdo
-00:58:13,245 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient.jdo
-00:58:13,246 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/package.jdo
-00:58:13,247 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning.jdo
-00:58:13,248 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/package.jdo
-00:58:13,248 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao.jdo
-00:58:13,249 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/sapient/learning/dao/ProductDao.jdo
+00:58:13,245 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/package.jdo
+00:58:13,245 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant.jdo
+00:58:13,246 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/package.jdo
+00:58:13,247 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning.jdo
+00:58:13,248 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao/package.jdo
+00:58:13,248 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao.jdo
+00:58:13,249 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" NOT found at /com/kchandrakant/learning/dao/ProductDao.jdo
 00:58:13,249 (main) DEBUG [DataNucleus.MetaData] - MetaData of type "jdo" for class "com.kchandrakant.learning.dao.ProductDao" not found
 00:58:13,250 (main) DEBUG [DataNucleus.MetaData] - Class "com.kchandrakant.learning.dao.ProductDao" has annotations but there is no registered AnnotationReader. Please check your CLASSPATH and the annotations in the class for validity.
 00:58:13,250 (main) DEBUG [DataNucleus.MetaData] - Registering class "com.kchandrakant.learning.dao.ProductDao" as not having MetaData.
@@ -681,7 +681,7 @@
 00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetprice(com.kchandrakant.learning.model.Product objPC, java.lang.Double val)"
 00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "java.lang.Long dnGetproductId(com.kchandrakant.learning.model.Product objPC)"
 00:58:13,419 (main) DEBUG [DataNucleus.Enhancer] - Adding method "void dnSetproductId(com.kchandrakant.learning.model.Product objPC, java.lang.Long val)"
-00:58:13,421 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\sapient\learning\model\Product.class" with enhanced definition
+00:58:13,421 (main) INFO  [DataNucleus.Enhancer] - Writing class file "C:\Users\kchandrakant\MyDrive\Learning\Codebase\sts-workspace\Spring Projects\spring-jdo\target\classes\com\kchandrakant\learning\model\Product.class" with enhanced definition
 00:58:13,424 (main) INFO  [DataNucleus.Enhancer] - ENHANCED (Persistable) : com.kchandrakant.learning.model.Product
 00:58:13,424 (main) DEBUG [DataNucleus.Enhancer] - Enhance of class "com.kchandrakant.learning.model.Product" completed
 00:58:13,425 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=153 ms, enhance=92 ms, total=245 ms. Consult the log for full details

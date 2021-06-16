@@ -3,7 +3,7 @@ package com.kchandrakant.learning;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.kafka.core.KafkaTemplate;
 
-import com.sapient.learning.User;
+import com.kchandrakant.learning.User;
 
 public class Application {
 

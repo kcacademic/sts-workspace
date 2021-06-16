@@ -14,7 +14,7 @@ public class UserController {
 	@RequestMapping("/api/users/me")
 	public ResponseEntity<UserProfile> profile() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String email = auth.getName() + "@sapient.com";
+		String email = auth.getName() + "@gmail.com";
 
 		UserProfile profile = new UserProfile();
 		profile.setName(auth.getName());

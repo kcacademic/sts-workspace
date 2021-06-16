@@ -1,4 +1,4 @@
-package com.sapient.learning;
+package com.kchandrakant.learning;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

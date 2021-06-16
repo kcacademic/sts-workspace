@@ -3,7 +3,7 @@ package com.kchandrakant.learning.listener;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import com.sapient.learning.User;
+import com.kchandrakant.learning.User;
 
 @Component
 public class MessageListener {

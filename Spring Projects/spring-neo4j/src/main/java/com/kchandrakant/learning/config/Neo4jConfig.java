@@ -11,7 +11,7 @@ import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
 @EnableNeo4jRepositories(basePackages = "com.kchandrakant.learning")
 public class Neo4jConfig {
 
-	public static final String URL = "http://neo4j:sapient@localhost:7474";
+	public static final String URL = "http://neo4j:kchandrakant@localhost:7474";
 
 	@Bean
 	public org.neo4j.ogm.config.Configuration getConfiguration() {

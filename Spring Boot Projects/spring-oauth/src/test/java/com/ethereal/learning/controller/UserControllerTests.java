@@ -51,7 +51,7 @@ public class UserControllerTests {
 	public void getUser() throws Exception {
 		mockMvc.perform(get("/api/users/me").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)).andDo(print())
 				.andExpect(status().isOk()).andExpect(content().string(
-						containsString("{\"name\":\"Kumar\",\"email\":\"Kumar@sapient.com\",\"authorities\":\"[]\"}")));
+						containsString("{\"name\":\"Kumar\",\"email\":\"Kumar@gmail.com\",\"authorities\":\"[]\"}")));
 	}
 
 }

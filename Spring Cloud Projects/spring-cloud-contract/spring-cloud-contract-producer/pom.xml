@@ -36,7 +36,7 @@
 				<version>${spring-cloud.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<baseClassForTests>com.sapient.learning.contract.BaseTestClass
+					<baseClassForTests>com.kchandrakant.learning.contract.BaseTestClass
 					</baseClassForTests>
 				</configuration>
 			</plugin>
