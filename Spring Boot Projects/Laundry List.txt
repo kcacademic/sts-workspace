@@ -1,1 +1,2 @@
-Sping Native [https://github.com/spring-projects-experimental/spring-native]
+Spring Native [https://github.com/spring-projects-experimental/spring-native]
+Spring GraphQL [https://spring.io/blog/2021/07/06/introducing-spring-graphql]
